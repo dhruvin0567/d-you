@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>d'you - Built with intention</title>
+
+    <!-- bootstrap cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <!-- fontfamily css cdn -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> -->
+
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+      @font-face {
+        font-family: 'Lemonde';
+        src: url('fonts/Lemonde-Regular.otf') format('opentype'),
+             url('fonts/Lemonde-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Lemonde';
+        src: url('fonts/Lemonde-Italic.otf') format('opentype'),
+             url('fonts/Lemonde-Italic.ttf') format('truetype');
+        font-weight: normal;
+        font-style: italic;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root{
+--montserrat-family: "Montserrat", sans-serif;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+      }
+
+
+      body {
+        /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif; */
+        background-color: #ffffff;
+        color: #000000;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .from-our-founder-section {
+        width: 100%;
+        font-family: var(--montserrat-family) !important;
+        padding: 100px 80px;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: auto;
+      }
+
+      .founder-container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .video-thumbnail {
+        flex: 0 0 868px;
+        width: 868px;
+        height: 524px;
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        background: #f0f0f0;
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      .video-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 24px;
+      }
+
+      .video-thumbnail video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+        border-radius: 24px;
+      }
+
+      .video-thumbnail.playing img,
+      .video-thumbnail.playing .play-button {
+        display: none;
+      }
+
+      .video-thumbnail.playing video {
+        display: block;
+      }
+
+      .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 72px;
+        height: 72px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10;
+      }
+
+      .play-button:hover {
+        transform: translate(-50%, -50%) scale(1.08);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      }
+
+      .play-button::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: transparent;
+      }
+
+      .play-button::after {
+        content: "";
+        position: relative;
+        width: 0;
+        height: 0;
+        border-left: 20px solid #5b9bd5;
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        margin-left: 3px;
+        z-index: 1;
+      }
+
+      .content-block {
+        flex: 1;
+        margin-top: 120px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-left: 40px;
+        max-width: 600px;
+      }
+
+      .founder-label {
+        display: block;
+        color: #6b8db8 !important;
+        font-size: 14px !important; 
+        font-weight: 500 !important;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        line-height: 29px !important;
+        font-family: var(--font-family) !important;
+      }
+
+      .founder-heading {
+        font-size: 48px;
+        font-weight: 500 !important;
+        color: #2a6dcb;
+        line-height: 1.2;
+        margin: 0 0 28px 0;
+        font-family: 'Lemonde', serif !important;
+        padding: 0;
+      }
+
+      .founder-heading em {
+        font-family: 'Lemonde', serif !important;
+        font-style: italic !important;
+        font-weight: 400 !important;
+        background-image: linear-gradient(to right, #fff0, #fff0), linear-gradient(to right, #2a6dcb, #a7c5ee);
+        background-clip: text;
+        -webkit-background-clip: text;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        color: transparent;
+        padding: 0 6px 0 0;
+        display: inline-block;
+        line-height: normal;
+      }
+
+      .founder-heading .period {
+        font-weight: 800 !important;
+        color: #4483db !important;
+        font-size: 38px !important;
+        display: inline-block !important;
+      }
+
+      .founder-text {
+        font-size: 18px !important;
+        line-height: 25px !important;
+        color: #68809a !important;
+        margin: 0 0 48px !important;
+        padding: 0;
+        letter-spacing: -0.36px !important;
+        font-weight: 400 !important;
+        max-width: 100%;
+      }
+
+      .founder-name {
+        font-size: 18px !important;
+        font-weight: 500 !important;
+        color: #2a6dcb !important;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+        line-height: 18px !important;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1400px) {
+        .founder-container {
+          max-width: 100%;
+          gap: 60px;
+        }
+
+        .video-thumbnail {
+          flex: 0 0 auto;
+          width: 100%;
+          max-width: 868px;
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .from-our-founder-section {
+          padding: 80px 60px;
+        }
+
+        .founder-container {
+          gap: 50px;
+        }
+
+        .video-thumbnail {
+          width: 100%;
+          max-width: 100%;
+          height: auto;
+          aspect-ratio: 868 / 524;
+        }
+
+        .founder-heading {
+          font-size: 42px;
+        }
+      }
+
+      @media (max-width: 968px) {
+        .from-our-founder-section {
+          padding: 80px 40px;
+        }
+
+        .founder-container {
+          flex-direction: column;
+          gap: 50px;
+          align-items: stretch;
+        }
+
+        .video-thumbnail {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        .content-block {
+          width: 100%;
+          max-width: 100%;
+          padding-left: 0;
+        }
+
+        .founder-heading {
+          font-size: 36px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .from-our-founder-section {
+          padding: 60px 24px;
+        }
+
+        .founder-container {
+          gap: 40px;
+        }
+
+        .founder-heading {
+          font-size: 32px;
+        }
+
+        .founder-text {
+          font-size: 15px;
+        }
+
+        .play-button {
+          width: 64px;
+          height: 64px;
+        }
+
+        .play-button::after {
+          border-left: 18px solid #5b9bd5;
+          border-top: 10px solid transparent;
+          border-bottom: 10px solid transparent;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <div class="from-our-founder-section">
+        <div class="founder-container">
+          <!-- Video Thumbnail -->
+          <div class="video-thumbnail" id="videoThumbnail">
+            <img
+              src="https://www.dyou.co/cdn/shop/files/Founder_Video.png"
+              alt="Founder Video Thumbnail"
+            />
+            <video
+              id="founderVideo"
+              width="868"
+              height="524"
+              controls
+              preload="none"
+            >
+              <source
+                src="https://www.dyou.co/cdn/shop/videos/c/vp/b8010131927c48bc93f50ef80741ac74/b8010131927c48bc93f50ef80741ac74.HD-720p-1.6Mbps-55255036.mp4?v=0"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+            <div class="play-button"></div>
+          </div>
+
+          <!-- Content Block -->
+          <div class="content-block">
+            <span class="founder-label">FROM OUR FOUNDER</span>
+
+            <h1 class="founder-heading">
+              Built with <em>intention</em><span class="period">.</span><br />
+              Backed by <em>convictio</em><span class="period">.</span>
+            </h1>
+
+            <p class="founder-text">
+              At d'you, we set out to create skincare that doesn't compromise on
+              science, on results, or on integrity. What started as a personal
+              frustration is now a collective mission: to raise the bar for
+              Indian beauty.
+            </p>
+
+            <div class="founder-name">SHAMIKA HALDIPURKAR, FOUNDER</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- bootstrap js cdn  -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // Video play functionality
+      const videoThumbnail = document.getElementById("videoThumbnail");
+      const founderVideo = document.getElementById("founderVideo");
+
+      videoThumbnail.addEventListener("click", function () {
+        if (!videoThumbnail.classList.contains("playing")) {
+          videoThumbnail.classList.add("playing");
+          founderVideo.play();
+        }
+      });
+
+      // Optional: Reset when video ends
+      founderVideo.addEventListener("ended", function () {
+        videoThumbnail.classList.remove("playing");
+        founderVideo.pause();
+        founderVideo.currentTime = 0;
+      });
+    </script>
+  </body>
+</html>
