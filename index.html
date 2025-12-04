@@ -140,406 +140,501 @@
           class="lineup__content lineup__content--active"
           data-period="am"
         >
-          <!-- Products row (PM) -->
+          <!-- Products grid (AM) -->
           <div class="lineup__products">
-            <!-- When PM is active we want the Step 4 image to show first -->
+            <!-- Step 1: inbalance -->
             <div class="lineup-step">
-              <div class="lineup-step__product">
-                <img src="./assets/img/step4image.png" alt="Step 1 product" />
+              <div class="lineup-step__image-step">
+                <img src="./assets/img/step1image.webp" alt="inbalance product" />
+                <p class="lineup-step__label">step 1</p>
               </div>
-              <div class="lineup-step__label">STEP 1</div>
-            </div>
-
-            <div class="lineup-step">
-              <div class="lineup-step__product">
-                <img src="./assets/img/step2image.webp" alt="Step 2 product" />
-              </div>
-              <div class="lineup-step__label">STEP 2</div>
-            </div>
-
-            <div class="lineup-step">
-              <div class="lineup-step__product">
-                <img src="./assets/img/step3image.webp" alt="Step 3 product" />
-              </div>
-              <div class="lineup-step__label">STEP 3</div>
-            </div>
-
-            <div class="lineup-step">
-              <div class="lineup-step__product">
-                <img src="./assets/img/step1image.webp" alt="Step 4 product" />
-              </div>
-              <div class="lineup-step__label">STEP 4</div>
-            </div>
-          </div>
-
-          <!-- Dashed line + clouds -->
-          <div class="lineup__connector">
-            <div class="lineup__connector-line">
-              <svg
-                width="100%"
-                height="2"
-                viewBox="0 0 250 2"
-                preserveAspectRatio="none"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0 1 L250 1"
-                  stroke="#2A6DCB"
-                  stroke-linecap="round"
-                  stroke-dasharray="6 6"
-                ></path>
-              </svg>
-            </div>
-            <div class="lineup__connector-clouds">
-              <div class="lineup__cloud">
-                <svg
-                  width="36"
-                  height="24"
-                  viewBox="0 0 36 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <mask
-                      id="mask0_1838_7118"
-                      maskUnits="userSpaceOnUse"
-                      x="0"
-                      y="0"
-                      width="36"
-                      height="24"
-                    >
-                      <rect width="36" height="24" fill="white" />
-                    </mask>
-                  </defs>
-                  <g mask="url(#mask0_1838_7118)">
+              <div class="lineup-step__clouds">
+                <svg width="250" height="2" viewBox="0 0 250 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M125 1 L250 1" stroke="#B8C5D6" stroke-linecap="round" stroke-dasharray="6 6"></path>
+                </svg>
+                <svg width="36" height="25" viewBox="0 0 36 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g>
                     <path
                       d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
                       fill="white"
-                      stroke="#2A6DCB"
+                      stroke="#A8BFD6"
                       stroke-width="0.8"
                     ></path>
                   </g>
                 </svg>
               </div>
-              <div class="lineup__cloud">
-                <svg
-                  width="36"
-                  height="24"
-                  viewBox="0 0 36 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <mask
-                      id="mask0_1838_7118_cloud2"
-                      maskUnits="userSpaceOnUse"
-                      x="0"
-                      y="0"
-                      width="36"
-                      height="24"
-                    >
-                      <rect width="36" height="24" fill="white" />
-                    </mask>
-                  </defs>
-                  <g mask="url(#mask0_1838_7118_cloud2)">
-                    <path
-                      d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
-                      fill="white"
-                      stroke="#2A6DCB"
-                      stroke-width="0.8"
-                    ></path>
-                  </g>
-                </svg>
-              </div>
-              <div class="lineup__cloud">
-                <svg
-                  width="36"
-                  height="24"
-                  viewBox="0 0 36 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <mask
-                      id="mask0_1838_7118_cloud3"
-                      maskUnits="userSpaceOnUse"
-                      x="0"
-                      y="0"
-                      width="36"
-                      height="24"
-                    >
-                      <rect width="36" height="24" fill="white" />
-                    </mask>
-                  </defs>
-                  <g mask="url(#mask0_1838_7118_cloud3)">
-                    <path
-                      d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
-                      fill="white"
-                      stroke="#2A6DCB"
-                      stroke-width="0.8"
-                    ></path>
-                  </g>
-                </svg>
-              </div>
-              <div class="lineup__cloud">
-                <svg
-                  width="36"
-                  height="24"
-                  viewBox="0 0 36 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <mask
-                      id="mask0_1838_7118_cloud4"
-                      maskUnits="userSpaceOnUse"
-                      x="0"
-                      y="0"
-                      width="36"
-                      height="24"
-                    >
-                      <rect width="36" height="24" fill="white" />
-                    </mask>
-                  </defs>
-                  <g mask="url(#mask0_1838_7118_cloud4)">
-                    <path
-                      d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
-                      fill="white"
-                      stroke="#2A6DCB"
-                      stroke-width="0.8"
-                    ></path>
-                  </g>
-                </svg>
+              <div class="lineup-step__title-subtitle">
+                <h4 class="lineup-step__prod-title"><i>in</i>balance</h4>
+                <p class="lineup-step__prod-subtitle">Hydrates, refreshes, and soothes your skin</p>
               </div>
             </div>
-          </div>
 
-          <!-- Bottom titles + descriptions -->
-          <div class="lineup__details">
-            <div class="lineup-detail">
-              <div class="lineup-detail__title">imbalance</div>
-              <p class="lineup-detail__text">
-                Hydrates, refreshes, and soothes your skin for the day.
-              </p>
+            <!-- Step 2: hustle -->
+            <div class="lineup-step">
+              <div class="lineup-step__image-step">
+                <img src="./assets/img/step2image.webp" alt="hustle product" />
+                <p class="lineup-step__label">step 2</p>
+              </div>
+              <div class="lineup-step__clouds">
+                <svg width="250" height="2" viewBox="0 0 250 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 1 L250 1" stroke="#B8C5D6" stroke-linecap="round" stroke-dasharray="6 6"></path>
+                </svg>
+                <svg width="36" height="25" viewBox="0 0 36 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g>
+                    <path
+                      d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
+                      fill="white"
+                      stroke="#A8BFD6"
+                      stroke-width="0.8"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="lineup-step__title-subtitle">
+                <h4 class="lineup-step__prod-title">hustle</h4>
+                <p class="lineup-step__prod-subtitle">D+ actives for complete skin treatment</p>
+              </div>
             </div>
-            <div class="lineup-detail">
-              <div class="lineup-detail__title">hustle</div>
-              <p class="lineup-detail__text">
-                11+ actives for bright, even, makeup-ready morning skin.
-              </p>
+
+            <!-- Step 3: in my defence -->
+            <div class="lineup-step">
+              <div class="lineup-step__image-step">
+                <img src="./assets/img/step3image.webp" alt="in my defence product" />
+                <p class="lineup-step__label">step 3</p>
+              </div>
+              <div class="lineup-step__clouds">
+                <svg width="250" height="2" viewBox="0 0 250 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 1 L250 1" stroke="#B8C5D6" stroke-linecap="round" stroke-dasharray="6 6"></path>
+                </svg>
+                <svg width="36" height="25" viewBox="0 0 36 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g>
+                    <path
+                      d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
+                      fill="white"
+                      stroke="#A8BFD6"
+                      stroke-width="0.8"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="lineup-step__title-subtitle">
+                <h4 class="lineup-step__prod-title">in my defence</h4>
+                <p class="lineup-step__prod-subtitle">Lightweight moisturiser for deep skin nourishment</p>
+              </div>
             </div>
-            <div class="lineup-detail">
-              <div class="lineup-detail__title">in my defence</div>
-              <p class="lineup-detail__text">
-                Lightweight moisture that sits comfortably under SPF.
-              </p>
-            </div>
-            <div class="lineup-detail">
-              <div class="lineup-detail__title">unkissed</div>
-              <p class="lineup-detail__text">
-                Blue capsule sunscreen with SPF 70+ and PA++++.
-              </p>
+
+            <!-- Step 4: unkissed -->
+            <div class="lineup-step">
+              <div class="lineup-step__image-step">
+                <img src="./assets/img/step4image.png" alt="unkissed product" />
+                <p class="lineup-step__label">step 4</p>
+              </div>
+              <div class="lineup-step__clouds">
+                <svg width="250" height="2" viewBox="0 0 250 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 1 L125 1" stroke="#B8C5D6" stroke-linecap="round" stroke-dasharray="6 6"></path>
+                </svg>
+                <svg width="36" height="25" viewBox="0 0 36 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g>
+                    <path
+                      d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
+                      fill="white"
+                      stroke="#A8BFD6"
+                      stroke-width="0.8"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="lineup-step__title-subtitle">
+                <h4 class="lineup-step__prod-title"><i>un</i>kissed</h4>
+                <p class="lineup-step__prod-subtitle">Blue capsule sunscreen with SPF 70+ and PA++++</p>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- PM CONTENT -->
         <div class="lineup__content" data-period="pm">
-          <!-- Products row -->
+          <!-- Products grid (PM) -->
           <div class="lineup__products">
-            <!-- PM Step 1: good grease (step5image) -->
+            <!-- Step 1: good grease -->
             <div class="lineup-step">
-              <div class="lineup-step__product">
-                <img src="./assets/img/step5image.webp" alt="Step 1 product" />
+              <div class="lineup-step__image-step">
+                <img src="./assets/img/step5image.webp" alt="good grease product" />
+                <p class="lineup-step__label">step 1</p>
               </div>
-              <div class="lineup-step__label">STEP 1</div>
+              <div class="lineup-step__clouds">
+                <svg width="250" height="2" viewBox="0 0 250 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M125 1 L250 1" stroke="#B8C5D6" stroke-linecap="round" stroke-dasharray="6 6"></path>
+                </svg>
+                <svg width="36" height="25" viewBox="0 0 36 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g>
+                    <path
+                      d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
+                      fill="white"
+                      stroke="#A8BFD6"
+                      stroke-width="0.8"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="lineup-step__title-subtitle">
+                <h4 class="lineup-step__prod-title">good grease</h4>
+                <p class="lineup-step__prod-subtitle">Melts away makeup, SPF, and grime</p>
+              </div>
             </div>
 
+            <!-- Step 2: inbalance -->
             <div class="lineup-step">
-              <div class="lineup-step__product">
-                <img src="./assets/img/step2image.webp" alt="Step 2 product" />
+              <div class="lineup-step__image-step">
+                <img src="./assets/img/step1image.webp" alt="inbalance product" />
+                <p class="lineup-step__label">step 2</p>
               </div>
-              <div class="lineup-step__label">STEP 2</div>
+              <div class="lineup-step__clouds">
+                <svg width="250" height="2" viewBox="0 0 250 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 1 L250 1" stroke="#B8C5D6" stroke-linecap="round" stroke-dasharray="6 6"></path>
+                </svg>
+                <svg width="36" height="25" viewBox="0 0 36 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g>
+                    <path
+                      d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
+                      fill="white"
+                      stroke="#A8BFD6"
+                      stroke-width="0.8"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="lineup-step__title-subtitle">
+                <h4 class="lineup-step__prod-title"><i>in</i>balance</h4>
+                <p class="lineup-step__prod-subtitle">Hydrates, refreshes, and soothes your skin</p>
+              </div>
             </div>
 
+            <!-- Step 3: hustle -->
             <div class="lineup-step">
-              <div class="lineup-step__product">
-                <img src="./assets/img/step3image.webp" alt="Step 3 product" />
+              <div class="lineup-step__image-step">
+                <img src="./assets/img/step2image.webp" alt="hustle product" />
+                <p class="lineup-step__label">step 3</p>
               </div>
-              <div class="lineup-step__label">STEP 3</div>
+              <div class="lineup-step__clouds">
+                <svg width="250" height="2" viewBox="0 0 250 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 1 L250 1" stroke="#B8C5D6" stroke-linecap="round" stroke-dasharray="6 6"></path>
+                </svg>
+                <svg width="36" height="25" viewBox="0 0 36 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g>
+                    <path
+                      d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
+                      fill="white"
+                      stroke="#A8BFD6"
+                      stroke-width="0.8"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="lineup-step__title-subtitle">
+                <h4 class="lineup-step__prod-title">hustle</h4>
+                <p class="lineup-step__prod-subtitle">11+ actives working overnight on texture and pigmentation</p>
+              </div>
             </div>
 
+            <!-- Step 4: in my defence -->
             <div class="lineup-step">
-              <div class="lineup-step__product">
-                <img src="./assets/img/step4image.png" alt="Step 4 product" />
+              <div class="lineup-step__image-step">
+                <img src="./assets/img/step3image.webp" alt="in my defence product" />
+                <p class="lineup-step__label">step 4</p>
               </div>
-              <div class="lineup-step__label">STEP 4</div>
+              <div class="lineup-step__clouds">
+                <svg width="250" height="2" viewBox="0 0 250 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 1 L125 1" stroke="#B8C5D6" stroke-linecap="round" stroke-dasharray="6 6"></path>
+                </svg>
+                <svg width="36" height="25" viewBox="0 0 36 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g>
+                    <path
+                      d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
+                      fill="white"
+                      stroke="#A8BFD6"
+                      stroke-width="0.8"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="lineup-step__title-subtitle">
+                <h4 class="lineup-step__prod-title">in my defence</h4>
+                <p class="lineup-step__prod-subtitle">Lightweight moisturiser for deep skin nourishment</p>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Dashed line + clouds -->
-          <div class="lineup__connector">
-            <div class="lineup__connector-line">
-              <svg
-                width="100%"
-                height="2"
-                viewBox="0 0 250 2"
-                preserveAspectRatio="none"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+    <!-- TOP SHELF PICKS SECTION -->
+    <section class="top-shelf-picks">
+      <div class="top-shelf-picks__inner">
+        <header class="top-shelf-picks__header">
+          <div>
+            <p class="top-shelf-picks__eyebrow">TOP SHELF PICKS</p>
+            <h2 class="top-shelf-picks__title">
+              Our most <em>obsessed-over</em> formulas
+            </h2>
+          </div>
+        </header>
+
+        <div class="top-shelf-picks__slider-wrapper">
+          <div class="top-shelf-picks__grid top-shelf-picks__grid--auto">
+            <!-- Card 1 -->
+            <article class="top-shelf-picks__card">
+              <div class="top-shelf-picks__image top-shelf-picks__image--pink">
+                <img src="./assets/img/product1.webp" alt="in my defence" />
+                <button class="top-shelf-picks__button--overlay" type="button">
+                  Add to Bag
+                </button>
+              </div>
+              <div class="top-shelf-picks__content">
+                <h3 class="top-shelf-picks__product-title">in my defence</h3>
+                <p class="top-shelf-picks__description">
+                  barrier repair moisturiser
+                </p>
+                <div class="top-shelf-picks__rating">
+                  <span class="top-shelf-picks__star">★</span>
+                  <span class="top-shelf-picks__rating-value">4.7</span>
+                </div>
+                <div class="top-shelf-picks__price">
+                  <span class="top-shelf-picks__price-new">₹3,500</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="top-shelf-picks__card">
+              <div class="top-shelf-picks__image top-shelf-picks__image--blue">
+                <img src="./assets/img/product2.webp" alt="hustle mini" />
+                <button class="top-shelf-picks__button--overlay" type="button">
+                  Add to Bag
+                </button>
+              </div>
+              <div class="top-shelf-picks__content">
+                <h3 class="top-shelf-picks__product-title">hustle mini</h3>
+                <p class="top-shelf-picks__description">
+                  all-in-one serum
+                </p>
+                <div class="top-shelf-picks__rating">
+                  <span class="top-shelf-picks__star">★</span>
+                  <span class="top-shelf-picks__rating-value">4.6</span>
+                </div>
+                <div class="top-shelf-picks__price">
+                  <span class="top-shelf-picks__price-old">₹1,180</span>
+                  <span class="top-shelf-picks__price-new">₹990</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="top-shelf-picks__card">
+              <div class="top-shelf-picks__image top-shelf-picks__image--purple">
+                <img src="./assets/img/product3.webp" alt="inbalance" />
+                <button class="top-shelf-picks__button--overlay" type="button">
+                  Add to Bag
+                </button>
+              </div>
+              <div class="top-shelf-picks__content">
+                <h3 class="top-shelf-picks__product-title">inbalance</h3>
+                <p class="top-shelf-picks__description">
+                  soothing milky tonic
+                </p>
+                <div class="top-shelf-picks__rating">
+                  <span class="top-shelf-picks__star">★</span>
+                  <span class="top-shelf-picks__rating-value">4.5</span>
+                </div>
+                <div class="top-shelf-picks__price">
+                  <span class="top-shelf-picks__price-new">₹2,100</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="top-shelf-picks__card">
+              <div
+                class="top-shelf-picks__image top-shelf-picks__image--purple-blue"
               >
-                <path
-                  d="M0 1 L250 1"
-                  stroke="#2A6DCB"
-                  stroke-linecap="round"
-                  stroke-dasharray="6 6"
-                ></path>
-              </svg>
-            </div>
-            <div class="lineup__connector-clouds">
-              <div class="lineup__cloud">
-                <svg
-                  width="36"
-                  height="24"
-                  viewBox="0 0 36 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <mask
-                      id="mask0_1838_7118_pm1"
-                      maskUnits="userSpaceOnUse"
-                      x="0"
-                      y="0"
-                      width="36"
-                      height="24"
-                    >
-                      <rect width="36" height="24" fill="white" />
-                    </mask>
-                  </defs>
-                  <g mask="url(#mask0_1838_7118_pm1)">
-                    <path
-                      d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
-                      fill="white"
-                      stroke="#2A6DCB"
-                      stroke-width="0.8"
-                    ></path>
-                  </g>
-                </svg>
+                <img src="./assets/img/product4.webp" alt="the mini trio" />
+                <button class="top-shelf-picks__button--overlay" type="button">
+                  Add to Bag
+                </button>
               </div>
-              <div class="lineup__cloud">
-                <svg
-                  width="36"
-                  height="24"
-                  viewBox="0 0 36 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <mask
-                      id="mask0_1838_7118_pm2"
-                      maskUnits="userSpaceOnUse"
-                      x="0"
-                      y="0"
-                      width="36"
-                      height="24"
-                    >
-                      <rect width="36" height="24" fill="white" />
-                    </mask>
-                  </defs>
-                  <g mask="url(#mask0_1838_7118_pm2)">
-                    <path
-                      d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
-                      fill="white"
-                      stroke="#2A6DCB"
-                      stroke-width="0.8"
-                    ></path>
-                  </g>
-                </svg>
+              <div class="top-shelf-picks__content">
+                <h3 class="top-shelf-picks__product-title">the mini trio</h3>
+                <p class="top-shelf-picks__description">
+                  complete mini routine
+                </p>
+                <div class="top-shelf-picks__rating">
+                  <span class="top-shelf-picks__star">★</span>
+                  <span class="top-shelf-picks__rating-value">4.8</span>
+                </div>
+                <div class="top-shelf-picks__price">
+                  <span class="top-shelf-picks__price-old">₹2,750</span>
+                  <span class="top-shelf-picks__price-new">₹2,300</span>
+                </div>
               </div>
-              <div class="lineup__cloud">
-                <svg
-                  width="36"
-                  height="24"
-                  viewBox="0 0 36 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <mask
-                      id="mask0_1838_7118_pm3"
-                      maskUnits="userSpaceOnUse"
-                      x="0"
-                      y="0"
-                      width="36"
-                      height="24"
-                    >
-                      <rect width="36" height="24" fill="white" />
-                    </mask>
-                  </defs>
-                  <g mask="url(#mask0_1838_7118_pm3)">
-                    <path
-                      d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
-                      fill="white"
-                      stroke="#2A6DCB"
-                      stroke-width="0.8"
-                    ></path>
-                  </g>
-                </svg>
-              </div>
-              <div class="lineup__cloud">
-                <svg
-                  width="36"
-                  height="24"
-                  viewBox="0 0 36 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <mask
-                      id="mask0_1838_7118_pm4"
-                      maskUnits="userSpaceOnUse"
-                      x="0"
-                      y="0"
-                      width="36"
-                      height="24"
-                    >
-                      <rect width="36" height="24" fill="white" />
-                    </mask>
-                  </defs>
-                  <g mask="url(#mask0_1838_7118_pm4)">
-                    <path
-                      d="M31.88 11.5024C31.854 9.75765 30.4373 8.3514 28.6925 8.3514C28.078 8.3514 27.505 8.52328 27.0207 8.82015C27.0207 8.80453 27.0259 8.78369 27.0259 8.76807C27.0259 6.07536 24.8488 3.89307 22.1665 3.89307C21.3905 3.89307 20.6561 4.07536 20.005 4.40348C18.979 2.2889 16.8228 0.830566 14.3175 0.830566C10.8748 0.830566 8.07796 3.59619 8.00505 7.02848C6.18213 7.38786 4.81234 8.99723 4.81234 10.9243C4.81234 11.2941 4.85921 11.6431 4.95296 11.9816C4.5988 11.7993 4.19775 11.6899 3.76546 11.6899C2.3488 11.6899 1.19775 12.8462 1.19775 14.2681C1.19775 15.6899 2.3488 16.841 3.76546 16.841C4.0363 16.841 4.29671 16.7993 4.5415 16.7264C4.65609 18.4243 6.06755 19.7681 7.79671 19.7681C8.76025 19.7681 9.63005 19.341 10.229 18.6743C10.8436 21.5285 13.3748 23.6639 16.4009 23.6639C19.005 23.6639 21.2394 22.0858 22.2082 19.8306C23.0103 20.4868 24.0311 20.8827 25.1509 20.8827C27.5884 20.8827 29.5936 18.992 29.7863 16.5962C30.1978 16.841 30.6769 16.9816 31.1873 16.9816C32.7238 16.9816 33.9634 15.7368 33.9634 14.1952C33.9634 12.8983 33.078 11.8149 31.88 11.5024Z"
-                      fill="white"
-                      stroke="#2A6DCB"
-                      stroke-width="0.8"
-                    ></path>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
+            </article>
 
-          <!-- Bottom titles + descriptions (PM) -->
-          <div class="lineup__details">
-            <!-- First PM detail uses "good grease" style copy -->
-            <div class="lineup-detail">
-              <div class="lineup-detail__title">good grease</div>
-              <p class="lineup-detail__text">
-                Melts away makeup, SPF, and grime.
-              </p>
-            </div>
-            <div class="lineup-detail">
-              <div class="lineup-detail__title">imbalance</div>
-              <p class="lineup-detail__text">
-                Hydrates, refreshes, and soothes skin after a long day.
-              </p>
-            </div>
-            <div class="lineup-detail">
-              <div class="lineup-detail__title">hustle</div>
-              <p class="lineup-detail__text">
-                11+ actives working overnight on texture and pigmentation.
-              </p>
-            </div>
-            <div class="lineup-detail">
-              <div class="lineup-detail__title">in my defence</div>
-              <p class="lineup-detail__text">
-                Lightweight moisturiser for deep skin nourishment.
-              </p>
-            </div>
+            <!-- Card 5 -->
+            <article class="top-shelf-picks__card">
+              <div class="top-shelf-picks__image top-shelf-picks__image--teal">
+                <img src="./assets/img/product5.webp" alt="unkissed" />
+                <button class="top-shelf-picks__button--overlay" type="button">
+                  Add to Bag
+                </button>
+              </div>
+              <div class="top-shelf-picks__content">
+                <h3 class="top-shelf-picks__product-title">unkissed</h3>
+                <p class="top-shelf-picks__description">
+                  serum sunscreen spf 70+
+                </p>
+                <div class="top-shelf-picks__rating">
+                  <span class="top-shelf-picks__star">★</span>
+                  <span class="top-shelf-picks__rating-value">4.4</span>
+                </div>
+                <div class="top-shelf-picks__price">
+                  <span class="top-shelf-picks__price-new">₹2,200</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Extra cards to keep the row feeling continuous -->
+            <article class="top-shelf-picks__card">
+              <div class="top-shelf-picks__image top-shelf-picks__image--blue">
+                <img src="./assets/img/product6.webp" alt="treat & glow" />
+                <button class="top-shelf-picks__button--overlay" type="button">
+                  Add to Bag
+                </button>
+              </div>
+              <div class="top-shelf-picks__content">
+                <h3 class="top-shelf-picks__product-title">treat &amp; glow</h3>
+                <p class="top-shelf-picks__description">
+                  serum + moisturiser duo
+                </p>
+                <div class="top-shelf-picks__rating">
+                  <span class="top-shelf-picks__star">★</span>
+                  <span class="top-shelf-picks__rating-value">4.6</span>
+                </div>
+                <div class="top-shelf-picks__price">
+                  <span class="top-shelf-picks__price-new">₹3,990</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="top-shelf-picks__card">
+              <div class="top-shelf-picks__image top-shelf-picks__image--purple">
+                <img src="./assets/img/product7.webp" alt="hustle" />
+                <button class="top-shelf-picks__button--overlay" type="button">
+                  Add to Bag
+                </button>
+              </div>
+              <div class="top-shelf-picks__content">
+                <h3 class="top-shelf-picks__product-title">hustle</h3>
+                <p class="top-shelf-picks__description">
+                  multi-active serum
+                </p>
+                <div class="top-shelf-picks__rating">
+                  <span class="top-shelf-picks__star">★</span>
+                  <span class="top-shelf-picks__rating-value">4.9</span>
+                </div>
+                <div class="top-shelf-picks__price">
+                  <span class="top-shelf-picks__price-new">₹2,850</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="top-shelf-picks__card">
+              <div class="top-shelf-picks__image top-shelf-picks__image--pink">
+                <img src="./assets/img/product8.webp" alt="good grease" />
+                <button class="top-shelf-picks__button--overlay" type="button">
+                  Add to Bag
+                </button>
+              </div>
+              <div class="top-shelf-picks__content">
+                <h3 class="top-shelf-picks__product-title">good grease</h3>
+                <p class="top-shelf-picks__description">
+                  cleansing balm
+                </p>
+                <div class="top-shelf-picks__rating">
+                  <span class="top-shelf-picks__star">★</span>
+                  <span class="top-shelf-picks__rating-value">4.5</span>
+                </div>
+                <div class="top-shelf-picks__price">
+                  <span class="top-shelf-picks__price-new">₹2,300</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="top-shelf-picks__card">
+              <div class="top-shelf-picks__image top-shelf-picks__image--teal">
+                <img src="./assets/img/product9.webp" alt="unkissed duo" />
+                <button class="top-shelf-picks__button--overlay" type="button">
+                  Add to Bag
+                </button>
+              </div>
+              <div class="top-shelf-picks__content">
+                <h3 class="top-shelf-picks__product-title">unkissed duo</h3>
+                <p class="top-shelf-picks__description">
+                  sunscreen set
+                </p>
+                <div class="top-shelf-picks__rating">
+                  <span class="top-shelf-picks__star">★</span>
+                  <span class="top-shelf-picks__rating-value">4.3</span>
+                </div>
+                <div class="top-shelf-picks__price">
+                  <span class="top-shelf-picks__price-new">₹3,750</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="top-shelf-picks__card">
+              <div class="top-shelf-picks__image top-shelf-picks__image--blue">
+                <img src="./assets/img/product10.webp" alt="mini defence duo" />
+                <button class="top-shelf-picks__button--overlay" type="button">
+                  Add to Bag
+                </button>
+              </div>
+              <div class="top-shelf-picks__content">
+                <h3 class="top-shelf-picks__product-title">
+                  mini defence duo
+                </h3>
+                <p class="top-shelf-picks__description">
+                  travel minis
+                </p>
+                <div class="top-shelf-picks__rating">
+                  <span class="top-shelf-picks__star">★</span>
+                  <span class="top-shelf-picks__rating-value">4.6</span>
+                </div>
+                <div class="top-shelf-picks__price">
+                  <span class="top-shelf-picks__price-new">₹1,950</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="top-shelf-picks__card">
+              <div class="top-shelf-picks__image top-shelf-picks__image--purple">
+                <img src="./assets/img/product11.webp" alt="starter kit" />
+                <button class="top-shelf-picks__button--overlay" type="button">
+                  Add to Bag
+                </button>
+              </div>
+              <div class="top-shelf-picks__content">
+                <h3 class="top-shelf-picks__product-title">starter kit</h3>
+                <p class="top-shelf-picks__description">
+                  curated first routine
+                </p>
+                <div class="top-shelf-picks__rating">
+                  <span class="top-shelf-picks__star">★</span>
+                  <span class="top-shelf-picks__rating-value">4.7</span>
+                </div>
+                <div class="top-shelf-picks__price">
+                  <span class="top-shelf-picks__price-new">₹4,200</span>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </div>

@@ -81,52 +81,177 @@ showMoreLinks.forEach((link) => {
 });
 
 // ====================
-// Top Shelf Picks Slider (mouse scroll + drag, no buttons)
+// Top Shelf Picks Slider - Continuous Auto Scroll + Drag
 // ====================
 
 const topShelfGrid = document.querySelector(".top-shelf-picks__grid");
 
 if (topShelfGrid) {
-  // Scroll horizontally with mouse wheel while hovering over the slider
+  let isDragging = false;
+  let startX = 0;
+  let scrollLeft = 0;
+  let hasMoved = false;
+  const DRAG_THRESHOLD = 3; // Minimum pixels to move before considering it a drag
+
+  // --- Auto-scroll setup ---
+  const CARD_SCROLL_SPEED_PX_PER_SEC = 30; // design spec
+  let isHovered = false;
+  let lastTimestamp = null;
+  let contentWidth = 0;
+
+  // Duplicate cards once so we can loop seamlessly
+  const cards = Array.from(topShelfGrid.children);
+  cards.forEach((card) => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    topShelfGrid.appendChild(clone);
+  });
+
+  // After cloning, half of the scrollable width represents one full set
+  const updateContentWidth = () => {
+    contentWidth = topShelfGrid.scrollWidth / 2;
+  };
+  updateContentWidth();
+  window.addEventListener("resize", updateContentWidth);
+
+  const autoScrollStep = (timestamp) => {
+    if (!lastTimestamp) lastTimestamp = timestamp;
+    const deltaMs = timestamp - lastTimestamp;
+    lastTimestamp = timestamp;
+
+    if (!isHovered && !isDragging && contentWidth > 0) {
+      const deltaPx = (CARD_SCROLL_SPEED_PX_PER_SEC * deltaMs) / 1000;
+      topShelfGrid.scrollLeft += deltaPx;
+
+      // Loop when we've scrolled past one full set of cards
+      if (topShelfGrid.scrollLeft >= contentWidth) {
+        topShelfGrid.scrollLeft -= contentWidth;
+      }
+    }
+
+    requestAnimationFrame(autoScrollStep);
+  };
+
+  requestAnimationFrame(autoScrollStep);
+
+  topShelfGrid.addEventListener("mouseenter", () => {
+    isHovered = true;
+  });
+
+  topShelfGrid.addEventListener("mouseleave", () => {
+    isHovered = false;
+  });
+
+  // --- Wheel scroll sync ---
   topShelfGrid.addEventListener(
     "wheel",
     (e) => {
-      // Prevent the page from scrolling vertically when over the slider
       e.preventDefault();
       topShelfGrid.scrollLeft += e.deltaY;
     },
     { passive: false }
   );
 
-  // Click + drag to scroll
-  let isDown = false;
-  let startX;
-  let scrollLeftStart;
-
-  topShelfGrid.addEventListener("mousedown", (e) => {
-    isDown = true;
+  const startDrag = (clientX) => {
+    isDragging = true;
+    hasMoved = false;
     topShelfGrid.classList.add("is-dragging");
-    startX = e.pageX - topShelfGrid.offsetLeft;
-    scrollLeftStart = topShelfGrid.scrollLeft;
+    startX = clientX;
+    scrollLeft = topShelfGrid.scrollLeft;
+  };
+
+  const drag = (clientX) => {
+    if (!isDragging) return;
+
+    const deltaX = clientX - startX;
+    const scrollDelta = deltaX * 1.2;
+
+    if (Math.abs(scrollDelta) > DRAG_THRESHOLD) {
+      hasMoved = true;
+    }
+
+    topShelfGrid.scrollLeft = scrollLeft + scrollDelta;
+
+    // keep drag scroll in sync with looping
+    if (contentWidth > 0) {
+      if (topShelfGrid.scrollLeft < 0) {
+        topShelfGrid.scrollLeft += contentWidth;
+      } else if (topShelfGrid.scrollLeft >= contentWidth) {
+        topShelfGrid.scrollLeft -= contentWidth;
+      }
+    }
+  };
+
+  const endDrag = (e) => {
+    if (isDragging && hasMoved && e && e.target) {
+      const button = e.target.closest(".top-shelf-picks__button--overlay");
+      if (button) {
+        e.preventDefault();
+        e.stopPropagation();
+        const originalOnClick = button.onclick;
+        button.onclick = (clickE) => {
+          clickE.preventDefault();
+          clickE.stopPropagation();
+        };
+        setTimeout(() => {
+          button.onclick = originalOnClick;
+        }, 100);
+      }
+    }
+    isDragging = false;
+    hasMoved = false;
+    topShelfGrid.classList.remove("is-dragging");
+  };
+
+  // Mouse events
+  topShelfGrid.addEventListener("mousedown", (e) => {
+    if (e.target.closest(".top-shelf-picks__button--overlay")) {
+      return;
+    }
+    e.preventDefault();
+    startDrag(e.clientX);
   });
 
-  topShelfGrid.addEventListener("mouseleave", () => {
-    isDown = false;
-    topShelfGrid.classList.remove("is-dragging");
+  topShelfGrid.addEventListener("mouseleave", (e) => {
+    endDrag(e);
   });
 
-  window.addEventListener("mouseup", () => {
-    isDown = false;
-    topShelfGrid.classList.remove("is-dragging");
+  window.addEventListener("mouseup", (e) => {
+    if (isDragging) {
+      endDrag(e);
+    }
   });
 
   topShelfGrid.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
+    if (!isDragging) return;
     e.preventDefault();
-    const x = e.pageX - topShelfGrid.offsetLeft;
-    const walk = (x - startX) * 1.2;
-    topShelfGrid.scrollLeft = scrollLeftStart - walk;
+    drag(e.clientX);
   });
+
+  // Touch events for mobile
+  topShelfGrid.addEventListener(
+    "touchstart",
+    (e) => {
+      if (e.target.closest(".top-shelf-picks__button--overlay")) {
+        return;
+      }
+      startDrag(e.touches[0].clientX);
+    },
+    { passive: true }
+  );
+
+  topShelfGrid.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      drag(e.touches[0].clientX);
+    },
+    { passive: false }
+  );
+
+  topShelfGrid.addEventListener("touchend", endDrag);
+  topShelfGrid.addEventListener("touchcancel", endDrag);
 }
 
 // ====================
@@ -157,3 +282,143 @@ if (lineupToggleButtons.length && lineupContents.length) {
     });
   });
 }
+
+// ====================
+// Before / After Results Comparison
+// ====================
+
+const resultsComparison = document.querySelector(".results-comparison");
+
+if (resultsComparison) {
+  const afterWrapper = resultsComparison.querySelector(
+    ".results-comparison__after"
+  );
+  const divider = resultsComparison.querySelector(
+    ".results-comparison__divider"
+  );
+
+  let isDragging = false;
+
+  const updatePosition = (clientX) => {
+    const rect = resultsComparison.getBoundingClientRect();
+    let x = clientX - rect.left;
+    let ratio = x / rect.width;
+
+    // clamp between 10% and 90% for better UX
+    ratio = Math.max(0.1, Math.min(0.9, ratio));
+
+    const percentage = `${ratio * 100}%`;
+    afterWrapper.style.setProperty("--position", percentage);
+    divider.style.setProperty("--position", percentage);
+  };
+
+  const handlePointerDown = (event) => {
+    event.preventDefault();
+    isDragging = true;
+    const clientX =
+      event.touches && event.touches.length
+        ? event.touches[0].clientX
+        : event.clientX;
+    updatePosition(clientX);
+  };
+
+  const handlePointerMove = (event) => {
+    if (!isDragging) return;
+    const clientX =
+      event.touches && event.touches.length
+        ? event.touches[0].clientX
+        : event.clientX;
+    updatePosition(clientX);
+  };
+
+  const handlePointerUp = () => {
+    isDragging = false;
+  };
+
+  // Mouse events
+  divider.addEventListener("mousedown", handlePointerDown);
+  window.addEventListener("mousemove", handlePointerMove);
+  window.addEventListener("mouseup", handlePointerUp);
+
+  // Touch events
+  divider.addEventListener(
+    "touchstart",
+    (event) => {
+      handlePointerDown(event);
+    },
+    { passive: false }
+  );
+
+  window.addEventListener(
+    "touchmove",
+    (event) => {
+      if (!isDragging) return;
+      handlePointerMove(event);
+    },
+    { passive: false }
+  );
+  window.addEventListener("touchend", handlePointerUp);
+
+  // Set initial position to 50%
+  afterWrapper.style.setProperty("--position", "50%");
+  divider.style.setProperty("--position", "50%");
+}
+
+// ====================
+// Hustle Benefits Accordion
+// ====================
+
+(function () {
+  var section = document.querySelector("#hustle-benefits");
+  if (!section) return;
+
+  var container = section.querySelector("[data-hustle-benefits-accordion]");
+  if (!container) return;
+
+  var triggers = Array.prototype.slice.call(
+    container.querySelectorAll("[data-hustle-benefits-trigger]")
+  );
+
+  if (!triggers.length) return;
+
+  function closeAll(except) {
+    triggers.forEach(function (button) {
+      if (button === except) return;
+
+      var panelId = button.getAttribute("aria-controls");
+      var panel = document.getElementById(panelId);
+      if (!panel) return;
+
+      button.setAttribute("aria-expanded", "false");
+      panel.setAttribute("hidden", "hidden");
+      panel.classList.remove("is-open");
+    });
+  }
+
+  triggers.forEach(function (button) {
+    button.addEventListener("click", function () {
+      var isExpanded = button.getAttribute("aria-expanded") === "true";
+      var panelId = button.getAttribute("aria-controls");
+      var panel = document.getElementById(panelId);
+      if (!panel) return;
+
+      if (isExpanded) {
+        button.setAttribute("aria-expanded", "false");
+        panel.setAttribute("hidden", "hidden");
+        panel.classList.remove("is-open");
+      } else {
+        closeAll(button);
+        button.setAttribute("aria-expanded", "true");
+        panel.removeAttribute("hidden");
+        panel.classList.add("is-open");
+      }
+    });
+
+    button.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        button.click();
+      }
+    });
+  });
+})();
