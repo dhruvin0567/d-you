@@ -61,14 +61,12 @@ function handleShowMore(e) {
 
   if (link.textContent === "Show More") {
     reviewText.innerHTML =
-      fullText +
-      ' <button class="show-more-link">Show Less</button>';
+      fullText + ' <button class="show-more-link">Show Less</button>';
     const newLink = reviewText.querySelector(".show-more-link");
     newLink.addEventListener("click", handleShowMore);
   } else {
     reviewText.innerHTML =
-      shortText +
-      ' <button class="show-more-link">Show More</button>';
+      shortText + ' <button class="show-more-link">Show More</button>';
     const newLink = reviewText.querySelector(".show-more-link");
     newLink.addEventListener("click", handleShowMore);
   }
@@ -93,6 +91,9 @@ if (topShelfGrid) {
   let hasMoved = false;
   const DRAG_THRESHOLD = 3; // Minimum pixels to move before considering it a drag
 
+  // toggle for automatic continuous scrolling (set to false to disable auto slider)
+  const ENABLE_TOP_SHELF_AUTO_SCROLL = false;
+
   // --- Auto-scroll setup ---
   const CARD_SCROLL_SPEED_PX_PER_SEC = 30; // design spec
   let isHovered = false;
@@ -114,25 +115,27 @@ if (topShelfGrid) {
   updateContentWidth();
   window.addEventListener("resize", updateContentWidth);
 
-  const autoScrollStep = (timestamp) => {
-    if (!lastTimestamp) lastTimestamp = timestamp;
-    const deltaMs = timestamp - lastTimestamp;
-    lastTimestamp = timestamp;
+  if (ENABLE_TOP_SHELF_AUTO_SCROLL) {
+    const autoScrollStep = (timestamp) => {
+      if (!lastTimestamp) lastTimestamp = timestamp;
+      const deltaMs = timestamp - lastTimestamp;
+      lastTimestamp = timestamp;
 
-    if (!isHovered && !isDragging && contentWidth > 0) {
-      const deltaPx = (CARD_SCROLL_SPEED_PX_PER_SEC * deltaMs) / 1000;
-      topShelfGrid.scrollLeft += deltaPx;
+      if (!isHovered && !isDragging && contentWidth > 0) {
+        const deltaPx = (CARD_SCROLL_SPEED_PX_PER_SEC * deltaMs) / 1000;
+        topShelfGrid.scrollLeft += deltaPx;
 
-      // Loop when we've scrolled past one full set of cards
-      if (topShelfGrid.scrollLeft >= contentWidth) {
-        topShelfGrid.scrollLeft -= contentWidth;
+        // Loop when we've scrolled past one full set of cards
+        if (topShelfGrid.scrollLeft >= contentWidth) {
+          topShelfGrid.scrollLeft -= contentWidth;
+        }
       }
-    }
+
+      requestAnimationFrame(autoScrollStep);
+    };
 
     requestAnimationFrame(autoScrollStep);
-  };
-
-  requestAnimationFrame(autoScrollStep);
+  }
 
   topShelfGrid.addEventListener("mouseenter", () => {
     isHovered = true;
@@ -142,12 +145,45 @@ if (topShelfGrid) {
     isHovered = false;
   });
 
-  // --- Wheel scroll sync ---
+  // Wheel scroll: when cursor is over the product cards, use vertical scroll
+  // to move the slider horizontally. Left half of the section scrolls left,
+  // right half scrolls right. Outside this area, page scroll behaves normally.
   topShelfGrid.addEventListener(
     "wheel",
     (e) => {
+      const rect = topShelfGrid.getBoundingClientRect();
+
+      // Only intercept scroll if pointer is actually over the slider vertically
+      if (e.clientY < rect.top || e.clientY > rect.bottom) {
+        return;
+      }
+
+      // Only activate when hovering over a card / image area
+      const card = e.target.closest(".top-shelf-picks__card");
+      if (!card) {
+        return;
+      }
+
+      // Prevent normal page scroll and convert to horizontal motion
       e.preventDefault();
-      topShelfGrid.scrollLeft += e.deltaY;
+
+      const centerX = rect.left + rect.width / 2;
+      const magnitude = Math.abs(e.deltaY || e.deltaX || 0);
+      if (!magnitude) return;
+
+      const direction = e.clientX < centerX ? -1 : 1; // left area => scroll left
+      const SCROLL_MULTIPLIER = 1.2;
+
+      topShelfGrid.scrollLeft += direction * magnitude * SCROLL_MULTIPLIER;
+
+      // keep wheel scroll in sync with looping logic
+      if (contentWidth > 0) {
+        if (topShelfGrid.scrollLeft < 0) {
+          topShelfGrid.scrollLeft += contentWidth;
+        } else if (topShelfGrid.scrollLeft >= contentWidth) {
+          topShelfGrid.scrollLeft -= contentWidth;
+        }
+      }
     },
     { passive: false }
   );
@@ -268,10 +304,7 @@ if (lineupToggleButtons.length && lineupContents.length) {
 
       // button active state
       lineupToggleButtons.forEach((button) => {
-        button.classList.toggle(
-          "lineup__toggle-btn--active",
-          button === btn
-        );
+        button.classList.toggle("lineup__toggle-btn--active", button === btn);
       });
 
       // content switching with animation
@@ -420,5 +453,104 @@ if (resultsComparison) {
         button.click();
       }
     });
+  });
+})();
+
+/* ------------------ JAVASCRIPT (Converted from Liquid) ------------------ */
+(function () {
+  const sections = document.querySelectorAll("[data-before-after-section]");
+  sections.forEach((section) => {
+    const sliderRoot = section.querySelector("[data-before-after-slider]");
+    const pairs = Array.from(
+      sliderRoot.querySelectorAll("[data-before-after-pair]")
+    );
+    let currentIndex = 0;
+    let activeViewport = null;
+    let pendingPosition = 50;
+    let isDragging = false;
+    let rafId = null;
+    const prevButton = section.querySelector("[data-before-after-prev]");
+    const nextButton = section.querySelector("[data-before-after-next]");
+
+    function setActivePair(index) {
+      currentIndex = (index + pairs.length) % pairs.length;
+      pairs.forEach((pair, i) => {
+        pair.classList.toggle("is-active", i === currentIndex);
+        pair.setAttribute("aria-hidden", i === currentIndex ? "false" : "true");
+      });
+      activeViewport = pairs[currentIndex].querySelector(
+        "[data-before-after-viewport]"
+      );
+      activeViewport.style.setProperty("--slider-position", "50%");
+    }
+
+    function updateSlider() {
+      activeViewport.style.setProperty(
+        "--slider-position",
+        pendingPosition + "%"
+      );
+      rafId = null;
+    }
+
+    function scheduleUpdate() {
+      if (rafId) return;
+      rafId = requestAnimationFrame(updateSlider);
+    }
+
+    function positionFromEvent(e) {
+      const rect = activeViewport.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+      return (x / rect.width) * 100;
+    }
+
+    function startDrag(e) {
+      isDragging = true;
+      pendingPosition = positionFromEvent(e);
+      scheduleUpdate();
+      window.addEventListener("mousemove", move);
+      window.addEventListener("touchmove", move);
+      window.addEventListener("mouseup", end);
+      window.addEventListener("touchend", end);
+    }
+
+    function move(e) {
+      if (!isDragging) return;
+      pendingPosition = positionFromEvent(e);
+      scheduleUpdate();
+    }
+
+    function end() {
+      isDragging = false;
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("touchmove", move);
+      window.removeEventListener("mouseup", end);
+      window.removeEventListener("touchend", end);
+    }
+
+    pairs.forEach((pair) => {
+      const viewport = pair.querySelector("[data-before-after-viewport]");
+      const handle = pair.querySelector("[data-before-after-handle]");
+      handle.addEventListener("mousedown", (e) => {
+        activeViewport = viewport;
+        startDrag(e);
+      });
+      handle.addEventListener("touchstart", (e) => {
+        activeViewport = viewport;
+        startDrag(e);
+      });
+      viewport.addEventListener("mousedown", (e) => {
+        activeViewport = viewport;
+        startDrag(e);
+      });
+      viewport.addEventListener("touchstart", (e) => {
+        activeViewport = viewport;
+        startDrag(e);
+      });
+    });
+
+    prevButton.addEventListener("click", () => setActivePair(currentIndex - 1));
+    nextButton.addEventListener("click", () => setActivePair(currentIndex + 1));
+    setActivePair(0);
   });
 })();

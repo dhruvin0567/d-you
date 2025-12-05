@@ -21,89 +21,309 @@
   </head>
 
   <body>
-    <!-- HOW TO USE SECTION -->
-    <section class="how-to-use">
-      <div class="how-to-use__inner">
-        <p class="how-to-use__eyebrow">A QUICK GUIDE</p>
-        <h2 class="how-to-use__title">
-          how &amp; when to
-          <span>use me</span>
-        </h2>
+    <!-- TOP DARK GREY BAR -->
+    <div class="top-bar"></div>
+    
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announcement-bar">
+      <p class="announcement-bar__text">
+        Unlock additional discounts in cart when you add 2 or more items | International shipping available.
+      </p>
+    </div>
 
-        <div class="how-to-use__grid">
-          <!-- Card 01 -->
-          <article class="how-to-use__card">
-            <div class="how-to-use__media">
-              <video
-                src="./assets/img/howtousevideo1.mp4"
-                autoplay
-                muted
-                loop
-                playsinline
-              ></video>
-            </div>
-            <div class="how-to-use__content">
-              <h3 class="how-to-use__step">
-                <span>01</span>
-                Patch Test
-              </h3>
-              <p class="how-to-use__text">
-                Patch test a small amount of product on your jawline or behind
-                the ear, overnight or for 24 hours. If you see no adverse
-                reaction, you're good to go to use all over the face!
-              </p>
-            </div>
-          </article>
+    <!-- SITE NAVBAR -->
+    <header class="site-header">
+      <div class="site-header__inner">
+        <!-- Left: Logo -->
+        <a href="#" class="site-header__logo">
+          <img src="./assets/img/logo.png" alt="d'you logo" />
+        </a>
 
-          <!-- Card 02 -->
-          <article class="how-to-use__card">
-            <div class="how-to-use__media">
-              <video
-                src="./assets/img/howtousevideo2.mp4"
-                autoplay
-                muted
-                loop
-                playsinline
-              ></video>
-            </div>
-            <div class="how-to-use__content">
-              <h3 class="how-to-use__step">
-                <span>02</span>
-                Ease in
-              </h3>
-              <p class="how-to-use__text">
-                Apply after cleansing your face or after your toner step. Start
-                with introducing the product in your PM routine, and slowly work
-                up in the AM routine as well. Follow up with a sunscreen in the
-                AM and a moisturiser in your PM routine.
-              </p>
-            </div>
-          </article>
+        <!-- Center: Navigation links (desktop) -->
+        <nav class="site-header__nav">
+          <ul class="site-header__nav-list">
+            <li><a href="#" class="site-header__nav-link">SHOP <span>+</span  ></a></li>
+            <li><a href="#" class="site-header__nav-link">INCI CORNER</a></li>
+            <li><a href="#" class="site-header__nav-link">BLOG</a></li>
+            <li><a href="#" class="site-header__nav-link">PRESS</a></li>
+            <li><a href="#" class="site-header__nav-link">FAQS</a></li>
+            <li><a href="#" class="site-header__nav-link">ABOUT US</a></li>
+          </ul>
+        </nav>
 
-          <!-- Card 03 -->
-          <article class="how-to-use__card">
-            <div class="how-to-use__media">
-              <video
-                src="./assets/img/howtousevideo3.mp4"
-                autoplay
-                muted
-                loop
-                playsinline
-              ></video>
+        <!-- Right: Currency + icons (desktop) -->
+        <div class="site-header__actions">
+          <button class="site-header__currency" type="button">
+            <span>INR</span>
+            <i class="bi bi-chevron-down"></i>
+          </button>
+
+          <button class="site-header__icon-btn" type="button" aria-label="Search">
+            <i class="bi bi-search"></i>
+          </button>
+          <button class="site-header__icon-btn" type="button" aria-label="Account">
+            <i class="bi bi-person"></i>
+          </button>
+          <button class="site-header__icon-btn" type="button" aria-label="Cart">
+            <i class="bi bi-bag"></i>
+          </button>
+        </div>
+
+        <!-- Mobile: currency + icons + menu toggle -->
+        <div class="site-header__mobile-actions">
+          <button class="site-header__currency" type="button">
+            <span>INR</span>
+            <i class="bi bi-chevron-down"></i>
+          </button>
+
+          <button class="site-header__icon-btn" type="button" aria-label="Search">
+            <i class="bi bi-search"></i>
+          </button>
+          <button class="site-header__icon-btn" type="button" aria-label="Account">
+            <i class="bi bi-person"></i>
+          </button>
+          <button class="site-header__icon-btn" type="button" aria-label="Cart">
+            <i class="bi bi-bag"></i>
+          </button>
+
+          <button
+            class="site-header__menu-toggle"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#mobileNav"
+            aria-controls="mobileNav"
+            aria-label="Toggle navigation"
+          >
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Offcanvas for small screens -->
+      <div
+        class="offcanvas offcanvas-end site-header__offcanvas"
+        tabindex="-1"
+        id="mobileNav"
+        aria-labelledby="mobileNavLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="mobileNavLabel">Menu</h5>
+          <button
+            type="button"
+            class="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <nav>
+            <ul class="site-header__offcanvas-list">
+              <li><a href="#" class="site-header__offcanvas-link">SHOP +</a></li>
+              <li><a href="#" class="site-header__offcanvas-link">INCI CORNER</a></li>
+              <li><a href="#" class="site-header__offcanvas-link">BLOG</a></li>
+              <li><a href="#" class="site-header__offcanvas-link">PRESS</a></li>
+              <li><a href="#" class="site-header__offcanvas-link">FAQS</a></li>
+              <li><a href="#" class="site-header__offcanvas-link">ABOUT US</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+        
+    <!-- Before and After Section -->
+    <section class="before-after-comparison" data-before-after-section>
+      <div class="before-after-comparison__inner">
+        <div class="before-after-comparison__media">
+          <div class="before-after-slider" data-before-after-slider>
+            <!-- Pair 1 -->
+            <article class="before-after-slider__pair is-active" data-before-after-pair data-index="0" aria-hidden="false">
+              <div class="before-after-slider__viewport" data-before-after-viewport style="--slider-position: 50%">
+                <div class="before-after-slider__image before-after-slider__image--after">
+                  <img src="./assets/img/after1.png" alt="After image sample" />
+                </div>
+                <div class="before-after-slider__image before-after-slider__image--before" data-before-layer>
+                  <img src="./assets/img/before1.png" alt="Before image sample" />
+                </div>
+                <div class="before-after-slider__divider"></div>
+                <button class="before-after-slider__handle" type="button" data-before-after-handle role="slider"></button>
+                <div class="before-after-slider__label before-after-slider__label--before"><span>before</span></div>
+                <div class="before-after-slider__label before-after-slider__label--after"><span>after</span></div>
+              </div>
+            </article>
+
+            <!-- Pair 2 -->
+            <article class="before-after-slider__pair" data-before-after-pair data-index="1" aria-hidden="true">
+              <div class="before-after-slider__viewport" data-before-after-viewport>
+                <div class="before-after-slider__image before-after-slider__image--after">
+                  <img src="./assets/img/after1.png" alt="After sample 2" />
+                </div>
+                <div class="before-after-slider__image before-after-slider__image--before" data-before-layer>
+                  <img src="./assets/img/before1.png" alt="Before sample 2" />
+                </div>
+                <div class="before-after-slider__divider"></div>
+                <button class="before-after-slider__handle" data-before-after-handle></button>
+                <div class="before-after-slider__label before-after-slider__label--before"><span>before</span></div>
+                <div class="before-after-slider__label before-after-slider__label--after"><span>after</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <aside class="before-after-comparison__content">
+          <p class="before-after-comparison__eyebrow">TIME WEARS WELL</p>
+          <h2 class="before-after-comparison__heading">Real skin, <span class="before-after-comparison__heading-main">Real</span><span class="before-after-comparison__heading-emphasis">results</span></h2>
+          <div class="before-after-comparison__body">
+            hustle is a multitasking serum that helps brighten and revive radiance to the skin and fade dark spots. It offers a visible reduction in acne and blemishes, and the appearance of fine lines and wrinkles with consistent use.
+          </div>
+          <div class="before-after-comparison__nav">
+            <button class="before-after-comparison__nav-button" data-before-after-prev>
+              <span class="before-after-comparison__nav-icon before-after-comparison__nav-icon--left"></span>
+            </button>
+            <button class="before-after-comparison__nav-button" data-before-after-next>
+              <span class="before-after-comparison__nav-icon before-after-comparison__nav-icon--right"></span>
+            </button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="testimonial-carousel">
+        <div class="testimonial-carousel__container">
+          <!-- Slides -->
+          <div class="testimonial-carousel__slide-wrapper active">
+            <div class="testimonial-carousel__slide">
+              <div class="testimonial-carousel__stars">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="testimonial-carousel__star"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
+                    fill="#F9C0B9"
+                  ></path>
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="testimonial-carousel__star"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
+                    fill="#F9C0B9"
+                  ></path>
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="testimonial-carousel__star"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
+                    fill="#F9C0B9"
+                  ></path>
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="testimonial-carousel__star"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
+                    fill="#F9C0B9"
+                  ></path>
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="testimonial-carousel__star"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
+                    fill="#F9C0B9"
+                  ></path>
+                </svg>
+              </div>
+              <blockquote class="testimonial-carousel__quote mt-5">
+                "I could clearly see a remarkable difference within a month of
+                using hustle. Even skin tone, reduced pigmentation & blackheads
+                while making your skin so soft and supple."
+              </blockquote>
+              <div class="testimonial-carousel__attribution">Neha Singh</div>
             </div>
-            <div class="how-to-use__content">
-              <h3 class="how-to-use__step">
-                <span>03</span>
-                Enhance Results
-              </h3>
-              <p class="how-to-use__text">
-                Once your skin has adjusted to hustle (2 weeks period), you can
-                start applying hustle on damp skin to improve the efficacy and
-                results. Skin will feel plumper and absorption of the product
-                will be better enhanced.
-              </p>
+          </div>
+
+          <div class="testimonial-carousel__slide-wrapper">
+            <div class="testimonial-carousel__slide">
+              <div class="testimonial-carousel__stars">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="testimonial-carousel__star"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
+                    fill="#F9C0B9"
+                  ></path>
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="testimonial-carousel__star"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
+                    fill="#F9C0B9"
+                  ></path>
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="testimonial-carousel__star"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
+                    fill="#F9C0B9"
+                  ></path>
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="testimonial-carousel__star"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
+                    fill="#F9C0B9"
+                  ></path>
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="testimonial-carousel__star"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
+                    fill="#F9C0B9"
+                  ></path>
+                </svg>
+              </div>
+              <blockquote class="testimonial-carousel__quote mt-5">
+                "This is the only serum you need! hustle has simplified my
+                routine and totally decluttered my shelf. Not only does it have
+                11 actives but also has a soothing effect."
+              </blockquote>
+              <div class="testimonial-carousel__attribution">HARSH J</div>
             </div>
-          </article>
+          </div>
+
+          <!-- Progress Dots -->
+          <div class="testimonial-carousel__progress">
+            <button class="testimonial-carousel__progress-dot active"></button>
+            <button class="testimonial-carousel__progress-dot"></button>
+          </div>
         </div>
       </div>
     </section>
@@ -368,417 +588,92 @@
       </div>
     </section>
 
-    <!-- TOP SHELF PICKS SECTION -->
-    <section class="top-shelf-picks">
-      <div class="top-shelf-picks__inner">
-        <header class="top-shelf-picks__header">
-          <div>
-            <p class="top-shelf-picks__eyebrow">TOP SHELF PICKS</p>
-            <h2 class="top-shelf-picks__title">
-              Our most <em>obsessed-over</em> formulas
-            </h2>
-          </div>
-        </header>
+    <!-- HOW TO USE SECTION -->
+    <section class="how-to-use">
+      <div class="how-to-use__inner">
+        <p class="how-to-use__eyebrow">A QUICK GUIDE</p>
+        <h2 class="how-to-use__title">
+          how &amp; when to
+          <span>use me</span>
+        </h2>
 
-        <div class="top-shelf-picks__slider-wrapper">
-          <div class="top-shelf-picks__grid top-shelf-picks__grid--auto">
-            <!-- Card 1 -->
-            <article class="top-shelf-picks__card">
-              <div class="top-shelf-picks__image top-shelf-picks__image--pink">
-                <img src="./assets/img/product1.webp" alt="in my defence" />
-                <button class="top-shelf-picks__button--overlay" type="button">
-                  Add to Bag
-                </button>
-              </div>
-              <div class="top-shelf-picks__content">
-                <h3 class="top-shelf-picks__product-title">in my defence</h3>
-                <p class="top-shelf-picks__description">
-                  barrier repair moisturiser
-                </p>
-                <div class="top-shelf-picks__rating">
-                  <span class="top-shelf-picks__star">★</span>
-                  <span class="top-shelf-picks__rating-value">4.7</span>
-                </div>
-                <div class="top-shelf-picks__price">
-                  <span class="top-shelf-picks__price-new">₹3,500</span>
-                </div>
-              </div>
-            </article>
+        <div class="how-to-use__grid">
+          <!-- Card 01 -->
+          <article class="how-to-use__card">
+            <div class="how-to-use__media">
+              <video
+                src="./assets/img/howtousevideo1.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+              ></video>
+            </div>
+            <div class="how-to-use__content">
+              <h3 class="how-to-use__step">
+                <span>01</span>
+                Patch Test
+              </h3>
+              <p class="how-to-use__text">
+                Patch test a small amount of product on your jawline or behind
+                the ear, overnight or for 24 hours. If you see no adverse
+                reaction, you're good to go to use all over the face!
+              </p>
+            </div>
+          </article>
 
-            <!-- Card 2 -->
-            <article class="top-shelf-picks__card">
-              <div class="top-shelf-picks__image top-shelf-picks__image--blue">
-                <img src="./assets/img/product2.webp" alt="hustle mini" />
-                <button class="top-shelf-picks__button--overlay" type="button">
-                  Add to Bag
-                </button>
-              </div>
-              <div class="top-shelf-picks__content">
-                <h3 class="top-shelf-picks__product-title">hustle mini</h3>
-                <p class="top-shelf-picks__description">
-                  all-in-one serum
-                </p>
-                <div class="top-shelf-picks__rating">
-                  <span class="top-shelf-picks__star">★</span>
-                  <span class="top-shelf-picks__rating-value">4.6</span>
-                </div>
-                <div class="top-shelf-picks__price">
-                  <span class="top-shelf-picks__price-old">₹1,180</span>
-                  <span class="top-shelf-picks__price-new">₹990</span>
-                </div>
-              </div>
-            </article>
+          <!-- Card 02 -->
+          <article class="how-to-use__card">
+            <div class="how-to-use__media">
+              <video
+                src="./assets/img/howtousevideo2.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+              ></video>
+            </div>
+            <div class="how-to-use__content">
+              <h3 class="how-to-use__step">
+                <span>02</span>
+                Ease in
+              </h3>
+              <p class="how-to-use__text">
+                Apply after cleansing your face or after your toner step. Start
+                with introducing the product in your PM routine, and slowly work
+                up in the AM routine as well. Follow up with a sunscreen in the
+                AM and a moisturiser in your PM routine.
+              </p>
+            </div>
+          </article>
 
-            <!-- Card 3 -->
-            <article class="top-shelf-picks__card">
-              <div class="top-shelf-picks__image top-shelf-picks__image--purple">
-                <img src="./assets/img/product3.webp" alt="inbalance" />
-                <button class="top-shelf-picks__button--overlay" type="button">
-                  Add to Bag
-                </button>
-              </div>
-              <div class="top-shelf-picks__content">
-                <h3 class="top-shelf-picks__product-title">inbalance</h3>
-                <p class="top-shelf-picks__description">
-                  soothing milky tonic
-                </p>
-                <div class="top-shelf-picks__rating">
-                  <span class="top-shelf-picks__star">★</span>
-                  <span class="top-shelf-picks__rating-value">4.5</span>
-                </div>
-                <div class="top-shelf-picks__price">
-                  <span class="top-shelf-picks__price-new">₹2,100</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 4 -->
-            <article class="top-shelf-picks__card">
-              <div
-                class="top-shelf-picks__image top-shelf-picks__image--purple-blue"
-              >
-                <img src="./assets/img/product4.webp" alt="the mini trio" />
-                <button class="top-shelf-picks__button--overlay" type="button">
-                  Add to Bag
-                </button>
-              </div>
-              <div class="top-shelf-picks__content">
-                <h3 class="top-shelf-picks__product-title">the mini trio</h3>
-                <p class="top-shelf-picks__description">
-                  complete mini routine
-                </p>
-                <div class="top-shelf-picks__rating">
-                  <span class="top-shelf-picks__star">★</span>
-                  <span class="top-shelf-picks__rating-value">4.8</span>
-                </div>
-                <div class="top-shelf-picks__price">
-                  <span class="top-shelf-picks__price-old">₹2,750</span>
-                  <span class="top-shelf-picks__price-new">₹2,300</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 5 -->
-            <article class="top-shelf-picks__card">
-              <div class="top-shelf-picks__image top-shelf-picks__image--teal">
-                <img src="./assets/img/product5.webp" alt="unkissed" />
-                <button class="top-shelf-picks__button--overlay" type="button">
-                  Add to Bag
-                </button>
-              </div>
-              <div class="top-shelf-picks__content">
-                <h3 class="top-shelf-picks__product-title">unkissed</h3>
-                <p class="top-shelf-picks__description">
-                  serum sunscreen spf 70+
-                </p>
-                <div class="top-shelf-picks__rating">
-                  <span class="top-shelf-picks__star">★</span>
-                  <span class="top-shelf-picks__rating-value">4.4</span>
-                </div>
-                <div class="top-shelf-picks__price">
-                  <span class="top-shelf-picks__price-new">₹2,200</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Extra cards to keep the row feeling continuous -->
-            <article class="top-shelf-picks__card">
-              <div class="top-shelf-picks__image top-shelf-picks__image--blue">
-                <img src="./assets/img/product6.webp" alt="treat & glow" />
-                <button class="top-shelf-picks__button--overlay" type="button">
-                  Add to Bag
-                </button>
-              </div>
-              <div class="top-shelf-picks__content">
-                <h3 class="top-shelf-picks__product-title">treat &amp; glow</h3>
-                <p class="top-shelf-picks__description">
-                  serum + moisturiser duo
-                </p>
-                <div class="top-shelf-picks__rating">
-                  <span class="top-shelf-picks__star">★</span>
-                  <span class="top-shelf-picks__rating-value">4.6</span>
-                </div>
-                <div class="top-shelf-picks__price">
-                  <span class="top-shelf-picks__price-new">₹3,990</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="top-shelf-picks__card">
-              <div class="top-shelf-picks__image top-shelf-picks__image--purple">
-                <img src="./assets/img/product7.webp" alt="hustle" />
-                <button class="top-shelf-picks__button--overlay" type="button">
-                  Add to Bag
-                </button>
-              </div>
-              <div class="top-shelf-picks__content">
-                <h3 class="top-shelf-picks__product-title">hustle</h3>
-                <p class="top-shelf-picks__description">
-                  multi-active serum
-                </p>
-                <div class="top-shelf-picks__rating">
-                  <span class="top-shelf-picks__star">★</span>
-                  <span class="top-shelf-picks__rating-value">4.9</span>
-                </div>
-                <div class="top-shelf-picks__price">
-                  <span class="top-shelf-picks__price-new">₹2,850</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="top-shelf-picks__card">
-              <div class="top-shelf-picks__image top-shelf-picks__image--pink">
-                <img src="./assets/img/product8.webp" alt="good grease" />
-                <button class="top-shelf-picks__button--overlay" type="button">
-                  Add to Bag
-                </button>
-              </div>
-              <div class="top-shelf-picks__content">
-                <h3 class="top-shelf-picks__product-title">good grease</h3>
-                <p class="top-shelf-picks__description">
-                  cleansing balm
-                </p>
-                <div class="top-shelf-picks__rating">
-                  <span class="top-shelf-picks__star">★</span>
-                  <span class="top-shelf-picks__rating-value">4.5</span>
-                </div>
-                <div class="top-shelf-picks__price">
-                  <span class="top-shelf-picks__price-new">₹2,300</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="top-shelf-picks__card">
-              <div class="top-shelf-picks__image top-shelf-picks__image--teal">
-                <img src="./assets/img/product9.webp" alt="unkissed duo" />
-                <button class="top-shelf-picks__button--overlay" type="button">
-                  Add to Bag
-                </button>
-              </div>
-              <div class="top-shelf-picks__content">
-                <h3 class="top-shelf-picks__product-title">unkissed duo</h3>
-                <p class="top-shelf-picks__description">
-                  sunscreen set
-                </p>
-                <div class="top-shelf-picks__rating">
-                  <span class="top-shelf-picks__star">★</span>
-                  <span class="top-shelf-picks__rating-value">4.3</span>
-                </div>
-                <div class="top-shelf-picks__price">
-                  <span class="top-shelf-picks__price-new">₹3,750</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="top-shelf-picks__card">
-              <div class="top-shelf-picks__image top-shelf-picks__image--blue">
-                <img src="./assets/img/product10.webp" alt="mini defence duo" />
-                <button class="top-shelf-picks__button--overlay" type="button">
-                  Add to Bag
-                </button>
-              </div>
-              <div class="top-shelf-picks__content">
-                <h3 class="top-shelf-picks__product-title">
-                  mini defence duo
-                </h3>
-                <p class="top-shelf-picks__description">
-                  travel minis
-                </p>
-                <div class="top-shelf-picks__rating">
-                  <span class="top-shelf-picks__star">★</span>
-                  <span class="top-shelf-picks__rating-value">4.6</span>
-                </div>
-                <div class="top-shelf-picks__price">
-                  <span class="top-shelf-picks__price-new">₹1,950</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="top-shelf-picks__card">
-              <div class="top-shelf-picks__image top-shelf-picks__image--purple">
-                <img src="./assets/img/product11.webp" alt="starter kit" />
-                <button class="top-shelf-picks__button--overlay" type="button">
-                  Add to Bag
-                </button>
-              </div>
-              <div class="top-shelf-picks__content">
-                <h3 class="top-shelf-picks__product-title">starter kit</h3>
-                <p class="top-shelf-picks__description">
-                  curated first routine
-                </p>
-                <div class="top-shelf-picks__rating">
-                  <span class="top-shelf-picks__star">★</span>
-                  <span class="top-shelf-picks__rating-value">4.7</span>
-                </div>
-                <div class="top-shelf-picks__price">
-                  <span class="top-shelf-picks__price-new">₹4,200</span>
-                </div>
-              </div>
-            </article>
-          </div>
+          <!-- Card 03 -->
+          <article class="how-to-use__card">
+            <div class="how-to-use__media">
+              <video
+                src="./assets/img/howtousevideo3.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+              ></video>
+            </div>
+            <div class="how-to-use__content">
+              <h3 class="how-to-use__step">
+                <span>03</span>
+                Enhance Results
+              </h3>
+              <p class="how-to-use__text">
+                Once your skin has adjusted to hustle (2 weeks period), you can
+                start applying hustle on damp skin to improve the efficacy and
+                results. Skin will feel plumper and absorption of the product
+                will be better enhanced.
+              </p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
-
-    <section>
-      <div class="testimonial-carousel">
-        <div class="testimonial-carousel__container">
-          <!-- Slides -->
-          <div class="testimonial-carousel__slide-wrapper active">
-            <div class="testimonial-carousel__slide">
-              <div class="testimonial-carousel__stars">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="testimonial-carousel__star"
-                  viewBox="0 0 22 20"
-                >
-                  <path
-                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
-                    fill="#F9C0B9"
-                  ></path>
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="testimonial-carousel__star"
-                  viewBox="0 0 22 20"
-                >
-                  <path
-                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
-                    fill="#F9C0B9"
-                  ></path>
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="testimonial-carousel__star"
-                  viewBox="0 0 22 20"
-                >
-                  <path
-                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
-                    fill="#F9C0B9"
-                  ></path>
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="testimonial-carousel__star"
-                  viewBox="0 0 22 20"
-                >
-                  <path
-                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
-                    fill="#F9C0B9"
-                  ></path>
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="testimonial-carousel__star"
-                  viewBox="0 0 22 20"
-                >
-                  <path
-                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
-                    fill="#F9C0B9"
-                  ></path>
-                </svg>
-              </div>
-              <blockquote class="testimonial-carousel__quote mt-5">
-                "I could clearly see a remarkable difference within a month of
-                using hustle. Even skin tone, reduced pigmentation & blackheads
-                while making your skin so soft and supple."
-              </blockquote>
-              <div class="testimonial-carousel__attribution">Neha Singh</div>
-            </div>
-          </div>
-
-          <div class="testimonial-carousel__slide-wrapper">
-            <div class="testimonial-carousel__slide">
-              <div class="testimonial-carousel__stars">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="testimonial-carousel__star"
-                  viewBox="0 0 22 20"
-                >
-                  <path
-                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
-                    fill="#F9C0B9"
-                  ></path>
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="testimonial-carousel__star"
-                  viewBox="0 0 22 20"
-                >
-                  <path
-                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
-                    fill="#F9C0B9"
-                  ></path>
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="testimonial-carousel__star"
-                  viewBox="0 0 22 20"
-                >
-                  <path
-                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
-                    fill="#F9C0B9"
-                  ></path>
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="testimonial-carousel__star"
-                  viewBox="0 0 22 20"
-                >
-                  <path
-                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
-                    fill="#F9C0B9"
-                  ></path>
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="testimonial-carousel__star"
-                  viewBox="0 0 22 20"
-                >
-                  <path
-                    d="M8.62236 1.81762C9.37074 -0.485653 12.6293 -0.48565 13.3776 1.81763L14.0309 3.82827C14.3656 4.85833 15.3255 5.55573 16.4086 5.55573H18.5227C20.9445 5.55573 21.9514 8.65477 19.9922 10.0783L18.2818 11.3209C17.4056 11.9575 17.0389 13.0859 17.3736 14.116L18.0269 16.1266C18.7753 18.4299 16.1391 20.3452 14.1798 18.9217L12.4695 17.6791C11.5932 17.0425 10.4068 17.0425 9.53054 17.6791L7.82018 18.9217C5.86089 20.3452 3.2247 18.4299 3.97308 16.1266L4.62637 14.116C4.96106 13.0859 4.59442 11.9575 3.7182 11.3209L2.00784 10.0783C0.0485544 8.65477 1.0555 5.55573 3.4773 5.55573H5.59142C6.67449 5.55573 7.63438 4.85833 7.96906 3.82827L8.62236 1.81762Z"
-                    fill="#F9C0B9"
-                  ></path>
-                </svg>
-              </div>
-              <blockquote class="testimonial-carousel__quote mt-5">
-                "This is the only serum you need! hustle has simplified my
-                routine and totally decluttered my shelf. Not only does it have
-                11 actives but also has a soothing effect."
-              </blockquote>
-              <div class="testimonial-carousel__attribution">HARSH J</div>
-            </div>
-          </div>
-
-          <!-- Progress Dots -->
-          <div class="testimonial-carousel__progress">
-            <button class="testimonial-carousel__progress-dot active"></button>
-            <button class="testimonial-carousel__progress-dot"></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- REVIEWS SECTION -->
     <section class="reviews-section">
       <div class="reviews-container">
