@@ -1,3 +1,34 @@
+// ====================
+// Offcanvas Menu - Body Scroll Lock
+// ====================
+(function () {
+  const offcanvasElement = document.getElementById("mobileNav");
+  if (offcanvasElement) {
+    const bsOffcanvas = new bootstrap.Offcanvas(offcanvasElement, {
+      backdrop: true,
+      scroll: false,
+    });
+
+    offcanvasElement.addEventListener("show.bs.offcanvas", function () {
+      document.body.classList.add("offcanvas-open");
+      document.body.style.overflow = "hidden";
+    });
+
+    offcanvasElement.addEventListener("hide.bs.offcanvas", function () {
+      document.body.classList.remove("offcanvas-open");
+      document.body.style.overflow = "";
+    });
+
+    // Close offcanvas when clicking on overlay
+    const backdrop = document.querySelector(".offcanvas-backdrop");
+    if (backdrop) {
+      backdrop.addEventListener("click", function () {
+        bsOffcanvas.hide();
+      });
+    }
+  }
+})();
+
 const slides = document.querySelectorAll(
   ".testimonial-carousel__slide-wrapper"
 );
@@ -552,5 +583,447 @@ if (resultsComparison) {
     prevButton.addEventListener("click", () => setActivePair(currentIndex - 1));
     nextButton.addEventListener("click", () => setActivePair(currentIndex + 1));
     setActivePair(0);
+  });
+})();
+
+// ====================
+// Product Page - Media Gallery with Videos and Vertical Slider
+// ====================
+(function () {
+  const thumbnails = document.querySelectorAll(".media-gallery__thumbnail");
+  const mainImage = document.getElementById("main-product-image");
+  const mainVideo = document.getElementById("main-product-video");
+  const mainDisplay = document.querySelector(".media-gallery__main-content");
+  const thumbnailSlider = document.getElementById("thumbnail-slider");
+  
+  if (!thumbnails.length) return;
+
+  const mediaItems = [
+    { type: "image", src: "./assets/img/image1.webp" },
+    { type: "image", src: "./assets/img/image2.webp" },
+    { type: "image", src: "./assets/img/image3.webp" },
+    { type: "image", src: "./assets/img/image4.webp" },
+    { type: "video", src: "./assets/img/video1.mp4", thumbnail: "./assets/img/image1.webp" },
+    { type: "video", src: "./assets/img/video2.mp4", thumbnail: "./assets/img/image2.webp" },
+    { type: "video", src: "./assets/img/video3.mp4", thumbnail: "./assets/img/image3.webp" },
+    { type: "image", src: "./assets/img/image6.webp" }
+  ];
+
+  // Function to scroll thumbnail into view when active
+  function scrollThumbnailIntoView(activeThumbnail) {
+    if (activeThumbnail && thumbnailSlider) {
+      const containerRect = thumbnailSlider.getBoundingClientRect();
+      const thumbnailRect = activeThumbnail.getBoundingClientRect();
+      
+      // Check if thumbnail is outside visible area
+      if (thumbnailRect.top < containerRect.top) {
+        activeThumbnail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      } else if (thumbnailRect.bottom > containerRect.bottom) {
+        activeThumbnail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    }
+  }
+
+  thumbnails.forEach((thumbnail) => {
+    thumbnail.addEventListener("click", () => {
+      const mediaIndex = parseInt(thumbnail.getAttribute("data-media"));
+      const mediaType = thumbnail.getAttribute("data-type");
+      const mediaItem = mediaItems[mediaIndex];
+
+      if (!mediaItem) return;
+
+      // Update active thumbnail
+      thumbnails.forEach((thumb) => thumb.classList.remove("active"));
+      thumbnail.classList.add("active");
+
+      // Scroll active thumbnail into view
+      scrollThumbnailIntoView(thumbnail);
+
+      // Handle image or video display
+      if (mediaType === "video") {
+        const videoSrc = thumbnail.getAttribute("data-video");
+        
+        // Hide image, show video
+        if (mainImage) {
+          mainImage.style.display = "none";
+        }
+        if (mainVideo) {
+          mainVideo.src = videoSrc;
+          mainVideo.style.display = "block";
+          mainVideo.style.position = "absolute";
+          mainVideo.style.top = "0";
+          mainVideo.style.left = "0";
+          mainVideo.style.width = "100%";
+          mainVideo.style.height = "100%";
+          mainVideo.load();
+          mainVideo.play().catch((e) => {
+            console.log("Video autoplay prevented:", e);
+          });
+        }
+      } else {
+        // Hide video, show image
+        if (mainVideo) {
+          mainVideo.pause();
+          mainVideo.style.display = "none";
+          mainVideo.src = "";
+        }
+        if (mainImage) {
+          mainImage.style.display = "block";
+          mainImage.style.position = "relative";
+          mainImage.style.opacity = "0";
+          setTimeout(() => {
+            mainImage.src = mediaItem.src;
+            mainImage.style.opacity = "1";
+          }, 150);
+        }
+      }
+    });
+  });
+
+  // Initialize video thumbnails to play continuously
+  const videoThumbnails = document.querySelectorAll(".media-gallery__thumbnail-video");
+  videoThumbnails.forEach((video) => {
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.setAttribute("playsinline", "");
+    video.setAttribute("muted", "");
+    video.setAttribute("loop", "");
+    video.setAttribute("autoplay", "");
+    
+    // Try to play the video
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        // Autoplay was prevented, try again when user interacts
+        console.log("Video thumbnail autoplay prevented, will play on interaction");
+      });
+    }
+  });
+
+  // Ensure videos play when they come into view
+  const observerOptions = {
+    root: thumbnailSlider,
+    rootMargin: "0px",
+    threshold: 0.1
+  };
+
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const video = entry.target;
+      if (entry.isIntersecting) {
+        video.play().catch((e) => {
+          // Autoplay prevented, will play on user interaction
+        });
+      } else {
+        video.pause();
+      }
+    });
+  }, observerOptions);
+
+  videoThumbnails.forEach((video) => {
+    videoObserver.observe(video);
+  });
+
+  // Fast direct scrolling for thumbnail slider - same as right column native scrolling
+  if (thumbnailSlider) {
+    // Fast, direct scrolling like right column section - no smooth animations
+    thumbnailSlider.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Direct fast scroll - immediate like native browser scrolling
+      const scrollAmount = e.deltaY;
+      thumbnailSlider.scrollTop += scrollAmount;
+    }, { passive: false });
+    
+    // Cursor feedback on hover
+    thumbnailSlider.addEventListener("mouseenter", () => {
+      thumbnailSlider.style.cursor = 'grab';
+    });
+    
+    thumbnailSlider.addEventListener("mouseleave", () => {
+      thumbnailSlider.style.cursor = 'default';
+    });
+
+    // Shadow fade effects for scrollable slider
+    const thumbnailsWrapper = thumbnailSlider.closest(".media-gallery__thumbnails-wrapper");
+    if (thumbnailsWrapper) {
+      function updateShadowFade() {
+        const scrollTop = thumbnailSlider.scrollTop;
+        const scrollHeight = thumbnailSlider.scrollHeight;
+        const clientHeight = thumbnailSlider.clientHeight;
+        const isScrollable = scrollHeight > clientHeight;
+        
+        if (isScrollable) {
+          // Show top shadow if scrolled down
+          if (scrollTop > 10) {
+            thumbnailsWrapper.classList.add("has-scroll-top");
+          } else {
+            thumbnailsWrapper.classList.remove("has-scroll-top");
+          }
+          
+          // Hide bottom shadow if scrolled to bottom
+          if (scrollTop + clientHeight >= scrollHeight - 10) {
+            thumbnailsWrapper.classList.add("has-scroll-bottom");
+          } else {
+            thumbnailsWrapper.classList.remove("has-scroll-bottom");
+          }
+        } else {
+          // No scrolling needed, hide both shadows
+          thumbnailsWrapper.classList.remove("has-scroll-top", "has-scroll-bottom");
+        }
+      }
+
+      // Update on scroll
+      thumbnailSlider.addEventListener("scroll", updateShadowFade);
+      
+      // Update on load and resize
+      updateShadowFade();
+      window.addEventListener("resize", updateShadowFade);
+    }
+  }
+})();
+
+// ====================
+// Product Page - Accordion
+// ====================
+(function () {
+  const accordionHeaders = document.querySelectorAll(".product-accordion__header");
+  
+  accordionHeaders.forEach((header) => {
+    header.addEventListener("click", () => {
+      const isExpanded = header.getAttribute("aria-expanded") === "true";
+      const content = document.getElementById(header.getAttribute("aria-controls"));
+      
+      if (!content) return;
+
+      // Close all other accordions
+      accordionHeaders.forEach((otherHeader) => {
+        if (otherHeader !== header) {
+          otherHeader.setAttribute("aria-expanded", "false");
+          const otherContent = document.getElementById(otherHeader.getAttribute("aria-controls"));
+          if (otherContent) {
+            otherContent.setAttribute("hidden", "hidden");
+          }
+        }
+      });
+
+      // Toggle current accordion
+      if (isExpanded) {
+        header.setAttribute("aria-expanded", "false");
+        content.setAttribute("hidden", "hidden");
+      } else {
+        header.setAttribute("aria-expanded", "true");
+        content.removeAttribute("hidden");
+      }
+    });
+
+    // Keyboard support
+    header.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        header.click();
+      }
+    });
+  });
+})();
+
+// ====================
+// Scrolling Media Gallery - GSAP Smooth Horizontal Scroll & Video Play/Pause
+// ====================
+(function () {
+  const scrollingMediaTrack = document.getElementById("scrolling-media-track");
+  const scrollingMediaWrapper = document.querySelector(".scrolling-media-gallery__wrapper");
+  const scrollingMediaSection = document.querySelector(".scrolling-media-gallery");
+  const scrollingMediaItems = document.querySelectorAll(".scrolling-media-item--video");
+  
+  if (!scrollingMediaTrack || !scrollingMediaWrapper) return;
+
+  // Register GSAP ScrollTrigger plugin if available
+  if (typeof gsap !== 'undefined') {
+    if (typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+  }
+
+  // GSAP Smooth Horizontal Scrolling with Mouse Wheel
+  let isHovering = false;
+  let scrollTween = null;
+  let scrollVelocity = 0;
+  let lastScrollTime = 0;
+
+  // Detect mouse enter/leave on the entire section
+  if (scrollingMediaSection) {
+    scrollingMediaSection.addEventListener("mouseenter", () => {
+      isHovering = true;
+    });
+
+    scrollingMediaSection.addEventListener("mouseleave", () => {
+      isHovering = false;
+      // Kill any ongoing scroll animation when mouse leaves
+      if (scrollTween) {
+        scrollTween.kill();
+        scrollTween = null;
+      }
+      scrollVelocity = 0;
+    });
+  }
+
+  // Smooth horizontal scrolling with mouse wheel using GSAP
+  scrollingMediaTrack.addEventListener("wheel", (e) => {
+    // Check if mouse is over the section
+    if (!isHovering && scrollingMediaSection) {
+      const rect = scrollingMediaSection.getBoundingClientRect();
+      const isOverSection = (
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom
+      );
+      
+      if (!isOverSection) return;
+      isHovering = true;
+    }
+
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const delta = e.deltaY;
+    const currentScroll = scrollingMediaTrack.scrollLeft;
+    const maxScroll = scrollingMediaTrack.scrollWidth - scrollingMediaTrack.clientWidth;
+    
+    // Calculate scroll velocity for smoother feel
+    const now = Date.now();
+    const timeDelta = now - lastScrollTime;
+    lastScrollTime = now;
+    
+    // Accumulate velocity for smoother scrolling
+    scrollVelocity = scrollVelocity * 0.7 + delta * 0.3;
+    
+    // Calculate target scroll position with velocity
+    let targetScroll = currentScroll + scrollVelocity;
+    targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+    // Kill any existing scroll animation
+    if (scrollTween) {
+      scrollTween.kill();
+    }
+
+    // Create smooth GSAP animation for scrolling
+    if (typeof gsap !== 'undefined') {
+      scrollTween = gsap.to(scrollingMediaTrack, {
+        scrollLeft: targetScroll,
+        duration: 0.8,
+        ease: "power1.out",
+        onUpdate: () => {
+          // Decay velocity during scroll
+          scrollVelocity *= 0.95;
+        },
+        onComplete: () => {
+          scrollTween = null;
+          scrollVelocity = 0;
+        }
+      });
+    } else {
+      // Fallback smooth scrolling without GSAP
+      scrollingMediaTrack.scrollTo({
+        left: targetScroll,
+        behavior: 'smooth'
+      });
+      scrollVelocity = 0;
+    }
+  }, { passive: false });
+
+  // Also handle wheel on wrapper for better detection
+  if (scrollingMediaWrapper) {
+    scrollingMediaWrapper.addEventListener("wheel", (e) => {
+      if (!isHovering) {
+        const rect = scrollingMediaWrapper.getBoundingClientRect();
+        const isOverWrapper = (
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom
+        );
+        
+        if (isOverWrapper) {
+          isHovering = true;
+          // Trigger the track's wheel event
+          scrollingMediaTrack.dispatchEvent(new WheelEvent('wheel', {
+            deltaY: e.deltaY,
+            clientX: e.clientX,
+            clientY: e.clientY,
+            bubbles: true,
+            cancelable: true
+          }));
+        }
+      }
+    }, { passive: false });
+  }
+
+  // Alternative: Use GSAP Draggable for drag scrolling (optional enhancement)
+  // You can uncomment this if you want drag functionality
+  /*
+  if (typeof gsap !== 'undefined' && typeof Draggable !== 'undefined') {
+    gsap.registerPlugin(Draggable);
+    
+    Draggable.create(scrollingMediaTrack, {
+      type: "x",
+      bounds: {
+        minX: -(scrollingMediaTrack.scrollWidth - scrollingMediaTrack.clientWidth),
+        maxX: 0
+      },
+      inertia: true,
+      ease: "power2.out"
+    });
+  }
+  */
+  
+  // Video play/pause functionality
+  scrollingMediaItems.forEach((item) => {
+    const video = item.querySelector("video");
+    const playOverlay = item.querySelector(".scrolling-media-item__play-overlay");
+    
+    if (!video) return;
+
+    // Play video on hover, pause on mouse leave
+    item.addEventListener("mouseenter", () => {
+      if (video.paused) {
+        video.play().catch((e) => {
+          console.log("Video autoplay prevented:", e);
+        });
+      }
+    });
+
+    item.addEventListener("mouseleave", () => {
+      if (!video.paused) {
+        video.pause();
+      }
+    });
+
+    // Click to play/pause
+    item.addEventListener("click", () => {
+      if (video.paused) {
+        video.play().catch((e) => {
+          console.log("Video play prevented:", e);
+        });
+      } else {
+        video.pause();
+      }
+    });
+
+    // Show play overlay when video is paused
+    video.addEventListener("play", () => {
+      if (playOverlay) {
+        playOverlay.style.opacity = "0";
+      }
+    });
+
+    video.addEventListener("pause", () => {
+      if (playOverlay) {
+        playOverlay.style.opacity = "1";
+      }
+    });
   });
 })();
