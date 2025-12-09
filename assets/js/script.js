@@ -789,7 +789,50 @@ if (resultsComparison) {
 // Product Page - Accordion
 // ====================
 (function () {
+  // ============================================
+  // ANIMATION CONFIGURATION
+  // ============================================
+  // Adjust these values to customize animation speed and behavior
+  // 
+  // ANIMATION_DURATION: Controls how long the animation takes (in milliseconds)
+  // - Faster: 200-300ms (snappy, quick)
+  // - Medium: 400-500ms (smooth, balanced) - RECOMMENDED
+  // - Slower: 600-800ms (relaxed, gentle)
+  const ANIMATION_DURATION = 400; // milliseconds
+  
+  // ANIMATION_EASING: Controls the easing curve (defined in CSS, this is just for reference)
+  // The actual easing is controlled in CSS via the transition property
+  // See style.css .product-accordion__content for easing options
+  const ANIMATION_EASING = 'cubic-bezier(0.4, 0, 0.2, 1)'; // Material Design easing
+  
   const accordionHeaders = document.querySelectorAll(".product-accordion__header");
+  
+  // Helper function to close an accordion panel smoothly
+  function closeAccordion(header, content) {
+    header.setAttribute("aria-expanded", "false");
+    content.classList.remove("is-open");
+    
+    // Wait for transition to complete before setting hidden
+    setTimeout(() => {
+      if (header.getAttribute("aria-expanded") === "false") {
+        content.setAttribute("hidden", "hidden");
+      }
+    }, ANIMATION_DURATION);
+  }
+  
+  // Helper function to open an accordion panel smoothly
+  function openAccordion(header, content) {
+    header.setAttribute("aria-expanded", "true");
+    content.removeAttribute("hidden");
+    
+    // Use requestAnimationFrame to ensure the browser has rendered
+    // the element before adding the is-open class
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        content.classList.add("is-open");
+      });
+    });
+  }
   
   accordionHeaders.forEach((header) => {
     header.addEventListener("click", () => {
@@ -801,21 +844,21 @@ if (resultsComparison) {
       // Close all other accordions
       accordionHeaders.forEach((otherHeader) => {
         if (otherHeader !== header) {
-          otherHeader.setAttribute("aria-expanded", "false");
-          const otherContent = document.getElementById(otherHeader.getAttribute("aria-controls"));
-          if (otherContent) {
-            otherContent.setAttribute("hidden", "hidden");
+          const otherIsExpanded = otherHeader.getAttribute("aria-expanded") === "true";
+          if (otherIsExpanded) {
+            const otherContent = document.getElementById(otherHeader.getAttribute("aria-controls"));
+            if (otherContent) {
+              closeAccordion(otherHeader, otherContent);
+            }
           }
         }
       });
 
       // Toggle current accordion
       if (isExpanded) {
-        header.setAttribute("aria-expanded", "false");
-        content.setAttribute("hidden", "hidden");
+        closeAccordion(header, content);
       } else {
-        header.setAttribute("aria-expanded", "true");
-        content.removeAttribute("hidden");
+        openAccordion(header, content);
       }
     });
 
@@ -1026,4 +1069,164 @@ if (resultsComparison) {
       }
     });
   });
+})();
+
+// ====================
+// How to Use Section - Video Play Button
+// ====================
+(function () {
+  const howToUseCards = document.querySelectorAll(".how-to-use__card");
+  
+  howToUseCards.forEach((card) => {
+    const video = card.querySelector(".how-to-use__media video");
+    const playButton = card.querySelector(".how-to-use__play");
+    
+    if (!video || !playButton) return;
+    
+    // Show play button when video is paused
+    const updatePlayButton = () => {
+      if (video.paused) {
+        playButton.style.opacity = "1";
+        playButton.style.pointerEvents = "auto";
+        playButton.classList.remove("hidden");
+      } else {
+        playButton.style.opacity = "0";
+        playButton.style.pointerEvents = "none";
+        playButton.classList.add("hidden");
+      }
+    };
+    
+    // Initial state
+    updatePlayButton();
+    
+    // Play button click handler
+    playButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      video.play().catch((error) => {
+        console.log("Video play prevented:", error);
+      });
+    });
+    
+    // Update button visibility on play/pause
+    video.addEventListener("play", updatePlayButton);
+    video.addEventListener("pause", updatePlayButton);
+    
+    // Also handle video click to toggle play/pause
+    video.addEventListener("click", () => {
+      if (video.paused) {
+        video.play().catch((error) => {
+          console.log("Video play prevented:", error);
+        });
+      } else {
+        video.pause();
+      }
+    });
+  });
+})();
+
+// ====================
+// Complete The Routine - Product Slider with Drag
+// ====================
+(function () {
+  const relatedProductsSlider = document.querySelector(".related-products__slider");
+  
+  if (!relatedProductsSlider) return;
+  
+  let isDragging = false;
+  let startX = 0;
+  let scrollLeft = 0;
+  let hasMoved = false;
+  const DRAG_THRESHOLD = 3;
+  
+  const startDrag = (clientX) => {
+    isDragging = true;
+    hasMoved = false;
+    relatedProductsSlider.classList.add("is-dragging");
+    startX = clientX;
+    scrollLeft = relatedProductsSlider.scrollLeft;
+  };
+  
+  const drag = (clientX) => {
+    if (!isDragging) return;
+    
+    const deltaX = clientX - startX;
+    const scrollDelta = deltaX * 1.2;
+    
+    if (Math.abs(scrollDelta) > DRAG_THRESHOLD) {
+      hasMoved = true;
+    }
+    
+    relatedProductsSlider.scrollLeft = scrollLeft - scrollDelta;
+  };
+  
+  const endDrag = (e) => {
+    if (isDragging && hasMoved && e && e.target) {
+      const button = e.target.closest(".product-card__add");
+      if (button) {
+        e.preventDefault();
+        e.stopPropagation();
+        const originalOnClick = button.onclick;
+        button.onclick = (clickE) => {
+          clickE.preventDefault();
+          clickE.stopPropagation();
+        };
+        setTimeout(() => {
+          button.onclick = originalOnClick;
+        }, 100);
+      }
+    }
+    isDragging = false;
+    hasMoved = false;
+    relatedProductsSlider.classList.remove("is-dragging");
+  };
+  
+  // Mouse events
+  relatedProductsSlider.addEventListener("mousedown", (e) => {
+    if (e.target.closest(".product-card__add")) {
+      return;
+    }
+    e.preventDefault();
+    startDrag(e.clientX);
+  });
+  
+  relatedProductsSlider.addEventListener("mouseleave", (e) => {
+    endDrag(e);
+  });
+  
+  window.addEventListener("mouseup", (e) => {
+    if (isDragging) {
+      endDrag(e);
+    }
+  });
+  
+  relatedProductsSlider.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    drag(e.clientX);
+  });
+  
+  // Touch events for mobile
+  relatedProductsSlider.addEventListener(
+    "touchstart",
+    (e) => {
+      if (e.target.closest(".product-card__add")) {
+        return;
+      }
+      startDrag(e.touches[0].clientX);
+    },
+    { passive: true }
+  );
+  
+  relatedProductsSlider.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      drag(e.touches[0].clientX);
+    },
+    { passive: false }
+  );
+  
+  relatedProductsSlider.addEventListener("touchend", endDrag);
+  relatedProductsSlider.addEventListener("touchcancel", endDrag);
 })();

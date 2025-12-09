@@ -190,7 +190,7 @@
     </header>
 
     <!-- Product Page Section -->
-    <!-- <section class="product-page">
+    <section class="product-page">
       <div class="product-page__container">
         <div class="product-page__inner">
           <div class="product-page__media">
@@ -214,9 +214,9 @@
                       <video class="media-gallery__thumbnail-video" src="./assets/img/video1.mp4" loop muted playsinline autoplay></video>
                     </div>
                     <div class="media-gallery__thumbnail-overlay">
-                      <svg class="media-gallery__play-icon" viewBox="0 0 24 24" fill="#FFFFFF">
+                      <!-- <svg class="media-gallery__play-icon" viewBox="0 0 24 24" fill="#FFFFFF">
                         <path d="M8 5v14l11-7z"/>
-                      </svg>
+                      </svg> -->
                     </div>
                   </button>
                   <button class="media-gallery__thumbnail media-gallery__thumbnail--video" data-media="5" data-type="video" data-video="./assets/img/video2.mp4" aria-label="Play product video 2">
@@ -224,9 +224,9 @@
                       <video class="media-gallery__thumbnail-video" src="./assets/img/video2.mp4" loop muted playsinline autoplay></video>
                     </div>
                     <div class="media-gallery__thumbnail-overlay">
-                      <svg class="media-gallery__play-icon" viewBox="0 0 24 24" fill="#FFFFFF">
+                      <!-- <svg class="media-gallery__play-icon" viewBox="0 0 24 24" fill="#FFFFFF">
                         <path d="M8 5v14l11-7z"/>
-                      </svg>
+                      </svg> -->
                     </div>
                   </button>
                   <button class="media-gallery__thumbnail media-gallery__thumbnail--video" data-media="6" data-type="video" data-video="./assets/img/video3.mp4" aria-label="Play product video 3">
@@ -234,9 +234,9 @@
                       <video class="media-gallery__thumbnail-video" src="./assets/img/video3.mp4" loop muted playsinline autoplay></video>
                     </div>
                     <div class="media-gallery__thumbnail-overlay">
-                      <svg class="media-gallery__play-icon" viewBox="0 0 24 24" fill="#FFFFFF">
+                      <!-- <svg class="media-gallery__play-icon" viewBox="0 0 24 24" fill="#FFFFFF">
                         <path d="M8 5v14l11-7z"/>
-                      </svg>
+                      </svg> -->
                     </div>
                   </button>
                   <button class="media-gallery__thumbnail" data-media="7" data-type="image" aria-label="View product image 5">
@@ -301,121 +301,158 @@
               <div class="product-price__wrapper">
                 <div class="product-price__current">₹ 2,720</div>
                 <div class="product-price__original">₹3,200</div>
+                <p class="product-price__tax">(MRP Inclusive of all tax)</p>
               </div>
-              <p class="product-price__tax">(MRP Inclusive of all tax)</p>
             </div>
 
             <div class="product-actions">
-              <button class="product-button product-button--primary">ADD TO CART</button>
-              <button class="product-button product-button--secondary">CHAT WITH US</button>
+              <button class="product-primary">ADD TO CART</button>
+              <button class="product-light">CHAT WITH US</button>
             </div>
 
             <div class="product-section-divider">
-              <h2 class="product-section-divider__header">COMPLETE THE ROUTINE</h2>
+              <div class="product-section-divider__line"></div>
+              <h2 class="product-section-divider__header mt-4">COMPLETE THE ROUTINE</h2>
             </div>
+            
             <div class="related-products">
-              <div class="related-products__grid">
+              <div class="related-products__slider">
                 <div class="product-card">
                   <div class="product-card__image">
-                    <img src="./assets/img/image5.webp" alt="hustle product" loading="lazy" />
+                    <img src="./assets/img/sliderproduct1.png" alt="in my defence product" loading="lazy" />
                   </div>
                   <div class="product-card__content">
-                    <h3 class="product-card__title">hustle</h3>
-                    <p class="product-card__description">ALL-IN-ONE SERUM</p>
+                    <h3 class="product-card__title">in my defence</h3>
+                    <p class="product-card__description">BARRIER REPAIR MOISTURIZER</p>
                     <div class="product-card__pricing">
-                      <span class="product-card__price">₹2,720</span>
-                      <span class="product-card__price--old">₹3,200</span>
+                      <span class="product-card__price">₹ 3,500</span>
                     </div>
                     <button class="product-card__add" aria-label="Add to routine">
-                      <i class="bi bi-plus"></i>
+                      <i class="bi bi-bag icon"></i>
+                      <span class="text">Add to Bag</span>
                     </button>
                   </div>
                 </div>
                 <div class="product-card">
                   <div class="product-card__image">
-                    <img src="./assets/img/image6.webp" alt="inbalance product" loading="lazy" />
+                    <img src="./assets/img/sliderproduct2.webp" alt="inbalance product" loading="lazy" />
                   </div>
                   <div class="product-card__content">
-                    <h3 class="product-card__title">inbalance</h3>
-                    <p class="product-card__description">HYDRATING TONER</p>
+                    <h3 class="product-card__title"><i>inbalance</i></h3>
+                    <p class="product-card__description">SOOTHING MILKY TONIC</p>
                     <div class="product-card__pricing">
-                      <span class="product-card__price">₹1,800</span>
-                      <span class="product-card__price--old">₹2,000</span>
+                      <span class="product-card__price">₹ 2,100</span>
                     </div>
                     <button class="product-card__add" aria-label="Add to routine">
-                      <i class="bi bi-plus"></i>
+                      <i class="bi bi-bag icon"></i>
+                      <span class="text">Add to Bag</span>
                     </button>
                   </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card">  
                   <div class="product-card__image">
-                    <img src="./assets/img/image7.webp" alt="unkissed product" loading="lazy" />
+                    <img src="./assets/img/sliderproduct3.webp" alt="unkissed product" loading="lazy" />
                   </div>
                   <div class="product-card__content">
                     <h3 class="product-card__title">unkissed</h3>
                     <p class="product-card__description">SUNSCREEN SPF 70+</p>
                     <div class="product-card__pricing">
-                      <span class="product-card__price">₹1,200</span>
-                      <span class="product-card__price--old">₹1,500</span>
+                      <span class="product-card__price">₹ 1,200</span>
                     </div>
                     <button class="product-card__add" aria-label="Add to routine">
-                      <i class="bi bi-plus"></i>
+                      <i class="bi bi-bag icon"></i>
+                      <span class="text">Add to Bag</span>
+                    </button>
+                  </div>
+                </div>
+                 <div class="product-card">  
+                  <div class="product-card__image">
+                    <img src="./assets/img/sliderproduct4.webp" alt="unkissed product" loading="lazy" />
+                  </div>
+                  <div class="product-card__content">
+                    <h3 class="product-card__title">good grease</h3>
+                    <p class="product-card__description">BUTTERY CLEANSING BALM</p>
+                    <div class="product-card__pricing">
+                      <span class="product-card__price">₹ 1,550</span>
+                    </div>
+                    <button class="product-card__add" aria-label="Add to routine">
+                      <i class="bi bi-bag icon"></i>
+                      <span class="text">Add to Bag</span>
+                    </button>
+                  </div>
+                </div>
+                                 <div class="product-card">  
+                  <div class="product-card__image">
+                    <img src="./assets/img/sliderproduct5.webp" alt="unkissed product" loading="lazy" />
+                  </div>
+                  <div class="product-card__content">
+                    <h3 class="product-card__title">tender lip nectar</h3>
+                    <p class="product-card__description">Nourishing Lip Balm</p>
+                    <div class="product-card__pricing">
+                      <span class="product-card__price">₹ 700</span>
+                    </div>
+                    <button class="product-card__add" aria-label="Add to routine">
+                      <i class="bi bi-bag icon"></i>
+                      <span class="text">Add to Bag</span>
                     </button>
                   </div>
                 </div>
               </div>
+              <div class="product-section-divider__line product-section-divider__line--bottom"></div>
             </div>
 
             <div class="product-section-divider">
               <h2 class="product-section-divider__header">THE WHAT, WHY & HOW</h2>
             </div>
-            <div class="video-previews">
+            <div class="video-previews mt-3">
               <div class="video-previews__grid">
                 <div class="video-preview">
                   <div class="video-preview__thumbnail">
-                    <img src="./assets/img/image8.webp" alt="Moisture Lock video" loading="lazy" />
+                    <img src="./assets/img/thatimage1.webp" alt="How to use Hustle video" loading="lazy" />
                     <button class="video-preview__play" aria-label="Play video">
-                      <svg viewBox="0 0 24 24" fill="#1D1D1F">
+                      <svg viewBox="0 0 24 24" fill="#2f67c5">
                         <path d="M8 5v14l11-7z"/>
                       </svg>
                     </button>
                   </div>
-                  <p class="video-preview__label">MOISTURE LOCK</p>
+                  <p class="video-preview__label">HOW TO USE HUSTLE?</p>
                 </div>
                 <div class="video-preview">
                   <div class="video-preview__thumbnail">
-                    <img src="./assets/img/image1.webp" alt="Ceramides 101 video" loading="lazy" />
+                    <img src="./assets/img/thatimage2.webp" alt="Power in a pump video" loading="lazy" />
                     <button class="video-preview__play" aria-label="Play video">
-                      <svg viewBox="0 0 24 24" fill="#1D1D1F">
+                      <svg viewBox="0 0 24 24" fill="#2f67c5">
                         <path d="M8 5v14l11-7z"/>
                       </svg>
                     </button>
                   </div>
-                  <p class="video-preview__label">CERAMIDES 101</p>
+                  <p class="video-preview__label">POWER IN A PUMP</p>
                 </div>
                 <div class="video-preview">
                   <div class="video-preview__thumbnail">
-                    <img src="./assets/img/image2.webp" alt="Hydration Hero video" loading="lazy" />
+                    <img src="./assets/img/thatimage3.webp" alt="Why Hustle video" loading="lazy" />
                     <button class="video-preview__play" aria-label="Play video">
-                      <svg viewBox="0 0 24 24" fill="#1D1D1F">
+                      <svg viewBox="0 0 24 24" fill="#2f67c5">
                         <path d="M8 5v14l11-7z"/>
                       </svg>
                     </button>
                   </div>
-                  <p class="video-preview__label">HYDRATION HERO</p>
+                  <p class="video-preview__label">WHY HUSTLE?</p>
                 </div>
               </div>
+              <div class="video-previews__divider" aria-hidden="true"></div>
             </div>
 
             <div class="product-section-divider">
               <h2 class="product-section-divider__header">LET'S BREAK IT DOWN.</h2>
             </div>
-            <div class="product-accordion">
+            <div class="product-accordion mt-3">
               <div class="product-accordion__item">
                 <button class="product-accordion__header" aria-expanded="false" aria-controls="accordion-1">
+                  <span class="product-accordion__bullet"></span>
                   <span>GET TO KNOW ME</span>
                   <svg class="product-accordion__icon" viewBox="0 0 24 24" fill="none">
-                    <path d="M6 9l6 6 6-6" stroke="#86868B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 9l6 6 6-6" stroke="#2a6dcb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </button>
                 <div class="product-accordion__content" id="accordion-1" hidden>
@@ -424,9 +461,10 @@
               </div>
               <div class="product-accordion__item">
                 <button class="product-accordion__header" aria-expanded="false" aria-controls="accordion-2">
+                  <span class="product-accordion__bullet"></span>
                   <span>WHAT TO EXPECT</span>
                   <svg class="product-accordion__icon" viewBox="0 0 24 24" fill="none">
-                    <path d="M6 9l6 6 6-6" stroke="#86868B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 9l6 6 6-6" stroke="#2a6dcb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </button>
                 <div class="product-accordion__content" id="accordion-2" hidden>
@@ -435,20 +473,147 @@
               </div>
               <div class="product-accordion__item">
                 <button class="product-accordion__header" aria-expanded="false" aria-controls="accordion-3">
+                  <span class="product-accordion__bullet"></span>
                   <span>HOW TO USE</span>
                   <svg class="product-accordion__icon" viewBox="0 0 24 24" fill="none">
-                    <path d="M6 9l6 6 6-6" stroke="#86868B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 9l6 6 6-6" stroke="#2a6dcb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </button>
                 <div class="product-accordion__content" id="accordion-3" hidden>
                   <p>Apply a pea-sized amount to clean skin morning and evening. Gently massage in circular motions until fully absorbed. Follow with sunscreen in the morning.</p>
                 </div>
               </div>
+              <div class="product-accordion__item">
+                <button class="product-accordion__header" aria-expanded="false" aria-controls="accordion-4">
+                  <span class="product-accordion__bullet"></span>
+                  <span>MAKE THE MOST OUT OF HUSTLE</span>
+                  <svg class="product-accordion__icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="#2a6dcb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div class="product-accordion__content" id="accordion-4" hidden>
+                  <p>Discover tips and tricks to maximize the benefits of Hustle. Learn how to incorporate it into your skincare routine for best results.</p>
+                </div>
+              </div>
+              <div class="product-accordion__item">
+                <button class="product-accordion__header" aria-expanded="false" aria-controls="accordion-5">
+                  <span class="product-accordion__bullet"></span>
+                  <span>INGREDIENTS</span>
+                  <svg class="product-accordion__icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="#2a6dcb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div class="product-accordion__content" id="accordion-5" hidden>
+                  <p>Explore the powerful ingredients that make Hustle effective. Each component is carefully selected to deliver visible results for your skin.</p>
+                </div>
+              </div>
+            </div>
+            <p class="product-accordion__cta-text">Not sure if this product will suit your skin? Test out the mini version before committing to the full size!</p>
+            <div class="product-mini-card">
+              <div class="product-mini-card__image">
+                <img src="./assets/img/hustleminiimage.webp" alt="hustle mini" />
+              </div>
+              <div class="product-mini-card__content">
+                <h3 class="product-mini-card__title">hustle mini</h3>
+                <p class="product-mini-card__subtitle">ALL-IN-ONE SERUM</p>
+                <div class="product-mini-card__price">
+                  <span class="product-mini-card__price-current">₹ 990</span>
+                  <span class="product-mini-card__price-original">₹ 1100</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section> -->
+          <!-- Feature Slider -->
+          <div class="feature-slider">
+            <div class="feature-slider__track" aria-label="Product features">
+              <div class="feature-slider__content">
+                <div class="feature-item">
+                  <span class="feature-item__label">Made in South Korea</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Brightens</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Nourishes</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Protects</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Repairs</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Botanical Scent</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Clinically Tested</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Vegan</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Cruelty Free</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Pregnancy Safe</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <!-- Duplicate items for seamless loop -->
+                <div class="feature-item">
+                  <span class="feature-item__label">Made in South Korea</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Brightens</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Nourishes</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Protects</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Repairs</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Botanical Scent</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Clinically Tested</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Vegan</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Cruelty Free</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-item__label">Pregnancy Safe</span>
+                  <span class="feature-item__separator" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
 
     <!-- Before and After Section -->
     <section class="before-after-comparison" data-before-after-section>
@@ -926,6 +1091,11 @@
                 loop
                 playsinline
               ></video>
+              <button class="how-to-use__play" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="#FFFFFF">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
             </div>
             <div class="how-to-use__content">
               <h3 class="how-to-use__step">
@@ -950,6 +1120,11 @@
                 loop
                 playsinline
               ></video>
+              <button class="how-to-use__play" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="#FFFFFF">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
             </div>
             <div class="how-to-use__content">
               <h3 class="how-to-use__step">
@@ -975,6 +1150,11 @@
                 loop
                 playsinline
               ></video>
+              <button class="how-to-use__play" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="#FFFFFF">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
             </div>
             <div class="how-to-use__content">
               <h3 class="how-to-use__step">
@@ -1448,5 +1628,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <script src="./assets/js//script.js"></script>
+
   </body>
 </html>
