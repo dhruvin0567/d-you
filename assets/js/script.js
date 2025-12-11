@@ -131,20 +131,22 @@ if (topShelfGrid) {
   let lastTimestamp = null;
   let contentWidth = 0;
 
-  // Duplicate cards once so we can loop seamlessly
-  const cards = Array.from(topShelfGrid.children);
-  cards.forEach((card) => {
-    const clone = card.cloneNode(true);
-    clone.setAttribute("aria-hidden", "true");
-    topShelfGrid.appendChild(clone);
-  });
+  // Duplicate cards once so we can loop seamlessly (skip if grid has --single modifier)
+  if (!topShelfGrid.classList.contains("top-shelf-picks__grid--single")) {
+    const cards = Array.from(topShelfGrid.children);
+    cards.forEach((card) => {
+      const clone = card.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      topShelfGrid.appendChild(clone);
+    });
 
-  // After cloning, half of the scrollable width represents one full set
-  const updateContentWidth = () => {
-    contentWidth = topShelfGrid.scrollWidth / 2;
-  };
-  updateContentWidth();
-  window.addEventListener("resize", updateContentWidth);
+    // After cloning, half of the scrollable width represents one full set
+    const updateContentWidth = () => {
+      contentWidth = topShelfGrid.scrollWidth / 2;
+    };
+    updateContentWidth();
+    window.addEventListener("resize", updateContentWidth);
+  }
 
   if (ENABLE_TOP_SHELF_AUTO_SCROLL) {
     const autoScrollStep = (timestamp) => {
@@ -1229,4 +1231,764 @@ if (resultsComparison) {
   
   relatedProductsSlider.addEventListener("touchend", endDrag);
   relatedProductsSlider.addEventListener("touchcancel", endDrag);
+})();
+
+// ====================
+// RESPONSIVE FIXES AND ENHANCEMENTS
+// ====================
+(function() {
+
+  // Debounce function for performance
+
+  function debounce(func, wait) {
+
+    let timeout;
+
+    return function executedFunction(...args) {
+
+      const later = () => {
+
+        clearTimeout(timeout);
+
+        func(...args);
+
+      };
+
+      clearTimeout(timeout);
+
+      timeout = setTimeout(later, wait);
+
+    };
+
+  }
+
+  // Check if device is mobile
+
+  function isMobile() {
+
+    return window.innerWidth <= 768;
+
+  }
+
+  // Check if device is tablet
+
+  function isTablet() {
+
+    return window.innerWidth > 768 && window.innerWidth <= 1024;
+
+  }
+
+  // ====================
+  // Media Gallery Responsive Fixes
+  // ====================
+
+  
+
+  const mediaGallery = document.querySelector('.media-gallery');
+
+  const thumbnailSlider = document.getElementById('thumbnail-slider');
+
+  const thumbnailsWrapper = document.querySelector('.media-gallery__thumbnails-wrapper');
+
+  if (mediaGallery && thumbnailSlider) {
+
+    // Handle thumbnail scrolling on mobile
+
+    function handleThumbnailScroll() {
+
+      if (isMobile()) {
+
+        // Enable horizontal scrolling on mobile
+
+        thumbnailSlider.style.overflowX = 'auto';
+
+        thumbnailSlider.style.overflowY = 'hidden';
+
+        thumbnailSlider.style.flexDirection = 'row';
+
+        
+
+        // Disable vertical shadow indicators on mobile
+
+        if (thumbnailsWrapper) {
+
+          thumbnailsWrapper.classList.remove('has-scroll-top', 'has-scroll-bottom');
+
+        }
+
+      } else {
+
+        // Enable vertical scrolling on desktop
+
+        thumbnailSlider.style.overflowX = 'hidden';
+
+        thumbnailSlider.style.overflowY = 'auto';
+
+        thumbnailSlider.style.flexDirection = 'column';
+
+      }
+
+    }
+
+    // Initial call
+
+    handleThumbnailScroll();
+
+    // Update on window resize
+
+    window.addEventListener('resize', debounce(handleThumbnailScroll, 150));
+
+  }
+
+  // ====================
+  // Product Card Slider Touch Improvements
+  // ====================
+
+  
+
+  const productSliders = document.querySelectorAll('.related-products__slider, .top-shelf-picks__grid');
+
+  productSliders.forEach(slider => {
+
+    if (!slider) return;
+
+    let startX = 0;
+
+    let scrollLeft = 0;
+
+    let isDown = false;
+
+    slider.addEventListener('touchstart', (e) => {
+
+      isDown = true;
+
+      startX = e.touches[0].pageX - slider.offsetLeft;
+
+      scrollLeft = slider.scrollLeft;
+
+    });
+
+    slider.addEventListener('touchmove', (e) => {
+
+      if (!isDown) return;
+
+      e.preventDefault();
+
+      const x = e.touches[0].pageX - slider.offsetLeft;
+
+      const walk = (x - startX) * 2;
+
+      slider.scrollLeft = scrollLeft - walk;
+
+    });
+
+    slider.addEventListener('touchend', () => {
+
+      isDown = false;
+
+    });
+
+  });
+
+  // ====================
+  // Video Preview Responsive Layout
+  // ====================
+
+  
+
+  const videoPreviewsGrid = document.querySelector('.video-previews__grid');
+
+  
+
+  if (videoPreviewsGrid) {
+
+    function adjustVideoPreviewLayout() {
+
+      const previews = videoPreviewsGrid.querySelectorAll('.video-preview');
+
+      
+
+      if (isMobile()) {
+
+        // Stack vertically on mobile
+
+        videoPreviewsGrid.style.gridTemplateColumns = '1fr';
+
+        videoPreviewsGrid.style.gap = '16px';
+
+      } else if (isTablet()) {
+
+        // 2 columns on tablet
+
+        videoPreviewsGrid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+
+        videoPreviewsGrid.style.gap = '16px';
+
+      } else {
+
+        // 4 columns on desktop (original)
+
+        videoPreviewsGrid.style.gridTemplateColumns = 'repeat(4, 1fr)';
+
+        videoPreviewsGrid.style.gap = '10px';
+
+      }
+
+    }
+
+    adjustVideoPreviewLayout();
+
+    window.addEventListener('resize', debounce(adjustVideoPreviewLayout, 150));
+
+  }
+
+  // ====================
+  // Improve Touch Scrolling for All Sliders
+  // ====================
+
+  
+
+  const allSliders = document.querySelectorAll('[class*="__slider"], [class*="__grid"]');
+
+  
+
+  allSliders.forEach(slider => {
+
+    if (!slider) return;
+
+    
+
+    // Add momentum scrolling for iOS
+
+    slider.style.webkitOverflowScrolling = 'touch';
+
+    
+
+    // Prevent default horizontal scroll behavior interference
+
+    slider.addEventListener('touchmove', (e) => {
+
+      e.stopPropagation();
+
+    }, { passive: true });
+
+  });
+
+  // ====================
+  // Accordion Touch Improvements
+  // ====================
+
+  
+
+  const accordionHeaders = document.querySelectorAll('.product-accordion__header');
+
+  
+
+  accordionHeaders.forEach(header => {
+
+    // Add touch feedback
+
+    header.addEventListener('touchstart', () => {
+
+      header.style.opacity = '0.7';
+
+    });
+
+    
+
+    header.addEventListener('touchend', () => {
+
+      header.style.opacity = '1';
+
+    });
+
+    
+
+    header.addEventListener('touchcancel', () => {
+
+      header.style.opacity = '1';
+
+    });
+
+  });
+
+  // ====================
+  // Button Touch Feedback
+  // ====================
+
+  
+
+  const buttons = document.querySelectorAll('.product-primary, .product-light, .product-card__add');
+
+  
+
+  buttons.forEach(button => {
+
+    button.addEventListener('touchstart', () => {
+
+      button.style.transform = 'scale(0.98)';
+
+    });
+
+    
+
+    button.addEventListener('touchend', () => {
+
+      button.style.transform = 'scale(1)';
+
+    });
+
+    
+
+    button.addEventListener('touchcancel', () => {
+
+      button.style.transform = 'scale(1)';
+
+    });
+
+  });
+
+  // ====================
+  // Fix Image Loading on Mobile
+  // ====================
+
+  
+
+  const images = document.querySelectorAll('img[loading="lazy"]');
+
+  
+
+  if (isMobile()) {
+
+    images.forEach(img => {
+
+      // Remove lazy loading on mobile for better performance
+
+      img.removeAttribute('loading');
+
+    });
+
+  }
+
+  // ====================
+  // Viewport Height Fix for Mobile Browsers
+  // ====================
+
+  
+
+  function setVH() {
+
+    const vh = window.innerHeight * 0.01;
+
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+  }
+
+  setVH();
+
+  window.addEventListener('resize', debounce(setVH, 150));
+
+  window.addEventListener('orientationchange', setVH);
+
+  // ====================
+  // Prevent Zoom on Double Tap (iOS)
+  // ====================
+
+  
+
+  let lastTouchEnd = 0;
+
+  document.addEventListener('touchend', (event) => {
+
+    const now = Date.now();
+
+    if (now - lastTouchEnd <= 300) {
+
+      event.preventDefault();
+
+    }
+
+    lastTouchEnd = now;
+
+  }, { passive: false });
+
+  // ====================
+  // Smooth Scroll for Anchors on Mobile
+  // ====================
+
+  
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+    anchor.addEventListener('click', function(e) {
+
+      const href = this.getAttribute('href');
+
+      if (href === '#') return;
+
+      
+
+      e.preventDefault();
+
+      const target = document.querySelector(href);
+
+      
+
+      if (target) {
+
+        const offsetTop = target.offsetTop - 80; // Account for header
+
+        window.scrollTo({
+
+          top: offsetTop,
+
+          behavior: 'smooth'
+
+        });
+
+      }
+
+    });
+
+  });
+
+  // ====================
+  // Fix Related Products Slider on Mobile
+  // ====================
+
+  
+
+  const relatedProductsSlider = document.querySelector('.related-products__slider');
+
+  
+
+  if (relatedProductsSlider && isMobile()) {
+
+    // Ensure cards are properly sized on mobile
+
+    const productCards = relatedProductsSlider.querySelectorAll('.product-card');
+
+    
+
+    productCards.forEach(card => {
+
+      card.style.minWidth = '280px';
+
+      card.style.flex = '0 0 280px';
+
+    });
+
+  }
+
+  // ====================
+  // Optimize Video Playback on Mobile
+  // ====================
+
+  
+
+  const videos = document.querySelectorAll('video');
+
+  
+
+  videos.forEach(video => {
+
+    // Ensure videos are properly configured for mobile
+
+    video.setAttribute('playsinline', '');
+
+    video.setAttribute('webkit-playsinline', '');
+
+    video.muted = true;
+
+    
+
+    // Pause videos when they're off-screen on mobile
+
+    if (isMobile()) {
+
+      const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+          if (!entry.isIntersecting) {
+
+            entry.target.pause();
+
+          }
+
+        });
+
+      }, { threshold: 0.1 });
+
+      
+
+      observer.observe(video);
+
+    }
+
+  });
+
+  // ====================
+  // Feature Slider Mobile Optimization
+  // ====================
+
+  
+
+  const featureSlider = document.querySelector('.feature-slider__content');
+
+  
+
+  if (featureSlider && isMobile()) {
+
+    // Optimize animation speed for mobile
+
+    featureSlider.style.animationDuration = '35s';
+
+  }
+
+  // ====================
+  // Handle Orientation Change
+  // ====================
+
+  
+
+  window.addEventListener('orientationchange', () => {
+
+    setTimeout(() => {
+
+      // Refresh all sliders after orientation change
+
+      const allScrollableElements = document.querySelectorAll('[style*="overflow"]');
+
+      allScrollableElements.forEach(el => {
+
+        el.scrollLeft = 0;
+
+      });
+
+      
+
+      // Trigger resize event
+
+      window.dispatchEvent(new Event('resize'));
+
+    }, 300);
+
+  });
+
+  // ====================
+  // Log Responsive Breakpoint (for debugging)
+  // ====================
+
+  
+
+  function logBreakpoint() {
+
+    const width = window.innerWidth;
+
+    let breakpoint = 'desktop';
+
+    
+
+    if (width <= 576) {
+
+      breakpoint = 'mobile-small';
+
+    } else if (width <= 768) {
+
+      breakpoint = 'mobile';
+
+    } else if (width <= 1024) {
+
+      breakpoint = 'tablet';
+
+    }
+
+    
+
+    console.log(`Current breakpoint: ${breakpoint} (${width}px)`);
+
+  }
+
+  // Uncomment to enable breakpoint logging
+
+  // logBreakpoint();
+
+  // window.addEventListener('resize', debounce(logBreakpoint, 500));
+
+})();
+
+// ====================
+// INGREDIENTS SLIDER SECTION - Touchpad Scroll & Text Animation
+// ====================
+(function () {
+  const ingredientsSlider = document.getElementById("ingredientsSlider");
+  const ingredientsTrack = ingredientsSlider?.querySelector(".ingredients-slider-section__track");
+  const slideTexts = document.querySelectorAll(".ingredients-slider-section__slide-text");
+  
+  if (!ingredientsSlider || !ingredientsTrack) return;
+
+  let isScrolling = false;
+  let scrollTimeout = null;
+  let lastScrollLeft = 0;
+  let currentActiveIndex = 0;
+
+  // Function to determine which slide is currently visible
+  function getActiveSlideIndex() {
+    const slides = document.querySelectorAll(".ingredients-slider-section__slide");
+    const trackRect = ingredientsTrack.getBoundingClientRect();
+    const trackCenter = trackRect.left + trackRect.width / 2;
+    
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    slides.forEach((slide, index) => {
+      const slideRect = slide.getBoundingClientRect();
+      const slideCenter = slideRect.left + slideRect.width / 2;
+      const distance = Math.abs(slideCenter - trackCenter);
+      
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    return closestIndex;
+  }
+
+  // Function to animate text up when slide changes
+  function animateTextUp(index) {
+    slideTexts.forEach((text, i) => {
+      if (i === index) {
+        text.classList.add("animate-up");
+        setTimeout(() => {
+          text.classList.remove("animate-up");
+        }, 500);
+      }
+    });
+  }
+
+  // Touchpad/Mouse wheel scroll handler
+  ingredientsSlider.addEventListener("wheel", (e) => {
+    const rect = ingredientsSlider.getBoundingClientRect();
+    
+    // Only intercept scroll if pointer is over the slider
+    if (
+      e.clientX < rect.left ||
+      e.clientX > rect.right ||
+      e.clientY < rect.top ||
+      e.clientY > rect.bottom
+    ) {
+      return;
+    }
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Convert vertical scroll to horizontal
+    const scrollAmount = e.deltaY;
+    ingredientsTrack.scrollLeft += scrollAmount * 1.2;
+
+    // Update active slide index
+    const newActiveIndex = getActiveSlideIndex();
+    if (newActiveIndex !== currentActiveIndex) {
+      currentActiveIndex = newActiveIndex;
+      animateTextUp(currentActiveIndex);
+    }
+
+    // Track scrolling state
+    isScrolling = true;
+    clearTimeout(scrollTimeout);
+    
+    scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+      // Final check for active slide when scrolling stops
+      const finalActiveIndex = getActiveSlideIndex();
+      if (finalActiveIndex !== currentActiveIndex) {
+        currentActiveIndex = finalActiveIndex;
+        animateTextUp(currentActiveIndex);
+      }
+    }, 150);
+  }, { passive: false });
+
+  // Also handle scroll event for text animation
+  ingredientsTrack.addEventListener("scroll", () => {
+    if (!isScrolling) {
+      const newActiveIndex = getActiveSlideIndex();
+      if (newActiveIndex !== currentActiveIndex) {
+        currentActiveIndex = newActiveIndex;
+        animateTextUp(currentActiveIndex);
+      }
+    }
+  });
+
+  // Initialize - animate first slide text
+  setTimeout(() => {
+    currentActiveIndex = getActiveSlideIndex();
+    animateTextUp(currentActiveIndex);
+  }, 100);
+
+  // Handle drag scrolling
+  let isDragging = false;
+  let startX = 0;
+  let scrollLeftStart = 0;
+
+  ingredientsSlider.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.pageX - ingredientsSlider.offsetLeft;
+    scrollLeftStart = ingredientsTrack.scrollLeft;
+    ingredientsSlider.style.cursor = "grabbing";
+  });
+
+  ingredientsSlider.addEventListener("mouseleave", () => {
+    isDragging = false;
+    ingredientsSlider.style.cursor = "grab";
+  });
+
+  ingredientsSlider.addEventListener("mouseup", () => {
+    isDragging = false;
+    ingredientsSlider.style.cursor = "grab";
+  });
+
+  ingredientsSlider.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - ingredientsSlider.offsetLeft;
+    const walk = (x - startX) * 2;
+    ingredientsTrack.scrollLeft = scrollLeftStart - walk;
+    
+    // Update active slide during drag
+    const newActiveIndex = getActiveSlideIndex();
+    if (newActiveIndex !== currentActiveIndex) {
+      currentActiveIndex = newActiveIndex;
+      animateTextUp(currentActiveIndex);
+    }
+  });
+
+  // Touch support for mobile
+  let touchStartX = 0;
+  let touchScrollLeft = 0;
+
+  ingredientsSlider.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].pageX;
+    touchScrollLeft = ingredientsTrack.scrollLeft;
+  }, { passive: true });
+
+  ingredientsSlider.addEventListener("touchmove", (e) => {
+    if (!touchStartX) return;
+    const touchX = e.touches[0].pageX;
+    const walk = (touchStartX - touchX) * 2;
+    ingredientsTrack.scrollLeft = touchScrollLeft + walk;
+    
+    // Update active slide during touch scroll
+    const newActiveIndex = getActiveSlideIndex();
+    if (newActiveIndex !== currentActiveIndex) {
+      currentActiveIndex = newActiveIndex;
+      animateTextUp(currentActiveIndex);
+    }
+  }, { passive: true });
+
+  ingredientsSlider.addEventListener("touchend", () => {
+    touchStartX = 0;
+  }, { passive: true });
 })();
