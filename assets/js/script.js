@@ -19,7 +19,6 @@
       document.body.style.overflow = "";
     });
 
-    // Close offcanvas when clicking on overlay
     const backdrop = document.querySelector(".offcanvas-backdrop");
     if (backdrop) {
       backdrop.addEventListener("click", function () {
@@ -131,22 +130,20 @@ if (topShelfGrid) {
   let lastTimestamp = null;
   let contentWidth = 0;
 
-  // Duplicate cards once so we can loop seamlessly (skip if grid has --single modifier)
-  if (!topShelfGrid.classList.contains("top-shelf-picks__grid--single")) {
-    const cards = Array.from(topShelfGrid.children);
-    cards.forEach((card) => {
-      const clone = card.cloneNode(true);
-      clone.setAttribute("aria-hidden", "true");
-      topShelfGrid.appendChild(clone);
-    });
+  // Duplicate cards once so we can loop seamlessly
+  const cards = Array.from(topShelfGrid.children);
+  cards.forEach((card) => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    topShelfGrid.appendChild(clone);
+  });
 
-    // After cloning, half of the scrollable width represents one full set
-    const updateContentWidth = () => {
-      contentWidth = topShelfGrid.scrollWidth / 2;
-    };
-    updateContentWidth();
-    window.addEventListener("resize", updateContentWidth);
-  }
+  // After cloning, half of the scrollable width represents one full set
+  const updateContentWidth = () => {
+    contentWidth = topShelfGrid.scrollWidth / 2;
+  };
+  updateContentWidth();
+  window.addEventListener("resize", updateContentWidth);
 
   if (ENABLE_TOP_SHELF_AUTO_SCROLL) {
     const autoScrollStep = (timestamp) => {
@@ -605,23 +602,65 @@ if (resultsComparison) {
     { type: "image", src: "./assets/img/image2.webp" },
     { type: "image", src: "./assets/img/image3.webp" },
     { type: "image", src: "./assets/img/image4.webp" },
-    { type: "video", src: "./assets/img/video1.mp4", thumbnail: "./assets/img/image1.webp" },
-    { type: "video", src: "./assets/img/video2.mp4", thumbnail: "./assets/img/image2.webp" },
-    { type: "video", src: "./assets/img/video3.mp4", thumbnail: "./assets/img/image3.webp" },
-    { type: "image", src: "./assets/img/image6.webp" }
+    {
+      type: "video",
+      src: "./assets/img/video1.mp4",
+      thumbnail: "./assets/img/image1.webp",
+    },
+    {
+      type: "video",
+      src: "./assets/img/video2.mp4",
+      thumbnail: "./assets/img/image2.webp",
+    },
+    {
+      type: "video",
+      src: "./assets/img/video3.mp4",
+      thumbnail: "./assets/img/image3.webp",
+    },
+    { type: "image", src: "./assets/img/image6.webp" },
   ];
 
   // Function to scroll thumbnail into view when active
   function scrollThumbnailIntoView(activeThumbnail) {
     if (activeThumbnail && thumbnailSlider) {
-      const containerRect = thumbnailSlider.getBoundingClientRect();
-      const thumbnailRect = activeThumbnail.getBoundingClientRect();
-      
-      // Check if thumbnail is outside visible area
-      if (thumbnailRect.top < containerRect.top) {
-        activeThumbnail.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      } else if (thumbnailRect.bottom > containerRect.bottom) {
-        activeThumbnail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      const isHorizontal = window.innerWidth <= 991.98; // lg breakpoint
+
+      if (isHorizontal) {
+        // Horizontal layout: scroll horizontally
+        const containerRect = thumbnailSlider.getBoundingClientRect();
+        const thumbnailRect = activeThumbnail.getBoundingClientRect();
+
+        // Check if thumbnail is outside visible area horizontally
+        if (thumbnailRect.left < containerRect.left) {
+          activeThumbnail.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "nearest",
+          });
+        } else if (thumbnailRect.right > containerRect.right) {
+          activeThumbnail.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "nearest",
+          });
+        }
+      } else {
+        // Vertical layout: scroll vertically
+        const containerRect = thumbnailSlider.getBoundingClientRect();
+        const thumbnailRect = activeThumbnail.getBoundingClientRect();
+
+        // Check if thumbnail is outside visible area
+        if (thumbnailRect.top < containerRect.top) {
+          activeThumbnail.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
+        } else if (thumbnailRect.bottom > containerRect.bottom) {
+          activeThumbnail.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
+        }
       }
     }
   }
@@ -729,57 +768,114 @@ if (resultsComparison) {
 
   // Fast direct scrolling for thumbnail slider - same as right column native scrolling
   if (thumbnailSlider) {
-    // Fast, direct scrolling like right column section - no smooth animations
-    thumbnailSlider.addEventListener("wheel", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      // Direct fast scroll - immediate like native browser scrolling
-      const scrollAmount = e.deltaY;
-      thumbnailSlider.scrollTop += scrollAmount;
-    }, { passive: false });
-    
+    // Helper function to detect if layout is horizontal (responsive mode)
+    function isHorizontalLayout() {
+      const width = window.innerWidth;
+      // Horizontal layout for screens <= 1148px (includes the lg-to-md range)
+      return width <= 1148;
+    }
+
+    // Fast, direct scrolling - adapts to vertical or horizontal layout
+    thumbnailSlider.addEventListener(
+      "wheel",
+      (e) => {
+        if (isHorizontalLayout()) {
+          // Horizontal scrolling for responsive layout
+          e.preventDefault();
+          e.stopPropagation();
+          // Support both vertical wheel (deltaY) and horizontal wheel (deltaX) for trackpads
+          const scrollAmount = e.deltaX !== 0 ? e.deltaX : e.deltaY;
+          thumbnailSlider.scrollLeft += scrollAmount;
+        } else {
+          // Vertical scrolling for desktop layout
+          e.preventDefault();
+          e.stopPropagation();
+          const scrollAmount = e.deltaY;
+          thumbnailSlider.scrollTop += scrollAmount;
+        }
+      },
+      { passive: false }
+    );
+
     // Cursor feedback on hover
     thumbnailSlider.addEventListener("mouseenter", () => {
-      thumbnailSlider.style.cursor = 'grab';
+      thumbnailSlider.style.cursor = "grab";
     });
-    
+
     thumbnailSlider.addEventListener("mouseleave", () => {
-      thumbnailSlider.style.cursor = 'default';
+      thumbnailSlider.style.cursor = "default";
     });
 
     // Shadow fade effects for scrollable slider
-    const thumbnailsWrapper = thumbnailSlider.closest(".media-gallery__thumbnails-wrapper");
+    const thumbnailsWrapper = thumbnailSlider.closest(
+      ".media-gallery__thumbnails-wrapper"
+    );
     if (thumbnailsWrapper) {
       function updateShadowFade() {
-        const scrollTop = thumbnailSlider.scrollTop;
-        const scrollHeight = thumbnailSlider.scrollHeight;
-        const clientHeight = thumbnailSlider.clientHeight;
-        const isScrollable = scrollHeight > clientHeight;
-        
-        if (isScrollable) {
-          // Show top shadow if scrolled down
-          if (scrollTop > 10) {
-            thumbnailsWrapper.classList.add("has-scroll-top");
+        const isHorizontal = isHorizontalLayout();
+
+        if (isHorizontal) {
+          // Horizontal layout: check scrollLeft
+          const scrollLeft = thumbnailSlider.scrollLeft;
+          const scrollWidth = thumbnailSlider.scrollWidth;
+          const clientWidth = thumbnailSlider.clientWidth;
+          const isScrollable = scrollWidth > clientWidth;
+
+          if (isScrollable) {
+            // Show left shadow if scrolled right
+            if (scrollLeft > 10) {
+              thumbnailsWrapper.classList.add("has-scroll-top");
+            } else {
+              thumbnailsWrapper.classList.remove("has-scroll-top");
+            }
+
+            // Hide right shadow if scrolled to right end
+            if (scrollLeft + clientWidth >= scrollWidth - 10) {
+              thumbnailsWrapper.classList.add("has-scroll-bottom");
+            } else {
+              thumbnailsWrapper.classList.remove("has-scroll-bottom");
+            }
           } else {
-            thumbnailsWrapper.classList.remove("has-scroll-top");
-          }
-          
-          // Hide bottom shadow if scrolled to bottom
-          if (scrollTop + clientHeight >= scrollHeight - 10) {
-            thumbnailsWrapper.classList.add("has-scroll-bottom");
-          } else {
-            thumbnailsWrapper.classList.remove("has-scroll-bottom");
+            // No scrolling needed, hide both shadows
+            thumbnailsWrapper.classList.remove(
+              "has-scroll-top",
+              "has-scroll-bottom"
+            );
           }
         } else {
-          // No scrolling needed, hide both shadows
-          thumbnailsWrapper.classList.remove("has-scroll-top", "has-scroll-bottom");
+          // Vertical layout: check scrollTop
+          const scrollTop = thumbnailSlider.scrollTop;
+          const scrollHeight = thumbnailSlider.scrollHeight;
+          const clientHeight = thumbnailSlider.clientHeight;
+          const isScrollable = scrollHeight > clientHeight;
+
+          if (isScrollable) {
+            // Show top shadow if scrolled down
+            if (scrollTop > 10) {
+              thumbnailsWrapper.classList.add("has-scroll-top");
+            } else {
+              thumbnailsWrapper.classList.remove("has-scroll-top");
+            }
+
+            // Hide bottom shadow if scrolled to bottom
+            if (scrollTop + clientHeight >= scrollHeight - 10) {
+              thumbnailsWrapper.classList.add("has-scroll-bottom");
+            } else {
+              thumbnailsWrapper.classList.remove("has-scroll-bottom");
+            }
+          } else {
+            // No scrolling needed, hide both shadows
+            thumbnailsWrapper.classList.remove(
+              "has-scroll-top",
+              "has-scroll-bottom"
+            );
+          }
         }
       }
 
       // Update on scroll
       thumbnailSlider.addEventListener("scroll", updateShadowFade);
-      
+
       // Update on load and resize
       updateShadowFade();
       window.addEventListener("resize", updateShadowFade);
