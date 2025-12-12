@@ -21,6 +21,9 @@
     
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <!-- Ingredients Section CSS -->
+    <link rel="stylesheet" href="./ingrediants.css" />
   </head>
 
   <body>
@@ -595,7 +598,7 @@
                 THE WHAT, WHY & HOW
               </h2>
             </div>
-            <div class="video-previews mt-3">
+            <div class="video-previews mt-3"> 
               <div class="video-previews__grid">
                 <div class="video-preview">
                   <div class="video-preview__thumbnail">
@@ -857,60 +860,232 @@
         </div>
       </div>
     </section>
-
-    <!-- Before and After Section -->
-    <section class="before-after-comparison" data-before-after-section>
-      <div class="before-after-comparison__inner">
-        <div class="before-after-comparison__media">
-          <div class="before-after-slider" data-before-after-slider>
-            <!-- Pair 1 -->
-            <article class="before-after-slider__pair is-active" data-before-after-pair data-index="0" aria-hidden="false">
-              <div class="before-after-slider__viewport" data-before-after-viewport style="--slider-position: 50%">
-                <div class="before-after-slider__image before-after-slider__image--after">
-                  <img src="./assets/img/after1.png" alt="After image sample" />
-                </div>
-                <div class="before-after-slider__image before-after-slider__image--before" data-before-layer>
-                  <img src="./assets/img/before1.png" alt="Before image sample" />
-                </div>
-                <div class="before-after-slider__divider"></div>
-                <button class="before-after-slider__handle" type="button" data-before-after-handle role="slider"></button>
-                <div class="before-after-slider__label before-after-slider__label--before"><span>before</span></div>
-                <div class="before-after-slider__label before-after-slider__label--after"><span>after</span></div>
-              </div>
-            </article>
-
-            <!-- Pair 2 -->
-            <article class="before-after-slider__pair" data-before-after-pair data-index="1" aria-hidden="true">
-              <div class="before-after-slider__viewport" data-before-after-viewport>
-                <div class="before-after-slider__image before-after-slider__image--after">
-                  <img src="./assets/img/after1.png" alt="After sample 2" />
-                </div>
-                <div class="before-after-slider__image before-after-slider__image--before" data-before-layer>
-                  <img src="./assets/img/before1.png" alt="Before sample 2" />
-                </div>
-                <div class="before-after-slider__divider"></div>
-                <button class="before-after-slider__handle" data-before-after-handle></button>
-                <div class="before-after-slider__label before-after-slider__label--before"><span>before</span></div>
-                <div class="before-after-slider__label before-after-slider__label--after"><span>after</span></div>
-              </div>
-            </article>
+    
+    <!-- HUSTLE BENEFITS SECTION -->
+    <section id="hustle-benefits-1" class="hustle-benefits section-1">
+      <div class="hustle-benefits__inner">
+        <div class="hustle-benefits__media">
+          <div class="hustle-benefits__media-inner">
+            <video
+              class="hustle-benefits__video"
+              src="./assets/img/video.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
+            <span class="hustle-benefits__media-overlay" aria-hidden="true"></span>
           </div>
         </div>
-        <aside class="before-after-comparison__content">
-          <p class="before-after-comparison__eyebrow">TIME WEARS WELL</p>
-          <h2 class="before-after-comparison__heading">Real skin, <span class="before-after-comparison__heading-main">Real</span><span class="before-after-comparison__heading-emphasis">results</span></h2>
-          <div class="before-after-comparison__body">
-            hustle is a multitasking serum that helps brighten and revive radiance to the skin and fade dark spots. It offers a visible reduction in acne and blemishes, and the appearance of fine lines and wrinkles with consistent use.
+        <div class="hustle-benefits__content" data-hustle-benefits-accordion>
+          <header class="hustle-benefits__header">
+            <h2 class="hustle-benefits__headline">
+              <span class="hustle-benefits__headline-prefix">Why your skin will</span>
+              <span class="hustle-benefits__headline-accent">love</span>
+              <span class="hustle-benefits__headline-suffix">hustle</span>
+            </h2>
+          </header>
+          <div class="hustle-benefits__accordion" role="list">
+            <hr class="hustle-benefits__divider">
+            <!-- Accordion Item 1 -->
+            <div class="hustle-benefits__item" role="listitem">
+              <button
+                class="hustle-benefits__item-trigger"
+                type="button"
+                id="trigger-1"
+                aria-expanded="true"
+                aria-controls="panel-1"
+                data-hustle-benefits-trigger
+              >
+                <span class="hustle-benefits__item-left">
+                  <span class="hustle-benefits__item-bullet"></span>
+                  <span class="hustle-benefits__item-title">Simplifies your skincare routine</span>
+                </span>
+                <span class="hustle-benefits__item-icon">
+                  <span class="hustle-benefits__chevron"></span>
+                </span>
+              </button>
+              <div
+                id="panel-1"
+                class="hustle-benefits__item-panel is-open"
+                role="region"
+                aria-labelledby="trigger-1"
+                data-hustle-benefits-panel
+              >
+                <div class="hustle-benefits__item-panel-inner">
+                  <p class="hustle-benefits__item-body">
+                    Hustle does the heavy lifting so your skin doesn't have to. One bottle, all the actives.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Accordion Item 2 -->
+            <div class="hustle-benefits__item" role="listitem">
+              <button
+                class="hustle-benefits__item-trigger"
+                type="button"
+                id="trigger-2"
+                aria-expanded="false"
+                aria-controls="panel-2"
+                data-hustle-benefits-trigger
+              >
+                <span class="hustle-benefits__item-left">
+                  <span class="hustle-benefits__item-bullet"></span>
+                  <span class="hustle-benefits__item-title">Smooths lines & wrinkles</span>
+                </span>
+                <span class="hustle-benefits__item-icon">
+                  <span class="hustle-benefits__chevron"></span>
+                </span>
+              </button>
+              <div
+                id="panel-2"
+                class="hustle-benefits__item-panel"
+                role="region"
+                aria-labelledby="trigger-2"
+                hidden
+                data-hustle-benefits-panel
+              >
+                <div class="hustle-benefits__item-panel-inner">
+                  <p class="hustle-benefits__item-body">
+                    Powered by peptides and adenosine to help boost collagen and smooth wrinkles.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Accordion Item 3 -->
+            <div class="hustle-benefits__item" role="listitem">
+              <button
+                class="hustle-benefits__item-trigger"
+                type="button"
+                id="trigger-3"
+                aria-expanded="false"
+                aria-controls="panel-3"
+                data-hustle-benefits-trigger
+              >
+                <span class="hustle-benefits__item-left">
+                  <span class="hustle-benefits__item-bullet"></span>
+                  <span class="hustle-benefits__item-title">Brightens, fades dark spots</span>
+                </span>
+                <span class="hustle-benefits__item-icon">
+                  <span class="hustle-benefits__chevron"></span>
+                </span>
+              </button>
+              <div
+                id="panel-3"
+                class="hustle-benefits__item-panel"
+                role="region"
+                aria-labelledby="trigger-3"
+                hidden
+                data-hustle-benefits-panel
+              >
+                <div class="hustle-benefits__item-panel-inner">
+                  <p class="hustle-benefits__item-body">
+                    Formulated with brightening agents to help fade dark spots and even out skin tone.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Accordion Item 4 -->
+            <div class="hustle-benefits__item" role="listitem">
+              <button
+                class="hustle-benefits__item-trigger"
+                type="button"
+                id="trigger-4"
+                aria-expanded="false"
+                aria-controls="panel-4"
+                data-hustle-benefits-trigger
+              >
+                <span class="hustle-benefits__item-left">
+                  <span class="hustle-benefits__item-bullet"></span>
+                  <span class="hustle-benefits__item-title">Fights free radical damage</span>
+                </span>
+                <span class="hustle-benefits__item-icon">
+                  <span class="hustle-benefits__chevron"></span>
+                </span>
+              </button>
+              <div
+                id="panel-4"
+                class="hustle-benefits__item-panel"
+                role="region"
+                aria-labelledby="trigger-4"
+                hidden
+                data-hustle-benefits-panel
+              >
+                <div class="hustle-benefits__item-panel-inner">
+                  <p class="hustle-benefits__item-body">
+                    Rich in antioxidants to protect your skin from environmental stressors and free radical damage.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Accordion Item 5 -->
+            <div class="hustle-benefits__item" role="listitem">
+              <button
+                class="hustle-benefits__item-trigger"
+                type="button"
+                id="trigger-5"
+                aria-expanded="false"
+                aria-controls="panel-5"
+                data-hustle-benefits-trigger
+              >
+                <span class="hustle-benefits__item-left">
+                  <span class="hustle-benefits__item-bullet"></span>
+                  <span class="hustle-benefits__item-title">Fortifies the skin barrier</span>
+                </span>
+                <span class="hustle-benefits__item-icon">
+                  <span class="hustle-benefits__chevron"></span>
+                </span>
+              </button>
+              <div
+                id="panel-5"
+                class="hustle-benefits__item-panel"
+                role="region"
+                aria-labelledby="trigger-5"
+                hidden
+                data-hustle-benefits-panel
+              >
+                <div class="hustle-benefits__item-panel-inner">
+                  <p class="hustle-benefits__item-body">
+                    Strengthens your skin's natural barrier to lock in moisture and keep irritants out.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Accordion Item 6 -->
+            <div class="hustle-benefits__item" role="listitem">
+              <button
+                class="hustle-benefits__item-trigger"
+                type="button"
+                id="trigger-6"
+                aria-expanded="false"
+                aria-controls="panel-6"
+                data-hustle-benefits-trigger
+              >
+                <span class="hustle-benefits__item-left">
+                  <span class="hustle-benefits__item-bullet"></span>
+                  <span class="hustle-benefits__item-title">Hydrates and plumps</span>
+                </span>
+                <span class="hustle-benefits__item-icon">
+                  <span class="hustle-benefits__chevron"></span>
+                </span>
+              </button>
+              <div
+                id="panel-6"
+                class="hustle-benefits__item-panel"
+                role="region"
+                aria-labelledby="trigger-6"
+                hidden
+                data-hustle-benefits-panel
+              >
+                <div class="hustle-benefits__item-panel-inner">
+                  <p class="hustle-benefits__item-body">
+                    Deep hydration that plumps and smooths, giving your skin a youthful, dewy glow.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="before-after-comparison__nav">
-            <button class="before-after-comparison__nav-button" data-before-after-prev>
-              <span class="before-after-comparison__nav-icon before-after-comparison__nav-icon--left"></span>
-            </button>
-            <button class="before-after-comparison__nav-button" data-before-after-next>
-              <span class="before-after-comparison__nav-icon before-after-comparison__nav-icon--right"></span>
-            </button>
-          </div>
-        </aside>
+        </div>
       </div>
     </section>
 
@@ -1053,6 +1228,63 @@
         </div>
       </div>
     </section>
+
+    <!-- Before and After Section -->
+    <section class="before-after-comparison" data-before-after-section>
+      <div class="before-after-comparison__inner">
+        <div class="before-after-comparison__media">
+          <div class="before-after-slider" data-before-after-slider>
+            <!-- Pair 1 -->
+            <article class="before-after-slider__pair is-active" data-before-after-pair data-index="0" aria-hidden="false">
+              <div class="before-after-slider__viewport" data-before-after-viewport style="--slider-position: 50%">
+                <div class="before-after-slider__image before-after-slider__image--after">
+                  <img src="./assets/img/after1.png" alt="After image sample" />
+                </div>
+                <div class="before-after-slider__image before-after-slider__image--before" data-before-layer>
+                  <img src="./assets/img/before1.png" alt="Before image sample" />
+                </div>
+                <div class="before-after-slider__divider"></div>
+                <button class="before-after-slider__handle" type="button" data-before-after-handle role="slider"></button>
+                <div class="before-after-slider__label before-after-slider__label--before"><span>before</span></div>
+                <div class="before-after-slider__label before-after-slider__label--after"><span>after</span></div>
+              </div>
+            </article>
+
+            <!-- Pair 2 -->
+            <article class="before-after-slider__pair" data-before-after-pair data-index="1" aria-hidden="true">
+              <div class="before-after-slider__viewport" data-before-after-viewport>
+                <div class="before-after-slider__image before-after-slider__image--after">
+                  <img src="./assets/img/after1.png" alt="After sample 2" />
+                </div>
+                <div class="before-after-slider__image before-after-slider__image--before" data-before-layer>
+                  <img src="./assets/img/before1.png" alt="Before sample 2" />
+                </div>
+                <div class="before-after-slider__divider"></div>
+                <button class="before-after-slider__handle" data-before-after-handle></button>
+                <div class="before-after-slider__label before-after-slider__label--before"><span>before</span></div>
+                <div class="before-after-slider__label before-after-slider__label--after"><span>after</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <aside class="before-after-comparison__content">
+          <p class="before-after-comparison__eyebrow">TIME WEARS WELL</p>
+          <h2 class="before-after-comparison__heading">Real skin, <span class="before-after-comparison__heading-main">Real</span><span class="before-after-comparison__heading-emphasis">results</span></h2>
+          <div class="before-after-comparison__body">
+            hustle is a multitasking serum that helps brighten and revive radiance to the skin and fade dark spots. It offers a visible reduction in acne and blemishes, and the appearance of fine lines and wrinkles with consistent use.
+          </div>
+          <div class="before-after-comparison__nav">
+            <button class="before-after-comparison__nav-button" data-before-after-prev>
+              <span class="before-after-comparison__nav-icon before-after-comparison__nav-icon--left"></span>
+            </button>
+            <button class="before-after-comparison__nav-button" data-before-after-next>
+              <span class="before-after-comparison__nav-icon before-after-comparison__nav-icon--right"></span>
+            </button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
 
     <!-- STEP BY STEP LINEUP SECTION -->
     <section class="lineup">
@@ -1307,6 +1539,251 @@
               <div class="lineup-step__title-subtitle">
                 <h4 class="lineup-step__prod-title">in my defence</h4>
                 <p class="lineup-step__prod-subtitle">Lightweight moisturiser for deep skin nourishment</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ingredients-section">
+      <div class="section-container">
+        <!-- Text Block (Behind, Lower Z-Index) -->
+        <div class="text-block" style="margin-top: 80px;">
+          <div class="text-content">
+            <p class="subheading">INSIDE EVERY DROP</p>
+            <h2 class="main-heading">
+              Powered by clinically
+              <span class="shade">backed</span> ingredients
+            </h2>
+            <a href="/pages/ingredients" class="cta-button">View all ingredients</a>
+          </div>
+        </div>
+
+        <!-- Swiper Slider (In Front, Higher Z-Index) -->
+        <div class="swiper-container-wrapper" aria-label="Key Ingredients">
+          <div class="swiper ingredients-swiper">
+            <div class="swiper-wrapper">
+              <!-- Slide 1: Hyaluronic Acid -->
+              <div class="swiper-slide">
+                <article class="ingredient-card">
+                  <div class="card-text">
+                    <h2 class="ingredient-title">Hyaluronic Acid</h2>
+                    <p class="ingredient-description">
+                      Deeply hydrates by holding 1,000  weight in water
+                      and prevents transepidermal water loss.
+                    </p>
+                  </div>
+                  <div class="card-image">
+                    <img
+                      src="./assets/img/insideimage1.webp"
+                      alt="Abstract image of translucent gel representing Hyaluronic Acid"
+                    />
+                    <span class="category-badge">Hydrating</span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Slide 2: Polyglutamic Acid -->
+              <div class="swiper-slide">
+                <article class="ingredient-card">
+                  <div class="card-text">
+                    <h2 class="ingredient-title">Polyglutamic Acid</h2>
+                    <p class="ingredient-description">
+                      Holds 5000 times its weight in ,in moisture,
+                      and enhances hydration retention in the skin.
+                    </p>
+                  </div>
+                  <div class="card-image">
+                    <img
+                      src="./assets/img/insideimage2.webp"
+                      alt="Abstract image of translucent gel representing Polyglutamic Acid"
+                    />
+                    <span class="category-badge">Hydrating</span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Slide 3: Squalane -->
+              <div class="swiper-slide">
+                <article class="ingredient-card">
+                  <div class="card-text">
+                    <h2 class="ingredient-title">Squalane</h2>
+                    <p class="ingredient-description">
+                      A powerful emollient that locks in moisture, softens skin,
+                      and reduces water loss.
+                    </p>
+                  </div>
+                  <div class="card-image">
+                    <img
+                      src="./assets/img/insideimage3.webp"
+                      alt="Botanical image representing Squalane"
+                    />
+                    <span class="category-badge">Nourishing</span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Slide 4: Panthenol -->
+              <div class="swiper-slide">
+                <article class="ingredient-card">
+                  <div class="card-text">
+                    <h2 class="ingredient-title">Panthenol</h2>
+                    <p class="ingredient-description">
+                      Panthenol draws in moisture,the skin barrier,
+                      and helps keep skin soft, smooth, and plump.
+                    </p>
+                  </div>
+                  <div class="card-image">
+                    <img
+                      src="./assets/img/insideimage4.webp"
+                      alt="Abstract image representing Panthenol"
+                    />
+                    <span class="category-badge">Hydrating</span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Slide 5: Niacinamide -->
+              <div class="swiper-slide">
+                <article class="ingredient-card">
+                  <div class="card-text">
+                    <h2 class="ingredient-title">Niacinamide</h2>
+                    <p class="ingredient-description">
+                      Fades dark spots, smooths fine lines, regulates sebum, and
+                      strengthens the skin barrier.
+                    </p>
+                  </div>
+                  <div class="card-image">
+                    <img
+                      src="./assets/img/insideimage5.webp"
+                      alt="Abstract image representing Niacinamide"
+                    />
+                    <span class="category-badge">Brightening</span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Slide 6: Vitamin C -->
+              <div class="swiper-slide">
+                <article class="ingredient-card">
+                  <div class="card-text">
+                    <h2 class="ingredient-title">Vitamin C</h2>
+                    <p class="ingredient-description">
+                      Boosts collagen, fades pigmentation, skin tone,
+                      and defends against oxidative stress.
+                    </p>
+                  </div>
+                  <div class="card-image">
+                    <img
+                      src="./assets/img/insideimage6.png"
+                      alt="Abstract image representing Vitamin C"
+                    />
+                    <span class="category-badge">Brightening</span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Slide 7: Hexapeptide-2 -->
+              <div class="swiper-slide">
+                <article class="ingredient-card">
+                  <div class="card-text">
+                    <h2 class="ingredient-title">Hexapeptide-2</h2>
+                    <p class="ingredient-description">
+                      Helps combat hyperpigmentation, evens out skin tone, and
+                      targets stubborn dark spots.
+                    </p>
+                  </div>
+                  <div class="card-image">
+                    <img
+                      src="./assets/img/insideimage7.webp"
+                      alt="Abstract image representing Hexapeptide-2"
+                    />
+                    <span class="category-badge">Brightening</span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Slide 8: Birch Sap Juice -->
+              <div class="swiper-slide">
+                <article class="ingredient-card">
+                  <div class="card-text">
+                    <h2 class="ingredient-title">Birch Sap Juice</h2>
+                    <p class="ingredient-description">
+                      Soothes, hydrates, and strengthens with 17 amino acids,
+                      antioxidants, enzymes.
+                    </p>
+                  </div>
+                  <div class="card-image">
+                    <img
+                      src="./assets/img/insideimage8.webp"
+                      alt="Botanical image representing Birch Sap Juice"
+                    />
+                    <span class="category-badge">Hydrating</span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Slide 9: Galactomyces Ferment Filtrate -->
+              <div class="swiper-slide">
+                <article class="ingredient-card">
+                  <div class="card-text">
+                    <h2 class="ingredient-title">
+                      Galactomyces
+                    </h2>
+                    <p class="ingredient-description">
+                      Strengthens moisture barrier  and
+                      anti-inflammatory benefits.
+                    </p>
+                  </div>
+                  <div class="card-image">
+                    <img
+                      src="./assets/img/insideimage9.webp"
+                      alt="Abstract image representing Galactomyces Ferment Filtrate"
+                    />
+                    <span class="category-badge">Hydrating</span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Slide 10: Peptides -->
+              <div class="swiper-slide">
+                <article class="ingredient-card">
+                  <div class="card-text">
+                    <h2 class="ingredient-title">Peptides</h2>
+                    <p class="ingredient-description">
+                      Palmitoyl Tripeptide-1 & Palmitoyl boost
+                       to restore firmness and smooth fine lines.
+                    </p>
+                  </div>
+                  <div class="card-image">
+                    <img
+                      src="./assets/img/insideimage10.webp"
+                      alt="Abstract image representing Peptides"
+                    />
+                    <span class="category-badge">Nourishing</span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Slide 11: Adenosine -->
+              <div class="swiper-slide">
+                <article class="ingredient-card">
+                  <div class="card-text">
+                    <h2 class="ingredient-title">Adenosine</h2>
+                    <p class="ingredient-description">
+                      Smooths skin, energises surface cells, and visibly reduces
+                       for a younger appearance.
+                    </p>
+                  </div>
+                  <div class="card-image">
+                    <img
+                      src="./assets/img/insideimage11.webp"
+                      alt="Abstract image representing Adenosine"
+                    />
+                    <span class="category-badge">Nourishing</span>
+                  </div>
+                </article>
               </div>
             </div>
           </div>
@@ -2076,8 +2553,7 @@
         
       </div>
     </section>
-
-      
+ 
     <footer class="site-footer">
       <div class="footer-hero">
         <video
@@ -2199,6 +2675,9 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
+    <!-- Ingredients Section JS -->
+    <script src="./ingrediants.js"></script>
+
     <!-- Initialize Inside Ingredients Swiper -->
     <script>
       var insideIngredientsSwiper = new Swiper(".inside-ingredients-swiper", {
