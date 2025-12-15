@@ -37,12 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       // Extra large devices (large desktops, 1280px and up)
       1280: {
-        slidesPerView: 3.5,
+        slidesPerView: 1.9,
         spaceBetween: 26,
       },
       // XXL devices (1440px and up)
       1440: {
-        slidesPerView: 4,
+        slidesPerView: 2.2,
         spaceBetween: 30,
       },
       // Ultra wide screens (1920px and up)

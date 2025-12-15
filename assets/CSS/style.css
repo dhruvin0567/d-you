@@ -311,6 +311,12 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 64px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.site-header__logo {
+  flex-shrink: 0;
 }
 
 .site-header__logo img {
@@ -331,6 +337,8 @@ body {
   align-items: center;
   gap: 56px;
   margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;
 }
 
 .site-header__nav-link {
@@ -357,6 +365,7 @@ body {
   display: flex;
   align-items: center;
   gap: 22px;
+  flex-shrink: 0;
 }
 
 .site-header__currency {
@@ -822,6 +831,88 @@ body.offcanvas-open {
 
   .site-header__logo img {
     height: 34px;
+  }
+}
+
+/* Desktop-large adjustments: make navbar responsive for 1200px to 1400px */
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .site-header__inner {
+    padding: 20px 50px;
+    gap: 40px;
+  }
+
+  .site-header__nav {
+    justify-content: center;
+    flex: 1;
+  }
+
+  .site-header__nav-list {
+    gap: 32px;
+    flex-wrap: nowrap;
+  }
+
+  .site-header__nav-list li {
+    white-space: nowrap;
+  }
+
+  .site-header__nav-link {
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+  }
+
+  .site-header__actions {
+    gap: 18px;
+    flex-shrink: 0;
+  }
+
+  .site-header__logo img {
+    height: 36px;
+  }
+
+  .site-header__currency {
+    font-size: 12px;
+  }
+
+  .site-header__icon-btn i {
+    font-size: 18px;
+  }
+}
+
+/* Desktop-extra-large adjustments: make navbar responsive for 1400px and above */
+@media (min-width: 1401px) {
+  .site-header__inner {
+    padding: 20px 80px;
+    gap: 64px;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+
+  .site-header__nav {
+    justify-content: center;
+    flex: 1;
+  }
+
+  .site-header__nav-list {
+    gap: 56px;
+    flex-wrap: nowrap;
+  }
+
+  .site-header__nav-list li {
+    white-space: nowrap;
+  }
+
+  .site-header__nav-link {
+    font-size: 12px;
+    letter-spacing: 0.24em;
+  }
+
+  .site-header__actions {
+    gap: 22px;
+    flex-shrink: 0;
+  }
+
+  .site-header__logo img {
+    height: 38px;
   }
 }
 
@@ -5943,20 +6034,19 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
 }
 
 .swiper-container-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
+  margin-top: 30px;
   z-index: 2;
-  overflow: hidden; /* Hide gap at the end when slider reaches last slide */
+  overflow: hidden;
+  height: auto;
   width: 100%;
   box-sizing: border-box;
 }
 
 .ingredients-swiper {
   width: 100%;
-  height: 100%;
+  height: auto;
+  padding-bottom: 20px;
   box-sizing: border-box;
 }
 
@@ -6291,62 +6381,92 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 }
 
-/* Medium Desktop */
-@media screen and (min-width: 1024px) and (max-width: 1149px) {
+/* Medium Desktop - 1024px to 1199px */
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+  /* Mobile-like behavior for 1024px screens - same as 768px */
   .ingredients-section {
-    padding: 70px 50px;
+    padding: 40px 16px;
   }
 
   .section-container {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    min-height: 400px;
-    position: relative;
+    min-height: auto;
   }
 
   .text-block {
-    flex: 0 0 320px;
-    max-width: 320px;
-    min-height: auto;
-    justify-content: flex-end;
-    padding: 0;
+    min-height: 300px;
+    padding: 20px;
     position: relative;
     z-index: 1;
   }
 
   .text-content {
-    text-align: left;
-    width: 100%;
+    text-align: center;
+    max-width: 100%;
   }
 
   .main-heading {
-    font-size: 44px;
+    font-size: 36px;
+    margin-bottom: 24px;
+  }
+
+  .subheading {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
+  .cta-button {
+    font-size: 14px;
+    padding: 13px 24px;
   }
 
   .swiper-container-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position: relative;
+    margin-top: 30px;
     z-index: 2;
     overflow: hidden;
+    height: auto;
   }
 
   .ingredients-swiper {
     width: 100%;
-    height: 100%;
+    height: auto;
+    padding-bottom: 20px;
+  }
+
+  .ingredient-card {
+    min-height: auto;
+    max-width: 100%;
+  }
+
+  .ingredient-title {
+    font-size: 36px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .ingredient-description {
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 24px;
   }
 
   .card-image {
-    max-height: 280px;
-    max-width: 560px;
+    max-height: 250px;
+    max-width: 100%;
     aspect-ratio: 622 / 312;
+    border-radius: 16px;
+  }
+
+  .category-badge {
+    font-size: 12px;
+    padding: 8px 18px;
+    bottom: 20px;
+    left: 20px;
   }
 }
 
-@media screen and (min-width: 1150px) {
+/* Large Desktop - 1200px and above */
+@media screen and (min-width: 1200px) {
   .ingredients-section {
     padding: 80px 64px;
   }
@@ -6388,11 +6508,14 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
     bottom: 0;
     z-index: 2;
     overflow: hidden;
+    margin-top: 0;
+    height: 100%;
   }
 
   .ingredients-swiper {
     width: 100%;
     height: 100%;
+    padding-bottom: 0;
   }
 
   .card-image {
