@@ -1260,7 +1260,6 @@
       </div>
     </section>
 
-
     <!-- STEP BY STEP LINEUP SECTION -->
     <section class="lineup">
       <div class="lineup__inner">
@@ -1856,17 +1855,18 @@
     </section>
 
     <section
-    class="faq-accordion-section section-main-outer-container"
+    class="faq-accordion-section"
     aria-label="Frequently Asked Questions"
     data-faq-section
   >
     <div class="section-faq-container">
       <div class="faq-accordion__inner">
   
+        <!-- Heading -->
         <div class="faq-accordion-inner-heading-container">
           <p class="faq-accordion__section-label">Curious minds</p>
   
-          <h2 class="faq-accordion__heading mt-5">
+          <h2 class="faq-accordion__heading">
             Frequently Asked
             <span class="faq-accordion__heading-accent">Questions</span>
           </h2>
@@ -1874,19 +1874,22 @@
   
         <!-- Tabs -->
         <div class="faq-accordion__tabs" role="tablist" aria-label="FAQ categories">
-          <button class="faq-accordion__tab is-active" data-faq-tab="Skin Concerns" role="tab" aria-selected="true">
+          <button class="faq-accordion__tab is-active" role="tab"
+            aria-selected="true" data-faq-tab="Skin Concerns">
             <span class="faq-accordion__tab-dot"></span>
-            <span class="faq-accordion__tab-label">Skin Concerns</span>
+            Skin Concerns
           </button>
   
-          <button class="faq-accordion__tab" data-faq-tab="Skin Types" role="tab" aria-selected="false">
+          <button class="faq-accordion__tab" role="tab"
+            aria-selected="false" data-faq-tab="Skin Types">
             <span class="faq-accordion__tab-dot"></span>
-            <span class="faq-accordion__tab-label">Skin Types</span>
+            Skin Types
           </button>
   
-          <button class="faq-accordion__tab" data-faq-tab="Hustle Basics" role="tab" aria-selected="false">
+          <button class="faq-accordion__tab" role="tab"
+            aria-selected="false" data-faq-tab="Hustle Basics">
             <span class="faq-accordion__tab-dot"></span>
-            <span class="faq-accordion__tab-label">Hustle Basics</span>
+            Hustle Basics
           </button>
         </div>
   
@@ -1896,36 +1899,45 @@
   
             <div class="faq-accordion__item" data-faq-item data-faq-tab-item="Skin Concerns">
               <button class="faq-accordion__question" aria-expanded="false" data-faq-trigger>
-                <span class="faq-accordion__question-text">DOES HUSTLE HELP WITH ACNE?</span>
-                <span class="faq-accordion__chevron" aria-hidden="true">
-                  <svg viewBox="0 0 18 10" xmlns="http://www.w3.org/2000/svg" focusable="false">
-                    <path d="M1.5 1.5 9 8.5l7.5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                <span class="faq-accordion__question-text">
+                  DOES HUSTLE HELP WITH ACNE?
                 </span>
+                <i class="bi bi-chevron-down faq-accordion__chevron" aria-hidden="true"></i>
               </button>
               <div class="faq-accordion__answer" hidden data-faq-answer>
                 <div class="faq-accordion__answer-inner">
-                  Yes. Hustle helps clarify, gently exfoliate, and balance excess oil without stripping.
+                  Yes. Hustle has been carefully formulated to support acne-prone skin.
                 </div>
               </div>
             </div>
   
             <div class="faq-accordion__item" data-faq-item data-faq-tab-item="Skin Concerns">
               <button class="faq-accordion__question" aria-expanded="false" data-faq-trigger>
-                <span class="faq-accordion__question-text">DOES HUSTLE HELP WITH HYPERPIGMENTATION?</span>
-                <span class="faq-accordion__chevron" aria-hidden="true">
-                  <svg viewBox="0 0 18 10" xmlns="http://www.w3.org/2000/svg" focusable="false">
-                    <path d="M1.5 1.5 9 8.5l7.5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                <span class="faq-accordion__question-text">
+                  DOES HUSTLE HELP WITH HYPERPIGMENTATION?
                 </span>
+                <i class="bi bi-chevron-down faq-accordion__chevron" aria-hidden="true"></i>
               </button>
               <div class="faq-accordion__answer" hidden data-faq-answer>
                 <div class="faq-accordion__answer-inner">
-                  Yes, consistent use helps even skin tone over time.
+                  Yes, consistent use can help even skin tone over time.
                 </div>
               </div>
             </div>
   
+            <div class="faq-accordion__item" data-faq-item data-faq-tab-item="Skin Concerns">
+              <button class="faq-accordion__question" aria-expanded="false" data-faq-trigger>
+                <span class="faq-accordion__question-text">
+                  DOES HUSTLE HELP WITH LINES AND WRINKLES?
+                </span>
+                <i class="bi bi-chevron-down faq-accordion__chevron" aria-hidden="true"></i>
+              </button>
+              <div class="faq-accordion__answer" hidden data-faq-answer>
+                <div class="faq-accordion__answer-inner">
+                  Yes, hustle contains Palmitoyl Tripeptide-1, Palmitoyl Tetrapeptide-7, and Adenosine, three skin-repairing ingredients that boost collagen, reduce wrinkles, and improve texture and suppleness for firmer, more youthful-looking skin.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
   
@@ -1933,50 +1945,124 @@
           <div class="faq-accordion__list">
             <div class="faq-accordion__item" data-faq-item data-faq-tab-item="Skin Types">
               <button class="faq-accordion__question" aria-expanded="false" data-faq-trigger>
-                <span class="faq-accordion__question-text">IS HUSTLE SAFE FOR SENSITIVE SKIN?</span>
-                <span class="faq-accordion__chevron" aria-hidden="true">
-                  <svg viewBox="0 0 18 10" xmlns="http://www.w3.org/2000/svg" focusable="false">
-                    <path d="M1.5 1.5 9 8.5l7.5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                <span class="faq-accordion__question-text">
+                  IS HUSTLE SAFE FOR SENSITIVE SKIN?
                 </span>
+                <i class="bi bi-chevron-down faq-accordion__chevron" aria-hidden="true"></i>
               </button>
               <div class="faq-accordion__answer" hidden data-faq-answer>
                 <div class="faq-accordion__answer-inner">
-                  Hustle is formulated to be gentle and non-irritating.
+                  hustle is a dream for dry, dehydrated skin. With over 60% birch sap, hyaluronic acid, panthenol, glycerin, botanical oils, collagen, niacinamide, and 10% ferment extract, it deeply hydrates, restores barrier function, and locks in lasting moisture.
                 </div>
               </div>
             </div>
           </div>
+          <div class="faq-accordion__list">
+            <div class="faq-accordion__item" data-faq-item data-faq-tab-item="Skin Types">
+              <button class="faq-accordion__question" aria-expanded="false" data-faq-trigger>
+                <span class="faq-accordion__question-text">
+                  IS HUSTLE SAFE FOR ACNE-PRONE SKIN?
+                </span>
+                <i class="bi bi-chevron-down faq-accordion__chevron" aria-hidden="true"></i>
+              </button>
+              <div class="faq-accordion__answer" hidden data-faq-answer>
+                <div class="faq-accordion__answer-inner">
+                  hustle is a dream for dry, dehydrated skin. With over 60% birch sap, hyaluronic acid, panthenol, glycerin, botanical oils, collagen, niacinamide, and 10% ferment extract, it deeply hydrates, restores barrier function, and locks in lasting moisture.
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="faq-accordion__list">
+            <div class="faq-accordion__item" data-faq-item data-faq-tab-item="Skin Types">
+              <button class="faq-accordion__question" aria-expanded="false" data-faq-trigger>
+                <span class="faq-accordion__question-text">
+                  IS HUSTLE SAFE FOR COMBINATION SKIN?
+                </span>
+                <i class="bi bi-chevron-down faq-accordion__chevron" aria-hidden="true"></i>
+              </button>
+              <div class="faq-accordion__answer" hidden data-faq-answer>
+                <div class="faq-accordion__answer-inner">
+                  hustle is a dream for dry, dehydrated skin. With over 60% birch sap, hyaluronic acid, panthenol, glycerin, botanical oils, collagen, niacinamide, and 10% ferment extract, it deeply hydrates, restores barrier function, and locks in lasting moisture.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-accordion__list">
+            <div class="faq-accordion__item" data-faq-item data-faq-tab-item="Skin Types">
+              <button class="faq-accordion__question" aria-expanded="false" data-faq-trigger>
+                <span class="faq-accordion__question-text">
+                  IS HUSTLE SUITABLE FOR SENSITIVE SKIN?
+                </span>
+                <i class="bi bi-chevron-down faq-accordion__chevron" aria-hidden="true"></i>
+              </button>
+              <div class="faq-accordion__answer" hidden data-faq-answer>
+                <div class="faq-accordion__answer-inner">
+                  hustle is a dream for dry, dehydrated skin. With over 60% birch sap, hyaluronic acid, panthenol, glycerin, botanical oils, collagen, niacinamide, and 10% ferment extract, it deeply hydrates, restores barrier function, and locks in lasting moisture.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
         </div>
   
         <div class="faq-accordion__panel" data-faq-panel="Hustle Basics" hidden>
           <div class="faq-accordion__list">
             <div class="faq-accordion__item" data-faq-item data-faq-tab-item="Hustle Basics">
               <button class="faq-accordion__question" aria-expanded="false" data-faq-trigger>
-                <span class="faq-accordion__question-text">HOW OFTEN SHOULD I USE HUSTLE?</span>
-                <span class="faq-accordion__chevron" aria-hidden="true">
-                  <svg viewBox="0 0 18 10" xmlns="http://www.w3.org/2000/svg" focusable="false">
-                    <path d="M1.5 1.5 9 8.5l7.5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                <span class="faq-accordion__question-text">
+                  HOW OFTEN SHOULD I USE HUSTLE?
                 </span>
+                <i class="bi bi-chevron-down faq-accordion__chevron" aria-hidden="true"></i>
               </button>
               <div class="faq-accordion__answer" hidden data-faq-answer>
                 <div class="faq-accordion__answer-inner">
-                  Use daily for best results.
+                  Use once or twice daily as part of your routine.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-accordion__item" data-faq-item data-faq-tab-item="Hustle Basics">
+              <button class="faq-accordion__question" aria-expanded="false" data-faq-trigger>
+                <span class="faq-accordion__question-text">
+                  HOW OFTEN SHOULD I USE HUSTLE?
+                </span>
+                <i class="bi bi-chevron-down faq-accordion__chevron" aria-hidden="true"></i>
+              </button>
+              <div class="faq-accordion__answer" hidden data-faq-answer>
+                <div class="faq-accordion__answer-inner">
+                  Use once or twice daily as part of your routine.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-accordion__item" data-faq-item data-faq-tab-item="Hustle Basics">
+              <button class="faq-accordion__question" aria-expanded="false" data-faq-trigger>
+                <span class="faq-accordion__question-text">
+                  HOW OFTEN SHOULD I USE HUSTLE?
+                </span>
+                <i class="bi bi-chevron-down faq-accordion__chevron" aria-hidden="true"></i>
+              </button>
+              <div class="faq-accordion__answer" hidden data-faq-answer>
+                <div class="faq-accordion__answer-inner">
+                  hustle is a dream for dry, dehydrated skin. With over 60% birch sap, hyaluronic acid, panthenol, glycerin, botanical oils, collagen, niacinamide, and 10% ferment extract, it deeply hydrates, restores barrier function, and locks in lasting moisture.
                 </div>
               </div>
             </div>
           </div>
         </div>
   
-        <div class="faq-accordion-inner-cta-container">
+        <!-- CTA -->
+        <div class="faq-accordion__cta">
           <a href="#" class="faq-accordion__view-all">View all</a>
         </div>
   
       </div>
     </div>
   </section>
-
+ 
        <!-- TOP SHELF PICKS SECTION -->
     <section class="top-shelf-picks">
       <div class="top-shelf-picks__container">

@@ -1972,42 +1972,119 @@ if (resultsComparison) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const section = document.querySelector("[data-faq-section]");
+  if (!section) return;
 
-  // Tabs
-  section.querySelectorAll("[data-faq-tab]").forEach(tab => {
+  const ANIMATION_DURATION = 400;
+  const tabs = section.querySelectorAll("[data-faq-tab]");
+  const panels = section.querySelectorAll("[data-faq-panel]");
+
+  tabs.forEach(tab => {
     tab.addEventListener("click", () => {
       const target = tab.dataset.faqTab;
 
-      section.querySelectorAll("[data-faq-tab]").forEach(t => {
-        t.classList.toggle("is-active", t === tab);
+      tabs.forEach(t => {
+        const isActive = t === tab;
+        t.classList.toggle("is-active", isActive);
+        t.setAttribute("aria-selected", String(isActive));
       });
 
-      section.querySelectorAll("[data-faq-panel]").forEach(panel => {
-        panel.hidden = panel.dataset.faqPanel !== target;
-        panel.classList.toggle("is-active", panel.dataset.faqPanel === target);
+      panels.forEach(panel => {
+        const active = panel.dataset.faqPanel === target;
+        panel.hidden = !active;
+        panel.classList.toggle("is-active", active);
       });
     });
   });
 
-  // Accordions
   section.querySelectorAll("[data-faq-item]").forEach(item => {
     const trigger = item.querySelector("[data-faq-trigger]");
     const answer = item.querySelector("[data-faq-answer]");
+    if (!trigger || !answer) return;
+
+    const tabKey = item.dataset.faqTabItem;
+
+    function closeItem(targetItem) {
+      const t = targetItem.querySelector("[data-faq-trigger]");
+      const a = targetItem.querySelector("[data-faq-answer]");
+      if (!t || !a) return;
+
+      t.setAttribute("aria-expanded", "false");
+      a.classList.remove("is-open");
+
+      setTimeout(() => {
+        if (t.getAttribute("aria-expanded") === "false") {
+          a.setAttribute("hidden", "hidden");
+        }
+      }, ANIMATION_DURATION);
+    }
+
+    function openItem(targetItem) {
+      const t = targetItem.querySelector("[data-faq-trigger]");
+      const a = targetItem.querySelector("[data-faq-answer]");
+      if (!t || !a) return;
+
+      t.setAttribute("aria-expanded", "true");
+      a.removeAttribute("hidden");
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          a.classList.add("is-open");
+        });
+      });
+    }
 
     trigger.addEventListener("click", () => {
-      const expanded = trigger.getAttribute("aria-expanded") === "true";
+      const isExpanded = trigger.getAttribute("aria-expanded") === "true";
 
+      // Close other items within the same tab group
       section.querySelectorAll("[data-faq-item]").forEach(other => {
-        if (other !== item && other.dataset.faqTabItem === item.dataset.faqTabItem) {
-          const t = other.querySelector("[data-faq-trigger]");
-          const a = other.querySelector("[data-faq-answer]");
-          t.setAttribute("aria-expanded", "false");
-          a.hidden = true;
-        }
+        if (other === item) return;
+        if (other.dataset.faqTabItem !== tabKey) return;
+        closeItem(other);
       });
 
-      trigger.setAttribute("aria-expanded", String(!expanded));
-      answer.hidden = expanded;
+      if (isExpanded) {
+        closeItem(item);
+      } else {
+        openItem(item);
+      }
     });
+
+    trigger.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        trigger.click();
+      }
+    });
+
+    // Initial state: sync CSS classes with aria/hidden
+    const initiallyExpanded = trigger.getAttribute("aria-expanded") === "true";
+    const isHidden = answer.hasAttribute("hidden");
+
+    if (initiallyExpanded && !isHidden) {
+      answer.classList.add("is-open");
+    } else {
+      trigger.setAttribute("aria-expanded", "false");
+      answer.classList.remove("is-open");
+      answer.setAttribute("hidden", "hidden");
+    }
   });
+
+  // Ensure only the active panel is visible on load
+  const activeTab = Array.from(tabs).find(t => t.classList.contains("is-active")) || tabs[0];
+  if (activeTab) {
+    const target = activeTab.dataset.faqTab;
+
+    tabs.forEach(t => {
+      const isActive = t === activeTab;
+      t.classList.toggle("is-active", isActive);
+      t.setAttribute("aria-selected", String(isActive));
+    });
+
+    panels.forEach(panel => {
+      const active = panel.dataset.faqPanel === target;
+      panel.hidden = !active;
+      panel.classList.toggle("is-active", active);
+    });
+  }
 });
