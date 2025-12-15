@@ -6028,8 +6028,7 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   width: 100%;
   max-height: 312px;
   max-width: 622px;
-
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 622 / 312;
   overflow: hidden;
   border-radius: 20px;
 }
@@ -6194,6 +6193,8 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
 
   .card-image {
     max-height: 200px;
+    max-width: 100%;
+    aspect-ratio: 622 / 312;
     border-radius: 12px;
   }
 
@@ -6278,6 +6279,7 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   .card-image {
     max-height: 250px;
     max-width: 100%;
+    aspect-ratio: 622 / 312;
     border-radius: 16px;
   }
 
@@ -6338,8 +6340,9 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 
   .card-image {
-    max-height: 300px;
-    max-width: 550px;
+    max-height: 280px;
+    max-width: 560px;
+    aspect-ratio: 622 / 312;
   }
 }
 
@@ -6393,8 +6396,11 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 
   .card-image {
-    max-height: 312px;
+    width: 622px;
+    height: 312px;
     max-width: 622px;
+    max-height: 312px;
+    aspect-ratio: 622 / 312;
   }
 }
 
@@ -6420,8 +6426,11 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 
   .card-image {
-    max-height: 350px;
-    max-width: 700px;
+    width: 622px;
+    height: 312px;
+    max-width: 622px;
+    max-height: 312px;
+    aspect-ratio: 622 / 312;
   }
 }
 

@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       // Ultra wide screens (1920px and up)
       1920: {
-        slidesPerView: 4.5,
+        slidesPerView: 2.5,
         spaceBetween: 35,
       },
     },
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     mousewheel: {
       enabled: false,
     },
-    effect: 'slide',
+    effect: "slide",
     slideToClickedSlide: false,
     watchSlidesProgress: true,
     watchSlidesVisibility: true,
@@ -258,15 +258,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // Determine scroll direction based on deltaX sign
           const scrollDirection = e.deltaX > 0 ? 1 : -1;
-          
+
           // Accumulate scroll delta
           wheelScrollDelta += Math.abs(e.deltaX);
-          
+
           // If threshold reached, trigger slide change
           if (wheelScrollDelta >= SCROLL_THRESHOLD) {
             // Reset accumulated delta
             wheelScrollDelta = 0;
-            
+
             // Navigate to next or previous slide
             if (scrollDirection > 0) {
               swiper.slideNext();
