@@ -1705,7 +1705,7 @@ if (resultsComparison) {
 })();
 
 // ====================
-// INGREDIENTS SLIDER SECTION 
+// INGREDIENTS SLIDER SECTION
 // ====================
 (function () {
   const ingredientsSlider = document.getElementById("ingredientsSlider");
@@ -1757,7 +1757,7 @@ if (resultsComparison) {
       }
     });
   }
-  
+
   ingredientsSlider.addEventListener(
     "wheel",
     (e) => {
@@ -1895,37 +1895,37 @@ if (resultsComparison) {
   const ANIMATION_DURATION = 400;
   const ANIMATION_EASING = "cubic-bezier(0.4, 0, 0.2, 1)"; // Material Design easing
 
-  var section = document.querySelector('#hustle-benefits-1');
+  var section = document.querySelector("#hustle-benefits-1");
   if (!section) return;
 
-  var container = section.querySelector('[data-hustle-benefits-accordion]');
+  var container = section.querySelector("[data-hustle-benefits-accordion]");
   if (!container) return;
 
   var triggers = Array.prototype.slice.call(
-    container.querySelectorAll('[data-hustle-benefits-trigger]')
+    container.querySelectorAll("[data-hustle-benefits-trigger]")
   );
 
   if (!triggers.length) return;
 
   function closeAccordion(button, panel) {
-    button.setAttribute('aria-expanded', 'false');
-    panel.classList.remove('is-open');
+    button.setAttribute("aria-expanded", "false");
+    panel.classList.remove("is-open");
 
     setTimeout(function () {
-      if (button.getAttribute('aria-expanded') === 'false') {
-        panel.setAttribute('hidden', 'hidden');
+      if (button.getAttribute("aria-expanded") === "false") {
+        panel.setAttribute("hidden", "hidden");
       }
     }, ANIMATION_DURATION);
   }
 
   function openAccordion(button, panel) {
-    button.setAttribute('aria-expanded', 'true');
-    panel.removeAttribute('hidden');
+    button.setAttribute("aria-expanded", "true");
+    panel.removeAttribute("hidden");
 
     // Use requestAnimationFrame for smooth opening animation
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
-        panel.classList.add('is-open');
+        panel.classList.add("is-open");
       });
     });
   }
@@ -1933,9 +1933,9 @@ if (resultsComparison) {
   function closeAll(except) {
     triggers.forEach(function (button) {
       if (button === except) return;
-      var isExpanded = button.getAttribute('aria-expanded') === 'true';
+      var isExpanded = button.getAttribute("aria-expanded") === "true";
       if (isExpanded) {
-        var panelId = button.getAttribute('aria-controls');
+        var panelId = button.getAttribute("aria-controls");
         var panel = document.getElementById(panelId);
         if (panel) {
           closeAccordion(button, panel);
@@ -1945,9 +1945,9 @@ if (resultsComparison) {
   }
 
   triggers.forEach(function (button) {
-    button.addEventListener('click', function () {
-      var isExpanded = button.getAttribute('aria-expanded') === 'true';
-      var panelId = button.getAttribute('aria-controls');
+    button.addEventListener("click", function () {
+      var isExpanded = button.getAttribute("aria-expanded") === "true";
+      var panelId = button.getAttribute("aria-controls");
       var panel = document.getElementById(panelId);
       if (!panel) return;
 
@@ -1961,11 +1961,53 @@ if (resultsComparison) {
       }
     });
 
-    button.addEventListener('keydown', function (event) {
-      if (event.key === 'Enter' || event.key === ' ') {
+    button.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         button.click();
       }
     });
   });
 })();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector("[data-faq-section]");
+
+  // Tabs
+  section.querySelectorAll("[data-faq-tab]").forEach(tab => {
+    tab.addEventListener("click", () => {
+      const target = tab.dataset.faqTab;
+
+      section.querySelectorAll("[data-faq-tab]").forEach(t => {
+        t.classList.toggle("is-active", t === tab);
+      });
+
+      section.querySelectorAll("[data-faq-panel]").forEach(panel => {
+        panel.hidden = panel.dataset.faqPanel !== target;
+        panel.classList.toggle("is-active", panel.dataset.faqPanel === target);
+      });
+    });
+  });
+
+  // Accordions
+  section.querySelectorAll("[data-faq-item]").forEach(item => {
+    const trigger = item.querySelector("[data-faq-trigger]");
+    const answer = item.querySelector("[data-faq-answer]");
+
+    trigger.addEventListener("click", () => {
+      const expanded = trigger.getAttribute("aria-expanded") === "true";
+
+      section.querySelectorAll("[data-faq-item]").forEach(other => {
+        if (other !== item && other.dataset.faqTabItem === item.dataset.faqTabItem) {
+          const t = other.querySelector("[data-faq-trigger]");
+          const a = other.querySelector("[data-faq-answer]");
+          t.setAttribute("aria-expanded", "false");
+          a.hidden = true;
+        }
+      });
+
+      trigger.setAttribute("aria-expanded", String(!expanded));
+      answer.hidden = expanded;
+    });
+  });
+});
