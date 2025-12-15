@@ -64,12 +64,15 @@ body {
 .before-after-slider {
   position: relative;
 }
+
 .before-after-slider__pair {
   display: none;
 }
+
 .before-after-slider__pair.is-active {
   display: block;
 }
+
 .before-after-slider__viewport {
   position: relative;
   width: 100%;
@@ -97,6 +100,7 @@ body {
 .before-after-slider__image--after {
   z-index: 1;
 }
+
 .before-after-slider__image--before {
   z-index: 2;
   clip-path: inset(0 calc(100% - var(--slider-position)) 0 0);
@@ -151,19 +155,20 @@ body {
   font-weight: 500;
   text-transform: lowercase;
   z-index: 5;
-  /* background: rgba(0, 0, 0, 0.3); */
-  /* backdrop-filter: blur(4px); */
 }
 
 .before-after-slider__label--before {
   left: 0;
 }
+
 .before-after-slider__label--after {
   right: 0;
 }
+
 .before-after-comparison__content {
   width: 100%;
 }
+
 .before-after-comparison__eyebrow {
   font-size: 14px;
   text-transform: uppercase;
@@ -226,11 +231,11 @@ body {
 .before-after-comparison__nav-icon--left {
   transform: rotate(-135deg);
 }
+
 .before-after-comparison__nav-icon--right {
   transform: rotate(45deg);
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
   .before-after-comparison__inner {
     grid-template-columns: 1fr;
@@ -305,7 +310,6 @@ body {
 }
 
 .site-header__inner {
-  /* max-width: 1440px; */
   margin: 0 auto;
   padding: 20px 80px;
   display: flex;
@@ -351,7 +355,6 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   color: #2a6dcb;
-  /* padding-bottom: 4px; */
 }
 
 .site-header__nav-link span {
@@ -460,7 +463,6 @@ body {
   letter-spacing: -0.5px;
 }
 
-/* Offcanvas Overlay Backdrop */
 .offcanvas-backdrop {
   background-color: rgba(0, 0, 0, 0.5) !important;
   backdrop-filter: blur(4px);
@@ -473,7 +475,6 @@ body {
   opacity: 1;
 }
 
-/* Offcanvas Container */
 .site-header__offcanvas {
   width: 85% !important;
   max-width: 400px !important;
@@ -492,7 +493,6 @@ body {
   }
 }
 
-/* Offcanvas Header */
 .site-header__offcanvas-header {
   padding: 24px 20px 20px;
   display: flex;
@@ -526,7 +526,7 @@ body {
   justify-content: center;
   cursor: pointer;
   padding: 0;
-  transition: background-color 200ms ease;
+  transition: all 200ms ease;
 }
 
 .site-header__offcanvas-close i {
@@ -538,7 +538,6 @@ body {
   background-color: #e5e7eb;
 }
 
-/* Offcanvas Body */
 .site-header__offcanvas-body {
   padding: 0 20px 24px;
   display: flex;
@@ -549,7 +548,6 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Custom scrollbar for offcanvas */
 .site-header__offcanvas-body::-webkit-scrollbar {
   width: 4px;
 }
@@ -567,7 +565,6 @@ body {
   background: #d1d5db;
 }
 
-/* Featured Content Section */
 .site-header__featured-content {
   margin-bottom: 28px;
 }
@@ -624,7 +621,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 200ms ease, transform 200ms ease;
+  transition: all 200ms ease;
 }
 
 .site-header__featured-cta:hover {
@@ -636,7 +633,6 @@ body {
   transform: translateY(0);
 }
 
-/* Navigation List */
 .site-header__offcanvas-nav {
   flex: 1;
   margin-bottom: 24px;
@@ -697,7 +693,6 @@ body {
   opacity: 0.7;
 }
 
-/* Footer CTA Button */
 .site-header__offcanvas-footer {
   margin-top: auto;
   padding-top: 24px;
@@ -717,8 +712,7 @@ body {
   letter-spacing: 0.05em;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
-  transition: background-color 200ms ease, transform 200ms ease,
-    box-shadow 200ms ease;
+  transition: all 200ms ease;
   min-height: 44px;
 }
 
@@ -733,8 +727,6 @@ body {
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
-/* Responsive adjustments */
-/* Offcanvas Animation Overrides */
 .offcanvas-start {
   transform: translateX(-100%);
   transition: transform 300ms ease-out;
@@ -754,15 +746,13 @@ body {
   opacity: 1;
 }
 
-/* Body scroll lock when offcanvas is open */
 body.offcanvas-open {
   overflow: hidden;
 }
 
-/* Responsive adjustments */
 @media (max-width: 576px) {
   .site-header__offcanvas {
-    width: 90% !important;
+          width: 90% !important;
   }
 
   .site-header__offcanvas-body {
@@ -782,7 +772,6 @@ body.offcanvas-open {
   }
 }
 
-/* Medium screen adjustments (tablet) */
 @media (min-width: 577px) and (max-width: 1024px) {
   .site-header__offcanvas {
     width: 400px !important;
@@ -800,7 +789,6 @@ body.offcanvas-open {
   }
 }
 
-/* Desktop-medium adjustments: make navbar behave between 1025px and 1200px */
 @media (min-width: 1025px) and (max-width: 1200px) {
   .site-header__inner {
     padding: 20px 40px;
@@ -835,7 +823,6 @@ body.offcanvas-open {
   }
 }
 
-/* Desktop-large adjustments: make navbar responsive for 1200px to 1400px */
 @media (min-width: 1201px) and (max-width: 1400px) {
   .site-header__inner {
     padding: 20px 50px;
@@ -879,7 +866,6 @@ body.offcanvas-open {
   }
 }
 
-/* Desktop-extra-large adjustments: make navbar responsive for 1400px and above */
 @media (min-width: 1401px) {
   .site-header__inner {
     padding: 20px 80px;
@@ -1020,7 +1006,6 @@ border-radius: 24px;
   column-gap: 12px;
 }
 
-/* hide scrollbar in how-to-use slider (keval horizontal drag chalse) */
 .how-to-use__grid {
   scrollbar-width: none; /* Firefox */
 }
@@ -2957,7 +2942,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
 
 .product-page {
   background-color: #ffffff;
-  /* padding: 48px 0; */
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
 }
@@ -3198,7 +3182,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   flex-shrink: 0;
 }
 
-/* Responsive: Adjust thumbnail size for horizontal layout */
 @media (max-width: 991.98px) {
   .media-gallery__thumbnail {
     width: 80px;
@@ -3229,7 +3212,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   cursor: pointer;
 }
 
-/* Video Thumbnail with Blur Effect */
 .media-gallery__thumbnail--video {
   position: relative;
 }
@@ -3281,21 +3263,16 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
 .media-gallery__main {
   flex: 1;
   width: 100%;
-  /* aspect-ratio: 3 / 4; */
   min-height: 60px;
   background-color: #f5f5f7;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
-  /* cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ccircle cx='35' cy='35' r='32' fill='white'/%3E%3Cpath d='M24 28 L46 35 L24 42' stroke='%2366B3FF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E")
-      25 25,
-    pointer; */
 }
 
-/* Responsive: Adjust main image order and aspect ratio */
 @media (max-width: 991.98px) {
   .media-gallery__main {
-    order: 1; /* Main image appears first */
+    order: 1; 
     aspect-ratio: 4 / 5;
   }
 }
@@ -3338,19 +3315,16 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   cursor: inherit;
 }
 
-/* Product Details */
 .product-page__details {
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* border: 2px solid black; */
   padding: 24px;
   border-radius: 24px !important;
   background-color: #fff;
   overflow: hidden;
 }
 
-/* Responsive: Adjust details padding */
 @media (max-width: 767.98px) {
   .product-page__details {
     padding: 20px;
@@ -3372,7 +3346,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   margin-bottom: 16px;
 }
 
-/* Responsive: Stack top row on mobile */
 @media (max-width: 575.98px) {
   .product-header__top-row {
     flex-direction: column;
@@ -4190,7 +4163,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   padding: 14px 32px;
 }
 
-/* Responsive: Adjust button sizing */
 @media (max-width: 767.98px) {
   .product-primary {
     font-size: 16px;
@@ -4220,7 +4192,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   transition: all 0.2s linear;
 }
 
-/* Responsive: Adjust secondary button */
 @media (max-width: 767.98px) {
   .product-light {
     max-width: 150px;
@@ -4253,7 +4224,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   line-height: 1.6;
 }
 
-/* Responsive: Adjust accordion CTA text */
 @media (max-width: 767.98px) {
   .product-accordion__cta-text {
     font-size: 16px;
@@ -4266,7 +4236,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 }
 
-/* Product Mini Card */
 .product-mini-card {
   background-color: #e6f2ff;
   border-radius: 16px;
@@ -4277,7 +4246,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   position: relative;
 }
 
-/* Responsive: Adjust mini card */
 @media (max-width: 767.98px) {
   .product-mini-card {
     padding: 16px;
@@ -4303,7 +4271,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   justify-content: center;
 }
 
-/* Responsive: Adjust mini card image */
 @media (max-width: 575.98px) {
   .product-mini-card__image {
     width: 50px;
@@ -4326,10 +4293,8 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   display: flex;
   margin: 20px;
   flex-direction: column;
-  /* gap: 4px; */
 }
 
-/* Responsive: Adjust mini card content */
 @media (max-width: 767.98px) {
   .product-mini-card__content {
     margin: 12px;
@@ -4351,7 +4316,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   line-height: 1.2;
 }
 
-/* Responsive: Adjust mini card title */
 @media (max-width: 767.98px) {
   .product-mini-card__title {
     font-size: 28px;
@@ -4405,7 +4369,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   height: 56px;
   border-radius: 50%;
   border: none !important;
-  /* border: 1px solid #a7c5ee; */
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -4415,7 +4378,7 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   padding: 0;
   overflow: hidden;
   box-shadow: 0 0 0 0 rgba(167, 197, 238, 0);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .product-mini-card__add-btn:hover {
@@ -4427,13 +4390,11 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   box-shadow: 0 2px 8px rgba(167, 197, 238, 0.2);
 }
 
-/* Center and style the bag icon */
 .product-mini-card__add-btn .bi-bag {
   font-size: 20px;
   color: #4988df;
 }
 
-/* Hide the text so only the icon shows inside the round button */
 .product-mini-card__add-btn-text {
   display: none;
 }
@@ -4456,7 +4417,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   gap: 12px;
 }
 
-/* Base Card Styles */
 .showcase-card {
   width: 100%;
   border-radius: 28px;
@@ -4472,7 +4432,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* Hero Card */
 .showcase-card--hero {
   aspect-ratio: 3 / 4;
   background: linear-gradient(135deg, #b8e0f0 0%, #a8d5e2 100%);
@@ -4537,7 +4496,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   text-align: right;
 }
 
-/* Information Card */
 .showcase-card--info {
   background: linear-gradient(135deg, #a8d5e2 0%, #b8e0f0 100%);
   padding: 24px 20px;
@@ -4656,7 +4614,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   opacity: 0.6;
 }
 
-/* Before/After Card */
 .showcase-card--before-after {
   background: linear-gradient(135deg, #e8e8f5 0%, #d8e8f0 100%);
   padding: 8px;
@@ -4736,7 +4693,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   z-index: 2;
 }
 
-/* Feature Highlight Card */
 .showcase-card--feature {
   aspect-ratio: 3 / 4;
   background: linear-gradient(135deg, #b8e0f0 0%, #ffffff 100%);
@@ -4806,13 +4762,11 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
-/* Lifestyle Card */
 .showcase-card--lifestyle {
   aspect-ratio: 3 / 4;
   background: linear-gradient(135deg, #e8f4f8 0%, #d8e8f0 100%);
 }
 
-/* Responsive Design */
 @media (min-width: 768px) {
   .product-showcase {
     padding: 24px 16px;
@@ -4905,7 +4859,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 }
 
-/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .showcase-card {
     transition: none;
@@ -4976,7 +4929,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   flex-shrink: 0;
 }
 
-/* Animation */
 @keyframes feature-slide {
   0% {
     transform: translateX(0);
@@ -4986,7 +4938,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .feature-slider {
     padding: 20px 0;
@@ -5033,7 +4984,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 }
 
-/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   .feature-slider__content {
     animation: none;
@@ -5167,7 +5117,7 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   max-height: 75%;
   width: auto;
   height: auto;
-  transition: transform 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 .top-shelf-card:hover .top-shelf-card__image {
@@ -5463,7 +5413,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
   .top-shelf-picks__container {
     padding: 0 20px;
@@ -5498,7 +5447,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 
   .top-shelf-picks__grid {
-    /* gap: 16px; */
     scroll-padding: 16px;
   }
 
@@ -5544,7 +5492,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 }
 
-/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   .top-shelf-card,
   .top-shelf-card__image,
@@ -5561,7 +5508,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 }
 
-/* Video Previews Grid at 1024px - Keep as grid, show all 3 items */
 @media (max-width: 1024px) {
   .video-previews__grid {
     display: grid;
@@ -5735,7 +5681,7 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   border: none;
   cursor: pointer;
   text-align: left;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .hustle-benefits__item-trigger:hover,
@@ -5797,7 +5743,7 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   border-radius: 2px;
   transform-origin: center;
   transform: translate(-50%, -60%) rotate(45deg);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 
@@ -5806,10 +5752,8 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   overflow: hidden;
   opacity: 0;
   transform: translateY(-8px);
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: max-height, opacity, transform;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: all;
 }
 
 .hustle-benefits__item-panel.is-open {
@@ -5828,8 +5772,7 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   padding: 0 36px 24px;
   opacity: 0;
   transform: translateY(-4px);
-  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
-    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
 }
 
 .hustle-benefits__item-panel.is-open .hustle-benefits__item-panel-inner {
@@ -6003,7 +5946,7 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   right: 0;
   bottom: 0;
   z-index: 2;
-  overflow: hidden; /* Hide gap at the end when slider reaches last slide */
+  overflow: hidden; 
   width: 100%;
   box-sizing: border-box;
 }
@@ -6092,7 +6035,7 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 400ms ease-out, opacity 500ms ease-out;
+  transition: all 400ms ease-out;
   opacity: 0;
   animation: fadeIn 500ms ease-out forwards;
 }
@@ -6263,7 +6206,6 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
 /* Tablet */
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-  /* Mobile-like behavior for 768px screens */
   .ingredients-section {
     padding: 40px 16px;
   }
@@ -6345,9 +6287,7 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 }
 
-/* Medium Desktop */
 @media screen and (min-width: 1024px) and (max-width: 1149px) {
-  /* Mobile-like behavior for 1024px screens */
   .ingredients-section {
     padding: 40px 16px;
   }
