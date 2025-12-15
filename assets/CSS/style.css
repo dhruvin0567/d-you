@@ -976,6 +976,8 @@ body.offcanvas-open {
 ====================*/
 
 .how-to-use {
+  margin-left: 12px;
+border-radius: 24px;
   background-color: #f5f6ff;
   padding: 80px 0 100px;
 }
@@ -5719,6 +5721,7 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
 
 .hustle-benefits__item {
   border-bottom: 1px solid #a7c5ee;
+  border-top: 1px solid #a7c5ee;
 }
 
 .hustle-benefits__item-trigger {
@@ -5913,7 +5916,9 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
 
 /* Section Container */
 .ingredients-section {
+  margin-left: 12px;
   padding: 80px 64px;
+  border-radius: 24px;
   background-color: #eef3f8;
   position: relative;
   overflow: visible;

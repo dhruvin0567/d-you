@@ -861,14 +861,14 @@
             </h2>
           </header>
           <div class="hustle-benefits__accordion" role="list">
-            <hr class="hustle-benefits__divider">
+            <!-- <hr class="hustle-benefits__divider"> -->
             <!-- Accordion Item 1 -->
             <div class="hustle-benefits__item" role="listitem">
               <button
                 class="hustle-benefits__item-trigger"
                 type="button"
                 id="trigger-1"
-                aria-expanded="true"
+                aria-expanded="false"
                 aria-controls="panel-1"
                 data-hustle-benefits-trigger
               >
@@ -882,10 +882,11 @@
               </button>
               <div
                 id="panel-1"
-                class="hustle-benefits__item-panel is-open"
+                class="hustle-benefits__item-panel"
                 role="region"
                 aria-labelledby="trigger-1"
                 data-hustle-benefits-panel
+                hidden="hidden"
               >
                 <div class="hustle-benefits__item-panel-inner">
                   <p class="hustle-benefits__item-body">
