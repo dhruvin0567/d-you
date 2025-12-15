@@ -2957,7 +2957,7 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
 
 .product-page {
   background-color: #ffffff;
-  padding: 48px 0;
+  /* padding: 48px 0; */
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
 }
