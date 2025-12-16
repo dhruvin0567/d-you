@@ -219,6 +219,14 @@ body {
   margin-top: 24px;
 }
 
+.before-after-comparison__nav--mobile {
+  display: none;
+}
+
+.before-after-comparison__nav--desktop {
+  display: flex;
+}
+
 .before-after-comparison__nav-button {
   width: 55px;
   height: 55px;
@@ -264,6 +272,32 @@ body {
 
   .before-after-comparison__nav {
     margin-top: 32px;
+  }
+}
+
+/* Stack text above before/after slider on small–medium screens */
+@media (max-width: 1200px) {
+  .before-after-comparison__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .before-after-comparison__content {
+    order: 1;
+  }
+
+  .before-after-comparison__media {
+    order: 2;
+  }
+
+  /* show nav below images, hide desktop nav */
+  .before-after-comparison__nav--mobile {
+    display: flex;
+    margin-top: 24px;
+  }
+
+  .before-after-comparison__nav--desktop {
+    display: none;
   }
 }
 
