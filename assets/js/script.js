@@ -2088,3 +2088,66 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// ====================
+// Product Sticky Bottom Bar
+// ====================
+// ====================
+// Product Sticky Bottom Bar
+// ====================
+
+(function () {
+  const stickyBar = document.getElementById("productStickyBar");
+  const productPage = document.querySelector(".product-page");
+  const footer = document.querySelector(".site-footer");
+
+  if (!stickyBar || !productPage || !footer) {
+    return;
+  }
+
+  function handleScroll() {
+    const productPageRect = productPage.getBoundingClientRect();
+    const footerRect = footer.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // Calculate how much of the product page has been scrolled
+    const productPageHeight = productPage.offsetHeight;
+    const productPageTop = productPage.getBoundingClientRect().top;
+    const productPageScrolled = -productPageTop;
+    const scrollPercentage = (productPageScrolled / productPageHeight) * 100;
+
+    // Check if user has scrolled at least 40% of the product page
+    const hasScrolled40Percent = scrollPercentage >= 40;
+
+    // Check if footer is visible
+    const isFooterVisible = footerRect.top < windowHeight;
+
+    // Check if product page is still in view
+    const isProductPageInView = productPageRect.bottom > 0;
+
+    if (hasScrolled40Percent && !isFooterVisible && isProductPageInView) {
+      // Show sticky bar when user has scrolled 40% of product page and footer is not visible
+      stickyBar.classList.add("show");
+      stickyBar.classList.remove("hide");
+    } else {
+      // Hide sticky bar when footer is visible or user hasn't scrolled 40% yet
+      stickyBar.classList.remove("show");
+      stickyBar.classList.add("hide");
+    }
+  }
+
+  // Throttle scroll event for better performance
+  let ticking = false;
+  window.addEventListener("scroll", function () {
+    if (!ticking) {
+      window.requestAnimationFrame(function () {
+        handleScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Initial check on page load
+  handleScroll();
+})();
