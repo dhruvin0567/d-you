@@ -2090,64 +2090,232 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ====================
-// Product Sticky Bottom Bar
+// Product Sticky Bottom Bar - Optimized Scroll Behavior
 // ====================
-// ====================
-// Product Sticky Bottom Bar
-// ====================
+// Manages sticky bar visibility with the following behavior:
+// 1. Initially hidden at page load
+// 2. Becomes visible once .product-mini-card__add-btn is scrolled into view or passed
+// 3. Hides when footer (footerId) comes into view to avoid overlapping
+// 4. Reappears when user scrolls back up to the trigger section
+// 
+// Performance optimizations:
+// - Uses IntersectionObserver for efficient visibility detection
+// - Uses requestAnimationFrame for smooth, jank-free updates
+// - Prevents layout shifts and flicker with proper state management
+// - Handles edge cases: small viewports, resize, dynamic content
 
 (function () {
   const stickyBar = document.getElementById("productStickyBar");
-  const productPage = document.querySelector(".product-page");
-  const footer = document.querySelector(".site-footer");
+  const footer = document.getElementById("footerId");
+  const triggerElement = document.querySelector(".product-mini-card__add-btn");
 
-  if (!stickyBar || !productPage || !footer) {
+  if (!stickyBar) {
     return;
   }
 
-  function handleScroll() {
-    const productPageRect = productPage.getBoundingClientRect();
-    const footerRect = footer.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
+  // State management
+  let isFooterVisible = false;
+  let hasTriggerBeenPassed = false; // Tracks if trigger has been scrolled past
+  let isTriggerCurrentlyVisible = false; // Tracks current trigger visibility
+  let rafScheduled = false; // Prevents multiple RAF calls
 
-    // Calculate how much of the product page has been scrolled
-    const productPageHeight = productPage.offsetHeight;
-    const productPageTop = productPage.getBoundingClientRect().top;
-    const productPageScrolled = -productPageTop;
-    const scrollPercentage = (productPageScrolled / productPageHeight) * 100;
+  // Initialize sticky bar as hidden (as per requirements)
+  stickyBar.classList.remove("visible");
+  stickyBar.classList.add("hide");
 
-    // Check if user has scrolled at least 40% of the product page
-    const hasScrolled40Percent = scrollPercentage >= 40;
-
-    // Check if footer is visible
-    const isFooterVisible = footerRect.top < windowHeight;
-
-    // Check if product page is still in view
-    const isProductPageInView = productPageRect.bottom > 0;
-
-    if (hasScrolled40Percent && !isFooterVisible && isProductPageInView) {
-      // Show sticky bar when user has scrolled 40% of product page and footer is not visible
-      stickyBar.classList.add("show");
-      stickyBar.classList.remove("hide");
-    } else {
-      // Hide sticky bar when footer is visible or user hasn't scrolled 40% yet
-      stickyBar.classList.remove("show");
-      stickyBar.classList.add("hide");
+  // Check initial scroll position to determine if trigger has already been passed
+  const checkInitialTriggerState = () => {
+    if (!triggerElement) {
+      return;
     }
+
+    const triggerRect = triggerElement.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    
+    // If trigger's top is above viewport, it has been passed
+    if (triggerRect.top < 0) {
+      hasTriggerBeenPassed = true;
+      isTriggerCurrentlyVisible = false;
+    } else if (triggerRect.top < viewportHeight && triggerRect.bottom > 0) {
+      // Trigger is currently visible
+      hasTriggerBeenPassed = true;
+      isTriggerCurrentlyVisible = true;
+    } else {
+      // Trigger is below viewport, not yet reached
+      hasTriggerBeenPassed = false;
+      isTriggerCurrentlyVisible = false;
+    }
+  };
+
+  // Check initial state
+  checkInitialTriggerState();
+
+  // Optimized visibility toggle function
+  // Uses requestAnimationFrame to batch DOM updates and prevent layout shifts
+  const updateStickyBarVisibility = () => {
+    // Prevent multiple simultaneous RAF calls
+    if (rafScheduled) {
+      return;
+    }
+
+    rafScheduled = true;
+    window.requestAnimationFrame(() => {
+      rafScheduled = false;
+
+      // Priority 1: Hide if footer is visible (highest priority)
+      if (isFooterVisible) {
+        stickyBar.classList.remove("visible");
+        stickyBar.classList.add("hide");
+        return;
+      }
+
+      // Priority 2: Show if trigger has been passed (scrolled into view or past)
+      // This handles both scrolling down past trigger and scrolling back up to trigger
+      if (hasTriggerBeenPassed) {
+        stickyBar.classList.add("visible");
+        stickyBar.classList.remove("hide");
+        return;
+      }
+
+      // Priority 3: Keep hidden if trigger hasn't been reached yet
+      stickyBar.classList.remove("visible");
+      stickyBar.classList.add("hide");
+    });
+  };
+
+  // IntersectionObserver configuration for trigger element
+  // Using multiple thresholds for better detection of entry/exit
+  const triggerObserverOptions = {
+    root: null, // viewport
+    rootMargin: "0px",
+    threshold: [0, 0.1, 1] // Multiple thresholds for better detection
+  };
+
+  // Observer callback for trigger element
+  // Tracks both visibility and whether trigger has been passed
+  const triggerObserverCallback = (entries) => {
+    entries.forEach((entry) => {
+      isTriggerCurrentlyVisible = entry.isIntersecting;
+      
+      // Once trigger enters viewport, mark it as passed
+      // This ensures bar stays visible even after scrolling past trigger
+      if (entry.isIntersecting) {
+        hasTriggerBeenPassed = true;
+      } else {
+        // When trigger leaves viewport, check if it was scrolled past (upward)
+        // If trigger's top is above viewport, it was scrolled past downward
+        const triggerRect = triggerElement.getBoundingClientRect();
+        if (triggerRect.top < 0) {
+          hasTriggerBeenPassed = true; // Scrolled past downward
+        } else {
+          // Trigger is below viewport - only mark as not passed if we're at the top
+          // This handles edge case where page loads with trigger below viewport
+          if (window.scrollY === 0) {
+            hasTriggerBeenPassed = false;
+          }
+        }
+      }
+      
+      updateStickyBarVisibility();
+    });
+  };
+
+  // IntersectionObserver configuration for footer
+  // Using small threshold to detect footer as soon as it enters viewport
+  const footerObserverOptions = {
+    root: null, // viewport
+    rootMargin: "0px",
+    threshold: 0.01 // Trigger when 1% of footer is visible
+  };
+
+  // Observer callback for footer
+  const footerObserverCallback = (entries) => {
+    entries.forEach((entry) => {
+      isFooterVisible = entry.isIntersecting;
+      updateStickyBarVisibility();
+    });
+  };
+
+  // Create observers
+  const triggerObserver = new IntersectionObserver(triggerObserverCallback, triggerObserverOptions);
+  const footerObserver = new IntersectionObserver(footerObserverCallback, footerObserverOptions);
+
+  // Start observing elements if they exist
+  if (triggerElement) {
+    triggerObserver.observe(triggerElement);
+    // Initial update based on current state
+    updateStickyBarVisibility();
   }
 
-  // Throttle scroll event for better performance
-  let ticking = false;
-  window.addEventListener("scroll", function () {
-    if (!ticking) {
-      window.requestAnimationFrame(function () {
-        handleScroll();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
+  if (footer) {
+    footerObserver.observe(footer);
+  } else {
+    // Fallback: If footer doesn't exist at initialization, use scroll-based detection
+    // This handles dynamic content loading scenarios
+    let ticking = false;
+    const checkFooterPosition = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const footerElement = document.getElementById("footerId");
+          if (footerElement) {
+            // Try to observe it if it now exists
+            footerObserver.observe(footerElement);
+            const footerRect = footerElement.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            // Consider footer visible if its top edge is within viewport
+            isFooterVisible = footerRect.top < viewportHeight;
+            updateStickyBarVisibility();
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
-  // Initial check on page load
-  handleScroll();
+    window.addEventListener("scroll", checkFooterPosition, { passive: true });
+    checkFooterPosition(); // Initial check
+  }
+
+  // Handle resize events with debouncing
+  // Recalculates state on viewport size changes (handles mobile rotation, etc.)
+  let resizeTimeout;
+  const handleResize = () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      // Recheck initial trigger state in case layout changed
+      checkInitialTriggerState();
+      updateStickyBarVisibility();
+    }, 150);
+  };
+
+  window.addEventListener("resize", handleResize, { passive: true });
+
+  // Handle dynamic content loading
+  // Rechecks trigger state after a short delay to account for lazy-loaded content
+  // This ensures the sticky bar works correctly even if page height changes
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        checkInitialTriggerState();
+        updateStickyBarVisibility();
+      }, 100);
+    });
+  } else {
+    // DOM already loaded, check after a short delay for any dynamic content
+    setTimeout(() => {
+      checkInitialTriggerState();
+      updateStickyBarVisibility();
+    }, 100);
+  }
+
+  // Cleanup function (optional, but good practice)
+  // Can be called if needed for cleanup, though in this case observers
+  // will be garbage collected when the IIFE scope ends
+  return {
+    destroy: () => {
+      triggerObserver.disconnect();
+      footerObserver.disconnect();
+      window.removeEventListener("resize", handleResize);
+    }
+  };
 })();

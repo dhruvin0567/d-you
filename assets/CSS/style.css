@@ -4341,20 +4341,26 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   background-color: #ffffff;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  display: none;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  transform: translateY(100%);
+  /* Initial hidden state - no layout shift */
   opacity: 0;
+  transform: translateY(50px);
+  visibility: hidden;
+  /* Smooth reveal animation */
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out, visibility 0.7s ease-out;
+  /* Prevent layout shift */
+  will-change: opacity, transform;
 }
 
-.product-sticky-bar.show {
-  display: block;
-  transform: translateY(0);
+.product-sticky-bar.visible {
   opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
 }
 
 .product-sticky-bar.hide {
-  display: none !important;
+  opacity: 0;
+  transform: translateY(50px);
+  visibility: hidden;
 }
 
 .product-sticky-bar__container {
@@ -4367,14 +4373,14 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   display: flex;
   align-items: center;
   gap: 16px;
-  max-width: 1440px;
+  /* max-width: 1440px; */
   margin: 0 auto;
 }
 
 .product-sticky-bar__image {
   flex-shrink: 0;
-  width: 60px;
-  height: 60px;
+  width: 62px;
+  height: 73px;
   border-radius: 8px;
   overflow: hidden;
   background-color: #f5f7ff;
@@ -4392,23 +4398,25 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
 }
 
 .product-sticky-bar__category {
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 400;
   color: #2a6dcb;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 4px;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin-top: 8px;
+  font-family: var(--montserrat-family);
 }
 
 .product-sticky-bar__title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #1a1a1a;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #2a6dcb;
+  font-family: "Lemonde", "Times New Roman", serif;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 32px;
+  margin-bottom: 10px;
 }
 
 .product-sticky-bar__price {
@@ -4420,31 +4428,48 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
 
 .product-sticky-bar__current-price {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 29px;
   color: #2a6dcb;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--montserrat-family);
 }
 
 .product-sticky-bar__original-price {
-  font-size: 14px;
-  color: #999999;
+  font-size: 18px;
+  line-height: 29px;
+  color: #68809a;
+  opacity: 0.8;
   text-decoration: line-through;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--montserrat-family);
 }
 
 .product-sticky-bar__button {
   flex-shrink: 0;
-  padding: 12px 32px;
+  padding: 12px 72px;
   background-color: #2a6dcb;
   color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
+  border: 1px solid #A7C5EE;
+  border-radius: 300px;
+  font-size: 18px;
+  font-weight: 500;
   cursor: pointer;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--montserrat-family);
   transition: background-color 0.3s ease;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-sticky-bar__button-icon {
+  display: none;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.product-sticky-bar__button-text {
+  display: inline;
 }
 
 .product-sticky-bar__button:hover {
@@ -4463,7 +4488,7 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 
   .product-sticky-bar__title {
-    font-size: 14px;
+    font-size: 20px;
   }
 
   .product-sticky-bar__current-price {
@@ -4476,13 +4501,14 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   }
 }
 
-@media (max-width: 767.98px) {
+@media (min-width: 576px) and (max-width: 1000px) {
   .product-sticky-bar__container {
     padding: 10px 16px;
   }
 
   .product-sticky-bar__content {
-    gap: 10px;
+    gap: 16px;
+    justify-content: center;
   }
 
   .product-sticky-bar__image {
@@ -4490,73 +4516,55 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
     height: 45px;
   }
 
-  .product-sticky-bar__info {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .product-sticky-bar__category {
-    font-size: 10px;
-  }
-
-  .product-sticky-bar__title {
-    font-size: 13px;
-  }
-
-  .product-sticky-bar__price {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-  }
-
-  .product-sticky-bar__current-price {
-    font-size: 15px;
-  }
-
-  .product-sticky-bar__original-price {
-    font-size: 12px;
-  }
-
   .product-sticky-bar__button {
-    padding: 10px 20px;
-    font-size: 12px;
+    flex: 0 1 auto;
+    padding: 12px 40px;
+    font-size: 16px;
+    justify-content: center;
+  }
+
+  .product-sticky-bar__info,
+  .product-sticky-bar__price {
+    display: none;
   }
 }
 
 @media (max-width: 575.98px) {
+  .product-sticky-bar {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
   .product-sticky-bar__container {
-    padding: 8px 12px;
+    padding: 12px 16px;
   }
 
   .product-sticky-bar__content {
-    gap: 8px;
+    gap: 0;
+    justify-content: center;
   }
 
   .product-sticky-bar__image {
-    width: 40px;
-    height: 40px;
+    display: none;
   }
 
-  .product-sticky-bar__category {
-    font-size: 9px;
-    margin-bottom: 2px;
+  .product-sticky-bar__info {
+    display: none;
   }
 
-  .product-sticky-bar__title {
-    font-size: 12px;
-  }
-
-  .product-sticky-bar__current-price {
-    font-size: 14px;
-  }
-
-  .product-sticky-bar__original-price {
-    font-size: 11px;
+  .product-sticky-bar__price {
+    display: none;
   }
 
   .product-sticky-bar__button {
-    padding: 8px 16px;
-    font-size: 11px;
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 16px;
+    justify-content: center;
+  }
+
+  .product-sticky-bar__button-icon {
+    display: block;
   }
 }
 
@@ -6166,6 +6174,11 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   pointer-events: auto;
 }
 
+/* Default: hide tablet-bottom CTA (only for tablet range) */
+.cta-button--tablet-bottom {
+  display: none;
+}
+
 .cta-button:hover {
   border: 1.5px solid #4988df;
   background: #4988df;
@@ -6281,7 +6294,7 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
 
 .category-badge {
   position: absolute;
-  bottom: 24px;
+  bottom: 62px;
   left: 24px;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
@@ -6441,24 +6454,37 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .ingredients-section {
-    padding: 40px 16px;
+    padding: 30px 10px !important;
   }
 
   .section-container {
     min-height: auto;
   }
 
+  /* Keep the "Powered by clinically backed ingredients" line
+     on a single line on tablet widths for better visual match
+     with the design */
+  .main-heading {
+    font-size: 32px !important;
+    font-weight: 400;
+    line-height: 40px;
+    white-space: nowrap;
+  }
+
   .text-block {
     margin-top: 0px !important;
-    min-height: 300px;
+    min-height: 10px;
     padding: 20px;
     position: relative;
     z-index: 1;
+    display: flex !important;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 
   .text-content {
-    text-align: center;
-    max-width: 100%;
+    text-align: left;
+    max-width: 500px;
   }
 
   .main-heading {
@@ -6471,9 +6497,24 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
     margin-bottom: 10px;
   }
 
+  /* Reset generic CTA positioning for tablet */
   .cta-button {
     font-size: 14px;
     padding: 13px 24px;
+    position: static;
+    left: auto;
+    transform: none;
+    bottom: auto;
+  }
+
+  /* Hide the top CTA and show the bottom one only on tablet */
+  .cta-button--top {
+    display: none;
+  }
+
+  .cta-button--tablet-bottom {
+    display: inline-block;
+    margin-top: 24px;
   }
 
   .swiper-container-wrapper {
@@ -6690,6 +6731,45 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
     max-width: 622px;
     max-height: 312px;
     aspect-ratio: 622 / 312;
+  }
+}
+
+/* Laptop layout tweak (e.g. 1280px screens)
+   Make behaviour between 1200px–1400px match the standard desktop
+   layout, so the slider fills the right side just like on larger
+   screens. */
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+  .ingredients-section {
+    padding: 80px 72px;
+  }
+
+  .section-container {
+    /* Center content vertically and keep a clear gap between text and slider */
+    align-items: center;
+    gap: 72px;
+  }
+
+  .text-block {
+    flex: 0 0 400px;
+    max-width: 400px;
+  }
+
+  .swiper-container-wrapper {
+    /* Match the >=1150px desktop behaviour so the card sits
+       flush in the right-hand area and doesn’t get clipped
+       between 1200px and 1400px. */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  .ingredients-swiper {
+    width: 100%;
+    height: 100%;
   }
 }
 

@@ -3,9 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     centeredSlides: true,
     slidesPerView: 1.2,
     spaceBetween: 12,
-    // Slow transition speed for smooth, slow movement
     speed: 5000,
-    // Smooth easing function for elegant transitions
     freeMode: false,
     allowTouchMove: true,
     simulateTouch: true,
@@ -13,39 +11,31 @@ document.addEventListener("DOMContentLoaded", function () {
     touchRatio: 1,
     touchAngle: 45,
     threshold: 5,
-    // Responsive breakpoints for all screen sizes
     breakpoints: {
-      // Extra small devices (phones, 320px and up)
       320: {
         slidesPerView: 1.2,
         spaceBetween: 12,
       },
-      // Small devices (landscape phones, 480px and up)
       480: {
         slidesPerView: 1.5,
         spaceBetween: 14,
       },
-      // Medium devices (tablets, 768px and up) - Mobile-like behavior
       768: {
         slidesPerView: 1.5,
         spaceBetween: 16,
       },
-      // Large devices (desktops, 1024px and up)
       1024: {
-        slidesPerView: 3.2,
+        slidesPerView: 2,
         spaceBetween: 22,
       },
-      // Extra large devices (large desktops, 1280px and up)
       1280: {
-        slidesPerView: 1.9,
+        slidesPerView: 1.8,
         spaceBetween: 26,
       },
-      // XXL devices (1440px and up)
       1440: {
-        slidesPerView: 2.2,
+        slidesPerView: 2.1,
         spaceBetween: 30,
       },
-      // Ultra wide screens (1920px and up)
       1920: {
         slidesPerView: 2.5,
         spaceBetween: 35,
