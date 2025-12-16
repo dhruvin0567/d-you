@@ -2584,6 +2584,53 @@ border-radius: 24px;
   }
 }
 
+/* Ensure footer bottom row stays in a single horizontal line
+   between tablet widths (577px - 1024px) for 3-column layout */
+@media (max-width: 1024px) and (min-width: 577px) {
+  .footer-bottom-row {
+    flex-wrap: nowrap;
+    gap: 24px;
+  }
+
+  .footer-bottom-left,
+  .footer-bottom-right {
+    flex: 0 0 auto;
+  }
+
+  .footer-bottom-center {
+    flex: 1 1 auto;
+    padding: 0 16px;
+  }
+
+  .footer-contact-text {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+/* Explicitly ensure same layout at 768px viewport width */
+@media (max-width: 768px) and (min-width: 577px) {
+  .footer-bottom-row {
+    flex-wrap: nowrap;
+    gap: 24px;
+  }
+
+  .footer-bottom-left,
+  .footer-bottom-right {
+    flex: 0 0 auto;
+  }
+
+  .footer-bottom-center {
+    flex: 1 1 auto;
+    padding: 0 16px;
+  }
+
+  .footer-contact-text {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 992px) {
   .footer-inner {
     padding: 32px 24px;
