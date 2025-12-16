@@ -15,6 +15,7 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
@@ -206,8 +207,9 @@
       <div class="product-page__container">
         <div class="product-page__inner">
           <!-- left media  -->
-          <div class="product-page__media">
+          <div class="product-page__media"> 
             <div class="media-gallery">
+              <!-- thumbnails -->
               <div class="media-gallery__thumbnails-wrapper">
                 <div class="media-gallery__thumbnails" id="thumbnail-slider">
                   <button
@@ -337,6 +339,7 @@
                 </div>
               </div>
 
+              <!-- main media (image + video) -->
               <div class="media-gallery__main">
                 <div
                   class="media-gallery__main-content"
@@ -350,21 +353,19 @@
                   />
                   <video
                     id="main-product-video"
-                    class="media-gallery__video"
+                    class="media-gallery__main-video"
+                    src=""
+                    playsinline
+                    muted
                     controls
                     style="display: none"
-                    preload="metadata"
-                    loop
-                    muted
-                    playsinline
-                  >
-                    Your browser does not support the video tag.
-                  </video>
+                  ></video>
                 </div>
               </div>
             </div>
           </div>
-          <!-- rifht content  -->
+
+          <!-- right content  -->
           <div class="product-page__details">
             <div class="product-header">
               <div class="product-header__top-row">

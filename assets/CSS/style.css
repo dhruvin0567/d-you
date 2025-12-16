@@ -3342,12 +3342,13 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 12px;
+  border-radius: 28px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
   cursor: inherit;
+  transition: all 300ms ease-in-out;
 }
 
 .product-page__details {

@@ -683,6 +683,9 @@ if (resultsComparison) {
           mainVideo.style.left = "0";
           mainVideo.style.width = "100%";
           mainVideo.style.height = "100%";
+          mainVideo.style.opacity = "1";
+          mainVideo.style.borderRadius = "28px";
+          mainVideo.style.objectFit = "cover";
           mainVideo.load();
           mainVideo.play().catch((e) => {
             console.log("Video autoplay prevented:", e);
