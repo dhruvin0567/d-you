@@ -489,8 +489,15 @@ if (resultsComparison) {
     let pendingPosition = 50;
     let isDragging = false;
     let rafId = null;
-    const prevButton = section.querySelector("[data-before-after-prev]");
-    const nextButton = section.querySelector("[data-before-after-next]");
+    // There can be multiple nav button sets (mobile + desktop).
+    // We bind listeners to ALL of them so navigation works on
+    // large / extra‑large screens as well as mobile.
+    const prevButtons = Array.from(
+      section.querySelectorAll("[data-before-after-prev]")
+    );
+    const nextButtons = Array.from(
+      section.querySelectorAll("[data-before-after-next]")
+    );
 
     function setActivePair(index) {
       currentIndex = (index + pairs.length) % pairs.length;
@@ -573,8 +580,14 @@ if (resultsComparison) {
       });
     });
 
-    prevButton.addEventListener("click", () => setActivePair(currentIndex - 1));
-    nextButton.addEventListener("click", () => setActivePair(currentIndex + 1));
+    // Wire up all previous / next buttons (mobile + desktop)
+    prevButtons.forEach((btn) => {
+      btn.addEventListener("click", () => setActivePair(currentIndex - 1));
+    });
+
+    nextButtons.forEach((btn) => {
+      btn.addEventListener("click", () => setActivePair(currentIndex + 1));
+    });
     setActivePair(0);
   });
 })();
