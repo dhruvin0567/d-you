@@ -1186,6 +1186,35 @@ border-radius: 24px;
   }
 }
 
+/* 768px tablet view: keep slider but show ~3 cards like reference image */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .how-to-use__inner {
+    padding-inline: 32px;
+  }
+
+  .how-to-use__eyebrow {
+    text-align: left !important;
+  }
+
+  .how-to-use__title {
+    text-align: left;
+  }
+
+  .how-to-use__grid {
+    gap: 12px;
+  }
+
+  /* Make each slide narrower so ~3 are visible while still scrollable */
+  .how-to-use__card {
+    flex: 0 0 32%;
+  }
+
+  .how-to-use__media {
+    height: 320px;
+    padding-top: 0;
+  }
+}
+
 /*====================
    BEFORE AFTER SECTION
 ====================*/
@@ -2581,53 +2610,6 @@ border-radius: 24px;
     flex-wrap: nowrap;
     justify-content: space-between;
     gap: 80px;
-  }
-}
-
-/* Ensure footer bottom row stays in a single horizontal line
-   between tablet widths (577px - 1024px) for 3-column layout */
-@media (max-width: 1024px) and (min-width: 577px) {
-  .footer-bottom-row {
-    flex-wrap: nowrap;
-    gap: 24px;
-  }
-
-  .footer-bottom-left,
-  .footer-bottom-right {
-    flex: 0 0 auto;
-  }
-
-  .footer-bottom-center {
-    flex: 1 1 auto;
-    padding: 0 16px;
-  }
-
-  .footer-contact-text {
-    max-width: 520px;
-    margin: 0 auto;
-  }
-}
-
-/* Explicitly ensure same layout at 768px viewport width */
-@media (max-width: 768px) and (min-width: 577px) {
-  .footer-bottom-row {
-    flex-wrap: nowrap;
-    gap: 24px;
-  }
-
-  .footer-bottom-left,
-  .footer-bottom-right {
-    flex: 0 0 auto;
-  }
-
-  .footer-bottom-center {
-    flex: 1 1 auto;
-    padding: 0 16px;
-  }
-
-  .footer-contact-text {
-    max-width: 520px;
-    margin: 0 auto;
   }
 }
 
