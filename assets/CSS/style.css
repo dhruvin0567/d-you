@@ -1401,7 +1401,7 @@ border-radius: 24px;
 
 .lineup-step__label {
   font-family: var(--montserrat-family);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.05em;
   text-transform: lowercase;
   color: #7b99c4;
@@ -1458,7 +1458,7 @@ border-radius: 24px;
 
 .lineup-step__prod-title {
   font-family: "Lemonde", "Times New Roman", serif;
-  font-size: 26px;
+  font-size: 32px;
   font-style: normal;
   color: #6b9fe8;
   font-weight: 400;
@@ -1474,7 +1474,7 @@ border-radius: 24px;
 
 .lineup-step__prod-subtitle {
   font-family: var(--montserrat-family);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: -0.7px;
   line-height: 1.5;
   color: #9ca3af;
@@ -3337,7 +3337,8 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   cursor: inherit;
 }
 
-.media-gallery__video {
+.media-gallery__video,
+.media-gallery__main-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -3349,6 +3350,13 @@ MEDIA GALLERY SECTION FOR THE SCREEN SIZE LG TO MD
   z-index: 2;
   cursor: inherit;
   transition: all 300ms ease-in-out;
+}
+
+#main-product-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 28px;
 }
 
 .product-page__details {

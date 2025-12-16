@@ -592,28 +592,18 @@ if (resultsComparison) {
 
   if (!thumbnails.length) return;
 
-  const mediaItems = [
-    { type: "image", src: "./assets/img/image1.webp" },
-    { type: "image", src: "./assets/img/image2.webp" },
-    { type: "image", src: "./assets/img/image3.webp" },
-    { type: "image", src: "./assets/img/image4.webp" },
-    {
-      type: "video",
-      src: "./assets/img/video1.mp4",
-      thumbnail: "./assets/img/image1.webp",
-    },
-    {
-      type: "video",
-      src: "./assets/img/video2.mp4",
-      thumbnail: "./assets/img/image2.webp",
-    },
-    {
-      type: "video",
-      src: "./assets/img/video3.mp4",
-      thumbnail: "./assets/img/image3.webp",
-    },
-    { type: "image", src: "./assets/img/image6.webp" },
-  ];
+  // Ensure a clean initial state: show image, hide main video
+  if (mainImage) {
+    mainImage.hidden = false;
+    mainImage.style.display = "block";
+    mainImage.style.opacity = "1";
+  }
+
+  if (mainVideo) {
+    mainVideo.hidden = true;
+    mainVideo.style.display = "none";
+    mainVideo.pause();
+  }
 
   function scrollThumbnailIntoView(activeThumbnail) {
     if (activeThumbnail && thumbnailSlider) {
@@ -657,56 +647,70 @@ if (resultsComparison) {
 
   thumbnails.forEach((thumbnail) => {
     thumbnail.addEventListener("click", () => {
-      const mediaIndex = parseInt(thumbnail.getAttribute("data-media"));
       const mediaType = thumbnail.getAttribute("data-type");
-      const mediaItem = mediaItems[mediaIndex];
+      const videoSrc = thumbnail.getAttribute("data-video");
+      const thumbImg = thumbnail.querySelector("img");
 
-      if (!mediaItem) return;
-
+      // Update active thumbnail state
       thumbnails.forEach((thumb) => thumb.classList.remove("active"));
       thumbnail.classList.add("active");
 
       scrollThumbnailIntoView(thumbnail);
 
-      if (mediaType === "video") {
-        const videoSrc = thumbnail.getAttribute("data-video");
-
+      // Handle video thumbnail click
+      if (mediaType === "video" && videoSrc && mainVideo) {
+        // Hide the image
         if (mainImage) {
+          mainImage.hidden = true;
           mainImage.style.display = "none";
         }
 
-        if (mainVideo) {
-          mainVideo.src = videoSrc;
-          mainVideo.style.display = "block";
-          mainVideo.style.position = "absolute";
-          mainVideo.style.top = "0";
-          mainVideo.style.left = "0";
-          mainVideo.style.width = "100%";
-          mainVideo.style.height = "100%";
-          mainVideo.style.opacity = "1";
-          mainVideo.style.borderRadius = "28px";
-          mainVideo.style.objectFit = "cover";
-          mainVideo.load();
-          mainVideo.play().catch((e) => {
-            console.log("Video autoplay prevented:", e);
-          });
-        }
-      } else {
-        if (mainVideo) {
+        // Show and play the video
+        // Only update src if it's different to avoid unnecessary reloads
+        if (mainVideo.src !== videoSrc) {
           mainVideo.pause();
-          mainVideo.style.display = "none";
-          mainVideo.src = "";
+          mainVideo.currentTime = 0;
+          mainVideo.src = videoSrc;
+          mainVideo.load();
         }
 
-        if (mainImage) {
-          mainImage.style.display = "block";
-          mainImage.style.position = "relative";
+        // Make video visible
+        mainVideo.hidden = false;
+        mainVideo.style.display = "block";
+        mainVideo.style.opacity = "1";
+        
+        // Play the video
+        mainVideo.play().catch((e) => {
+          console.log("Video autoplay prevented:", e);
+        });
+      } 
+      // Handle image thumbnail click
+      else if (mediaType === "image" && thumbImg && mainImage) {
+        // Hide and pause the video
+        if (mainVideo) {
+          mainVideo.pause();
+          mainVideo.currentTime = 0;
+          mainVideo.hidden = true;
+          mainVideo.style.display = "none";
+        }
+
+        // Get image source from thumbnail
+        const imageSrc = thumbImg.src;
+
+        // Update image source if different
+        if (mainImage.src !== imageSrc) {
+          // Smooth transition for image change
           mainImage.style.opacity = "0";
           setTimeout(() => {
-            mainImage.src = mediaItem.src;
+            mainImage.src = imageSrc;
             mainImage.style.opacity = "1";
           }, 150);
         }
+
+        // Show the image
+        mainImage.hidden = false;
+        mainImage.style.display = "block";
+        mainImage.style.opacity = "1";
       }
     });
   });
